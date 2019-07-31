@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Signatures on Jaeles Scanner</title>
+    <link>/signatures/</link>
+    <description>Recent content in Signatures on Jaeles Scanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Jul 2019 12:51:40 +0700</lastBuildDate>
+    
+	<atom:link href="/signatures/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Create Your First</title>
+      <link>/signatures/create-your-first/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/create-your-first/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Understand Signatures</title>
+      <link>/signatures/understand-signatures/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:28 +0700</pubDate>
+      
+      <guid>/signatures/understand-signatures/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

