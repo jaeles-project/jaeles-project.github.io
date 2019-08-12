@@ -19,15 +19,17 @@ Check out [Usage Guide](/usage/) to get started.
 
 ### Screenshots
 
-![UI-1](screenshots/ui-1.png?classes=border,shadow)
+![UI-1](screenshots/jaeles-ui-00.png?classes=border,shadow)
 
-![UI-2](screenshots/ui-2.png?classes=border,shadow)
+![UI-2](screenshots/jaeles-ui-01.png?classes=border,shadow)
 
-![UI-3](screenshots/ui-3.png?classes=border,shadow)
+![UI-3](screenshots/jaeles-ui-02.png?classes=border,shadow)
 
-![UI-4](screenshots/ui-4.png?classes=border,shadow)
+![UI-4](screenshots/jaeles-ui-03.png?classes=border,shadow)
 
-![UI-5](screenshots/ui-5.png?classes=border,shadow)
+![UI-5](screenshots/jaeles-ui-08.png?classes=border,shadow)
+
+![UI-5](screenshots/jaeles-ui-09.png?classes=border,shadow)
 
 ***
 
