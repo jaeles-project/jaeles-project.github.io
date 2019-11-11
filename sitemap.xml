@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>/signatures/detection/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
+  </url>
   
   <url>
     <loc>/introduction/</loc>
@@ -8,8 +13,13 @@
   </url>
   
   <url>
-    <loc>/plugins/burp-integration/</loc>
+    <loc>/installation/burp-integration/</loc>
     <lastmod>2019-07-31T13:01:12+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/signatures/generator/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>
@@ -18,27 +28,27 @@
   </url>
   
   <url>
+    <loc>/signatures/middleware/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/usage/</loc>
     <lastmod>2019-07-31T13:44:32+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/plugins/</loc>
-    <lastmod>2019-07-31T12:51:19+07:00</lastmod>
+    <loc>/showcases/</loc>
+    <lastmod>2019-07-31T13:17:33+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/signatures/create-your-first/</loc>
+    <loc>/signatures/examples/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/signatures/understand-signatures/</loc>
-    <lastmod>2019-07-31T14:12:28+07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/plugins/persistent-burpcollaborator/</loc>
+    <loc>/installation/persistent-burpcollaborator/</loc>
     <lastmod>2019-07-31T13:02:57+07:00</lastmod>
   </url>
   
@@ -48,23 +58,16 @@
   </url>
   
   <url>
-    <loc>/core/</loc>
-    <lastmod>2019-07-31T12:51:31+07:00</lastmod>
-  </url>
-  
-  <url>
     <loc>/</loc>
     <lastmod>2019-07-30T22:50:41+07:00</lastmod>
   </url>
   
   <url>
     <loc>/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>/tags/</loc>
-    <priority>0</priority>
   </url>
   
 </urlset>

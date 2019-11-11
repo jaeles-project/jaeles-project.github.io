@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Jaeles Scanner</title>
@@ -12,11 +12,22 @@
     
     
     <item>
+      <title>Detection</title>
+      <link>/signatures/detection/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/detection/</guid>
+      <description>This part will be executed right after Jaeles got response from the request and do a logic for determine the request is vulnerable or not.
+Detections was written in Javascript so you can write whatever you want with some predefind function below as long as you return boolean value to determine it&amp;rsquo;s found something or not.
+Examples Detection # Reponse Status code equal 200 and the reponse body contain a string &#39;google.</description>
+    </item>
+    
+    <item>
       <title>Burp Integration</title>
-      <link>/plugins/burp-integration/</link>
+      <link>/installation/burp-integration/</link>
       <pubDate>Wed, 31 Jul 2019 13:01:12 +0700</pubDate>
       
-      <guid>/plugins/burp-integration/</guid>
+      <guid>/installation/burp-integration/</guid>
       <description>Get input from Burp
 Burp -&amp;gt; Extender -&amp;gt; Add Jaeles-burp.py as python extensions.
 Get your JWT from this API and fill it into Jaeles Tab in Burp then you&amp;rsquo;re good to go. Click save button if you want to store JWT persistence.
@@ -25,35 +36,46 @@ Default log will be store in ~/.jaeles-burp/config.json
     </item>
     
     <item>
-      <title>Create Your First</title>
-      <link>/signatures/create-your-first/</link>
+      <title>Generator</title>
+      <link>/signatures/generator/</link>
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
-      <guid>/signatures/create-your-first/</guid>
-      <description></description>
+      <guid>/signatures/generator/</guid>
+      <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request.
+Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;), Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.payload}}&amp;quot;, &amp;quot;ext&amp;quot;)   Body Gen request based on Request Body Body(&amp;quot;{{.</description>
     </item>
     
     <item>
-      <title>Understand Signatures</title>
-      <link>/signatures/understand-signatures/</link>
-      <pubDate>Wed, 31 Jul 2019 14:12:28 +0700</pubDate>
+      <title>Middleware</title>
+      <link>/signatures/middleware/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
-      <guid>/signatures/understand-signatures/</guid>
-      <description></description>
+      <guid>/signatures/middleware/</guid>
+      <description>This part will be executed right before request send to the target for doing some extra task before sending a request to target.
+   API Detection Description Example     InvokeCmd Execute Command line and get result of it InvokeCmd(&amp;quot;phuip-fpizdam {{.URL}}&amp;quot;)   Host2IP Turn Host: domain.com header to Host: IP address Host2IP()    </description>
+    </item>
+    
+    <item>
+      <title>Example Signatures</title>
+      <link>/signatures/examples/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/examples/</guid>
+      <description> Single signature List signature Fuzz signature </description>
     </item>
     
     <item>
       <title>Persistent Burpcollaborator</title>
-      <link>/plugins/persistent-burpcollaborator/</link>
+      <link>/installation/persistent-burpcollaborator/</link>
       <pubDate>Wed, 31 Jul 2019 13:02:57 +0700</pubDate>
       
-      <guid>/plugins/persistent-burpcollaborator/</guid>
+      <guid>/installation/persistent-burpcollaborator/</guid>
       <description>Get Collaborator Secret token Route traffic through proxy
 Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Upstream Proxy Server -&amp;gt; then run command below
 mitmdump -q -p 8667 -s burpcollaborator-oob.py  Get burpcollaborator secret
-Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Mics -&amp;gt; -&amp;gt; Burp Collaborator Server.
-Check on Poll over unencrypted HTTP and press run health check many time you want to get secret key
-Default log will be store in .</description>
+Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Mics -&amp;gt; -&amp;gt; Burp Collaborator Server. Check on Poll over unencrypted HTTP.
+Now open Collaborator Client and click Poll now.
+Copy as many collab as need to be and store it in a file.</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Installation on Jaeles Scanner</title>
@@ -10,6 +10,33 @@
     
 	<atom:link href="/installation/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Burp Integration</title>
+      <link>/installation/burp-integration/</link>
+      <pubDate>Wed, 31 Jul 2019 13:01:12 +0700</pubDate>
+      
+      <guid>/installation/burp-integration/</guid>
+      <description>Get input from Burp
+Burp -&amp;gt; Extender -&amp;gt; Add Jaeles-burp.py as python extensions.
+Get your JWT from this API and fill it into Jaeles Tab in Burp then you&amp;rsquo;re good to go. Click save button if you want to store JWT persistence.
+Default log will be store in ~/.jaeles-burp/config.json
+ </description>
+    </item>
+    
+    <item>
+      <title>Persistent Burpcollaborator</title>
+      <link>/installation/persistent-burpcollaborator/</link>
+      <pubDate>Wed, 31 Jul 2019 13:02:57 +0700</pubDate>
+      
+      <guid>/installation/persistent-burpcollaborator/</guid>
+      <description>Get Collaborator Secret token Route traffic through proxy
+Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Upstream Proxy Server -&amp;gt; then run command below
+mitmdump -q -p 8667 -s burpcollaborator-oob.py  Get burpcollaborator secret
+Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Mics -&amp;gt; -&amp;gt; Burp Collaborator Server. Check on Poll over unencrypted HTTP.
+Now open Collaborator Client and click Poll now.
+Copy as many collab as need to be and store it in a file.</description>
+    </item>
     
   </channel>
 </rss>

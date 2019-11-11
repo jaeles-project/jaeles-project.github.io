@@ -9,23 +9,23 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Home :: Jaeles Scanner</title>
+    <title>Burp Integration :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1573456221" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1573456221" rel="stylesheet">
-    <link href="/css/hybrid.css?1573456221" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1573456221" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1573456221" rel="stylesheet">
-    <link href="/css/auto-complete.css?1573456221" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1573456221" rel="stylesheet">
-    <link href="/css/theme.css?1573456221" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1573456221" rel="stylesheet">
+    <link href="/css/nucleus.css?1573456220" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573456220" rel="stylesheet">
+    <link href="/css/hybrid.css?1573456220" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573456220" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573456220" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573456220" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573456220" rel="stylesheet">
+    <link href="/css/theme.css?1573456220" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573456220" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1573456221" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1573456220" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1573456221"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573456220"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/installation/burp-integration/">
     <nav id="sidebar" class="">
 
 
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1573456221"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1573456221"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573456220"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573456220"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1573456221"></script>
+<script type="text/javascript" src="/js/search.js?1573456220"></script>
 
     
   </div>
@@ -98,7 +98,7 @@
   
     
     <li data-nav-id="/installation/" title="Installation" class="dd-item 
-        
+        parent
         
         
         ">
@@ -122,7 +122,7 @@
  
   
     
-      <li data-nav-id="/installation/burp-integration/" title="Burp Integration" class="dd-item ">
+      <li data-nav-id="/installation/burp-integration/" title="Burp Integration" class="dd-item active">
         <a href="/installation/burp-integration/">
         Burp Integration
         
@@ -346,59 +346,93 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/installation/'>Installation</a> > Burp Integration
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              Burp Integration
+            </h1>
+          
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<p><img src="screenshots/jaeles-architecture.png?classes=border,shadow" alt="architechture" /></p>
+<p><img src="screenshots/ext-0.png?classes=border,shadow" alt="Burp-Extensions" />
+<h4 align="center">Get input from Burp</h4></p>
 
-<h5 align="center">Jaeles is a powerful, flexible and easily extensible framework written in Go for building your own Web Application Scanner.</h5>
+<p>Burp -&gt; Extender -&gt; Add <code>Jaeles-burp.py</code> as python extensions.</p>
 
-<h3 align="center">Overview</h3>
+<hr />
 
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Description</th>
-</tr>
-</thead>
+<p><img src="screenshots/burp-ext.png?classes=border,shadow" alt="Burp-Extensions" /></p>
 
-<tbody>
-<tr>
-<td><h4><a href="/installation/">Installation</a></h4></td>
-<td><h4>Guide to Installation</h4></td>
-</tr>
+<p>Get your JWT from this <a href="https://documenter.getpostman.com/view/7482578/SVSLrUeJ?version=latest#1c59bfca-f678-49d9-a30b-8b0b80b0a289">API</a> and fill it into Jaeles Tab in Burp then you&rsquo;re good to go.
+Click save button if you want to store JWT persistence.</p>
 
-<tr>
-<td><h4><a href="/usage/">Usage</a></h4></td>
-<td><h4>Guide to basic usage</h4></td>
-</tr>
 
-<tr>
-<td><h4><a href="/showcases/">Demo</a></h4></td>
-<td><h4>Some showcases</h4></td>
-</tr>
+<div class="notices note" ><p>Default log will be store in <strong><code>~/.jaeles-burp/config.json</code></strong></p>
+</div>
 
-<tr>
-<td><h4><a href="/signatures//">Understand Signature</a></h4></td>
-<td><h4>Understand Signature</h4></td>
-</tr>
-</tbody>
-</table>
+
+
+<footer class=" footline" >
 	
-  
+</footer>
+
+
         
         </div> 
         
@@ -449,6 +483,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -461,6 +496,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -477,6 +513,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 

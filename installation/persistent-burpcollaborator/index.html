@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Home :: Jaeles Scanner</title>
+    <title>Persistent Burpcollaborator :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1573456221" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/">
+  <body class="" data-url="/installation/persistent-burpcollaborator/">
     <nav id="sidebar" class="">
 
 
@@ -98,7 +98,7 @@
   
     
     <li data-nav-id="/installation/" title="Installation" class="dd-item 
-        
+        parent
         
         
         ">
@@ -141,7 +141,7 @@
  
   
     
-      <li data-nav-id="/installation/persistent-burpcollaborator/" title="Persistent Burpcollaborator" class="dd-item ">
+      <li data-nav-id="/installation/persistent-burpcollaborator/" title="Persistent Burpcollaborator" class="dd-item active">
         <a href="/installation/persistent-burpcollaborator/">
         Persistent Burpcollaborator
         
@@ -346,59 +346,113 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'>Home</a> > <a href='/installation/'>Installation</a> > Persistent Burpcollaborator
+          
+         
+          
+         
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#get-collaborator-secret-token">Get Collaborator Secret token</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
         
         <div id="body-inner">
           
+            <h1>
+              
+              Persistent Burpcollaborator
+            </h1>
+          
 
         
 
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<p><img src="screenshots/jaeles-architecture.png?classes=border,shadow" alt="architechture" /></p>
 
-<h5 align="center">Jaeles is a powerful, flexible and easily extensible framework written in Go for building your own Web Application Scanner.</h5>
 
-<h3 align="center">Overview</h3>
+<h3 id="get-collaborator-secret-token">Get Collaborator Secret token</h3>
 
-<table>
-<thead>
-<tr>
-<th>Page</th>
-<th>Description</th>
-</tr>
-</thead>
+<p><img src="screenshots/burp-collab-config.png?classes=border,shadow" alt="Architecture" />
+<h4 align="center">Route traffic through proxy</h4></p>
 
-<tbody>
-<tr>
-<td><h4><a href="/installation/">Installation</a></h4></td>
-<td><h4>Guide to Installation</h4></td>
-</tr>
+<p>Burp -&gt; Project Options -&gt; Connections -&gt; Upstream Proxy Server -&gt; then run command below</p>
 
-<tr>
-<td><h4><a href="/usage/">Usage</a></h4></td>
-<td><h4>Guide to basic usage</h4></td>
-</tr>
+<pre><code>mitmdump -q -p 8667 -s burpcollaborator-oob.py
+</code></pre>
 
-<tr>
-<td><h4><a href="/showcases/">Demo</a></h4></td>
-<td><h4>Some showcases</h4></td>
-</tr>
+<hr />
 
-<tr>
-<td><h4><a href="/signatures//">Understand Signature</a></h4></td>
-<td><h4>Understand Signature</h4></td>
-</tr>
-</tbody>
-</table>
+<p><img src="screenshots/collab-polling.png?classes=border,shadow" alt="Architecture" />
+<h4 align="center">Get burpcollaborator secret</h4></p>
+
+<p>Burp -&gt; Project Options -&gt; Connections -&gt; Mics -&gt; -&gt; Burp Collaborator Server. <br />
+Check on Poll over unencrypted HTTP.<br />
+Now open Collaborator Client and click Poll now.<br />
+Copy as many collab as need to be and store it in a file.<br /></p>
+
+
+<div class="notices note" ><p>Default log will be store in <strong>./collaborator.json</strong></p>
+</div>
+
+
+
+<footer class=" footline" >
 	
-  
+</footer>
+
+
         
         </div> 
         
@@ -449,6 +503,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -461,6 +516,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -478,6 +536,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -496,6 +555,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
