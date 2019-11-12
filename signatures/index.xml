@@ -28,8 +28,8 @@ Examples Detection # Reponse Status code equal 200 and the reponse body contain 
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
       <guid>/signatures/generator/</guid>
-      <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request.
-Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;), Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.payload}}&amp;quot;, &amp;quot;ext&amp;quot;)   Body Gen request based on Request Body Body(&amp;quot;{{.</description>
+      <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request. Generator inly avaliable in type: fuzz signature.
+Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;), Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.</description>
     </item>
     
     <item>

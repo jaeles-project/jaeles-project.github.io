@@ -12,20 +12,20 @@
     <title>Generator :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1573456220" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1573456220" rel="stylesheet">
-    <link href="/css/hybrid.css?1573456220" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1573456220" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1573456220" rel="stylesheet">
-    <link href="/css/auto-complete.css?1573456220" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1573456220" rel="stylesheet">
-    <link href="/css/theme.css?1573456220" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1573456220" rel="stylesheet">
+    <link href="/css/nucleus.css?1573529251" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573529251" rel="stylesheet">
+    <link href="/css/hybrid.css?1573529251" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573529251" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573529251" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573529251" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573529251" rel="stylesheet">
+    <link href="/css/theme.css?1573529251" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573529251" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1573456220" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1573529251" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1573456220"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573529251"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1573456220"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1573456220"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573529251"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573529251"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1573456220"></script>
+<script type="text/javascript" src="/js/search.js?1573529251"></script>
 
     
   </div>
@@ -391,9 +391,11 @@
 <li>
 <ul>
 <li><a href="#generator">Generator</a></li>
-<li><a href="#details">Details</a>
+<li><a href="#using-generator">Using Generator</a>
 <ul>
 <li><a href="#method">Method</a></li>
+<li><a href="#query-body-and-header">Query, Body and Header</a></li>
+<li><a href="#path">Path</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -423,7 +425,8 @@
 
 
 
-<p>This part will be executed before parsing request input with the signature for generate variation request base on the original request.</p>
+<p>This part will be executed before parsing request input with the signature for generate variation request base on the original request.
+Generator inly avaliable in <code>type: fuzz</code> signature.</p>
 
 <h2 id="generator">Generator</h2>
 
@@ -469,9 +472,78 @@
 </tbody>
 </table>
 
-<h2 id="details">Details</h2>
+<h2 id="using-generator">Using Generator</h2>
+
+<pre><code>id: sqli-01-01
+info:
+  name: SQL Injection Error based
+  risk: Critical
+type: fuzz
+
+payloads:
+  - '''&quot;'
+  - '`}'
+
+requests:
+  - generators:
+      - Query(&quot;{{.payload}}&quot;)
+    detections:
+      - &gt;-
+        StringSearch(&quot;response&quot;, &quot;mysql_fetch_array&quot;)
+</code></pre>
+
+
+<div class="notices tip" ><p>If you want to generate single request with many generator do like this <code>- Query(&quot;{{.payload}}&quot;); Method(&quot;PUT&quot;)</code>.</p>
+</div>
+
 
 <h3 id="method">Method</h3>
+
+<p><code>Method()</code> will generate <code>&quot;GET&quot;, &quot;POST&quot;, &quot;PUT&quot;, &quot;HEAD&quot;, &quot;PATCH&quot;</code> based on request input.
+If parameter specified <code>Method(&quot;PUT&quot;)</code> only one request with *<em>PUT</em> method generated.</p>
+
+<hr />
+
+<h3 id="query-body-and-header">Query, Body and Header</h3>
+
+<p><code>Query(&quot;{{.original}}{{.payload}}&quot;)</code> will generate number of based on number of query string in URL of the request input.</p>
+
+<p>For example with signature <strong>sqli-01-01</strong> and our URL is <code>http://example.com/?q=123</code>. We gonna get two new requests with URL <code>http://example.com/?q=123'&quot;</code> and <code>http://example.com/?q=123%60}</code>.</p>
+
+<p>If we use <code>Query(&quot;{{.original}}{{.payload}}&quot;,&quot;new&quot;)</code> generator then we gonna get <code>http://example.com/?q=123&amp;new='&quot;</code>.</p>
+
+<p><code>Header()</code> and <code>Body()</code> have same usage of <code>Query()</code> generator.</p>
+
+<p>For example.
+<code>Body(&quot;{{.original}}{{.payload}}&quot;)</code> generate number of based on number of request body parameter of the request input.</p>
+
+<p><code>Header(&quot;{{.original}} \ {{.payload}}&quot;, &quot;X-Command&quot;)</code> will generate a new request with <code>X-Command</code> header with our payload.</p>
+
+<hr />
+
+<h3 id="path">Path</h3>
+
+<p>First of all, <strong>Jaeles</strong> split path of URL like this</p>
+
+<pre><code>URL: http://example.com/rest/products/6/reviews?q=123
+Path: =&gt; /rest/products/6/reviews
+         0   1        2  3     -1
+</code></pre>
+
+<p>and have some special parameter <code>ext</code>, <code>last</code>, <code>0/1/2</code> and <code>*</code>.</p>
+
+<p>For example our payload is <code>.json</code>.</p>
+
+<p><code>Path(&quot;{{.payload}}&quot;, &quot;last&quot;)</code> mean end of the Path will be replace by the payload to this <code>/rest/products/6/reviews.json</code>.</p>
+
+<p><code>Path(&quot;{{.payload}}&quot;, &quot;ext&quot;)</code> mean extension of the Path (like <code>.php</code>) but our URL doesn&rsquo;t have extension.</p>
+
+<p><code>Path(&quot;{{.payload}}&quot;, &quot;1&quot;)</code> mean position 1 of the Path will be replace by the payload to this <code>/rest.json/products/6/reviews</code>.</p>
+
+<p><code>Path(&quot;{{.payload}}&quot;, &quot;0/2/3&quot;)</code> mean position 0,2,3 of the Path will be replace by the payload to this <code>/.json/rest/products/6/reviews</code>, <code>/rest/products.json/6/reviews</code> and <code>/rest.json/products/6.json/reviews</code></p>
+
+<p>and Finally <code>Path(&quot;{{.payload}}&quot;, &quot;*&quot;)</code> will generate payload gonna replace every single path.
+If you don&rsquo;t specified position parameter like this <code>Path(&quot;{{.payload}}&quot;)</code>, by default it&rsquo;s equal to <code>Path(&quot;{{.payload}}&quot;, &quot;last&quot;)</code>.</p>
 
 
 <footer class=" footline" >
@@ -707,20 +779,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1573456221"></script>
-    <script src="/js/perfect-scrollbar.min.js?1573456221"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1573456221"></script>
-    <script src="/js/jquery.sticky.js?1573456221"></script>
-    <script src="/js/featherlight.min.js?1573456221"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1573456221"></script>
-    <script src="/js/highlight.pack.js?1573456221"></script>
+    <script src="/js/clipboard.min.js?1573529251"></script>
+    <script src="/js/perfect-scrollbar.min.js?1573529251"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1573529251"></script>
+    <script src="/js/jquery.sticky.js?1573529251"></script>
+    <script src="/js/featherlight.min.js?1573529251"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1573529251"></script>
+    <script src="/js/highlight.pack.js?1573529251"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1573456221"></script>
-    <script src="/js/learn.js?1573456221"></script>
-    <script src="/js/hugo-learn.js?1573456221"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1573529251"></script>
+    <script src="/js/learn.js?1573529251"></script>
+    <script src="/js/hugo-learn.js?1573529251"></script>
 
-    <link href="/mermaid/mermaid.css?1573456221" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1573456221"></script>
+    <link href="/mermaid/mermaid.css?1573529251" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1573529251"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
