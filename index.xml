@@ -61,7 +61,9 @@ Generator    API Generator Description Example     Method Gen request based on m
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
       <guid>/signatures/examples/</guid>
-      <description> Single signature List signature Fuzz signature </description>
+      <description>Single signature List signature Fuzz signature  Single signature Sending request to URLs with append /_debugbar/open?max=20&amp;amp;offset=0 and look for {&amp;quot;id&amp;quot;:&amp;quot; string in the reponse if it success.
+List signature Sending request to URLs with append /{{.jira}}plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}} with {{.jira}} and {{.ssrf}} get from variables.
+Simulate Directory Bruteforce with content is from /tmp/sensitive_paths.txt. Confirm the path exist if Secret is in the reponse or Not Found word isn&amp;rsquo;t in the repsonse and different lengoth of the request and original &amp;gt; 1000.</description>
     </item>
     
     <item>

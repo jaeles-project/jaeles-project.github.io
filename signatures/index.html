@@ -12,20 +12,20 @@
     <title>Understand Signatures :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1573529251" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1573529251" rel="stylesheet">
-    <link href="/css/hybrid.css?1573529251" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1573529251" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1573529251" rel="stylesheet">
-    <link href="/css/auto-complete.css?1573529251" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1573529251" rel="stylesheet">
-    <link href="/css/theme.css?1573529251" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1573529251" rel="stylesheet">
+    <link href="/css/nucleus.css?1573720838" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1573720838" rel="stylesheet">
+    <link href="/css/hybrid.css?1573720838" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1573720838" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1573720838" rel="stylesheet">
+    <link href="/css/auto-complete.css?1573720838" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1573720838" rel="stylesheet">
+    <link href="/css/theme.css?1573720838" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1573720838" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1573529251" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1573720838" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1573529251"></script>
+    <script src="/js/jquery-3.3.1.min.js?1573720838"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1573529251"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1573529251"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1573720838"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1573720838"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1573529251"></script>
+<script type="text/javascript" src="/js/search.js?1573720838"></script>
 
     
   </div>
@@ -362,18 +362,7 @@
                   <span class="links">
                  
                  
-                    
-          
-          
-            
-            
-          
-          
-            <a href='/'>Home</a> > Understand Signatures
-          
-         
-          
-        
+                   Understand Signatures 
                  
                   </span>
                 </div>
@@ -389,6 +378,7 @@
 <li><a href="#each-signature-basically-split-in-two-part-and-written-in-yaml-format">Each signature basically split in two part and written in YAML format.</a></li>
 <li><a href="#info">Info</a></li>
 <li><a href="#request-builder">Request Builder</a></li>
+<li><a href="#more-advanced-request-builder">More advanced request builder</a></li>
 <li><a href="#optional-reference">[Optional] Reference</a></li>
 </ul></li>
 </ul></li>
@@ -431,7 +421,7 @@
 
 <hr />
 
-<p><img src="screenshots/signature-list.png?classes=border,shadow" alt="EX-0" /></p>
+<p><img src="signatures/list-1.png?classes=border,shadow" alt="EX-0" /></p>
 
 <h3 id="info">Info</h3>
 
@@ -445,15 +435,17 @@ type: list
 info:
   name: PHP Debug bar
   # those feilds below are optional
-  risk: High # default is &quot;Info&quot;
+  # default is &quot;Info&quot;
+  risk: High
   tech: general
   os: general
 </code></pre>
 
 <h3 id="request-builder">Request Builder</h3>
 
-<p>Everything in a signature have template pattern <code>{{.variable}}</code> will be replace to generate request.
-There&rsquo;re some default template variable: <code>{{.BaseURL}}</code>, <code>{{.URL}}</code>, <code>{{.Host}}</code>, <code>{{.Path}}</code>, <code>{{.Extension}}</code>, <code>{{.oob}}</code></p>
+<p>Everything in a signature have template pattern <code>{{.variable_key}}</code> will be replace to generate request.</p>
+
+<p>There&rsquo;re some default template variable: <code>{{.BaseURL}}</code>, <code>{{.URL}}</code>, <code>{{.Host}}</code>, <code>{{.Path}}</code>, <code>{{.Extension}}</code>, <code>{{.oob}}</code></p>
 
 <pre><code># variables only used when signature type is &quot;list&quot;
 variables:
@@ -473,7 +465,9 @@ requests:
         StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
 </code></pre>
 
-<p>More advanced request builder</p>
+<h3 id="more-advanced-request-builder">More advanced request builder</h3>
+
+<p>Use raw request as a template</p>
 
 <pre><code>requests:
   - method: GET
@@ -498,25 +492,37 @@ requests:
       Connection: close
 </code></pre>
 
-<p>With Origin request</p>
+<hr />
 
-<pre><code>origin:
+<p>With Origin request to use Origin Detection API.</p>
+
+<pre><code>
+id: sensitive-01-01
+type: list
+
+# Original request to compare
+origin:
   method: GET
   redirect: true
   path: &gt;-
-    {{.BaseURL}}/404
+    {{.BaseURL}}
+
+variables:
+  # we can put list of it in a file and load it
+  - sensitive: /tmp/sensitive_path.txt
 
 requests:
   - method: GET
     redirect: true
-    # use template header in case you're not define it
-    use_template_header: false
     path: &gt;-
-     {{.BaseURL}}/.perf
+     {{.BaseURL}}/{{.stats}}
 
     detections:
       - &gt;-
-        StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;Oracle iPlanet Web Server&quot;) &amp;&amp; StringSearch(&quot;response&quot;, &quot;ConnectionQueue&quot;)
+        StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;Secret&quot;)
+      - &gt;-
+        StatusCode() == 200 &amp;&amp; !StringSearch(&quot;response&quot;, &quot;Not Found&quot;) &amp;&amp; Math.abs(ContentLength() - OriginContentLength() &gt; 1000)
+
 </code></pre>
 
 <h3 id="optional-reference">[Optional] Reference</h3>
@@ -759,20 +765,20 @@ requests:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1573529251"></script>
-    <script src="/js/perfect-scrollbar.min.js?1573529251"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1573529251"></script>
-    <script src="/js/jquery.sticky.js?1573529251"></script>
-    <script src="/js/featherlight.min.js?1573529251"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1573529251"></script>
-    <script src="/js/highlight.pack.js?1573529251"></script>
+    <script src="/js/clipboard.min.js?1573720838"></script>
+    <script src="/js/perfect-scrollbar.min.js?1573720838"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1573720838"></script>
+    <script src="/js/jquery.sticky.js?1573720838"></script>
+    <script src="/js/featherlight.min.js?1573720838"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1573720838"></script>
+    <script src="/js/highlight.pack.js?1573720838"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1573529251"></script>
-    <script src="/js/learn.js?1573529251"></script>
-    <script src="/js/hugo-learn.js?1573529251"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1573720838"></script>
+    <script src="/js/learn.js?1573720838"></script>
+    <script src="/js/hugo-learn.js?1573720838"></script>
 
-    <link href="/mermaid/mermaid.css?1573529251" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1573529251"></script>
+    <link href="/mermaid/mermaid.css?1573720838" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1573720838"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
