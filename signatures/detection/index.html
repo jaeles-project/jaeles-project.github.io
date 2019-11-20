@@ -12,20 +12,20 @@
     <title>Detection :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1573728525" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1573728525" rel="stylesheet">
-    <link href="/css/hybrid.css?1573728525" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1573728525" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1573728525" rel="stylesheet">
-    <link href="/css/auto-complete.css?1573728525" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1573728525" rel="stylesheet">
-    <link href="/css/theme.css?1573728525" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1573728525" rel="stylesheet">
+    <link href="/css/nucleus.css?1574217472" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1574217472" rel="stylesheet">
+    <link href="/css/hybrid.css?1574217472" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1574217472" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1574217472" rel="stylesheet">
+    <link href="/css/auto-complete.css?1574217472" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1574217472" rel="stylesheet">
+    <link href="/css/theme.css?1574217472" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1574217472" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1573728525" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1574217472" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1573728525"></script>
+    <script src="/js/jquery-3.3.1.min.js?1574217472"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1573728525"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1573728525"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1574217472"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1574217472"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1573728525"></script>
+<script type="text/javascript" src="/js/search.js?1574217472"></script>
 
     
   </div>
@@ -443,9 +443,21 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 </tr>
 
 <tr>
+<td align="left"><strong><em>StringCount</em></strong></td>
+<td align="left">Return number of string in component</td>
+<td align="left"><code>StringCount(&quot;response&quot;, &quot;something&quot;)</code></td>
+</tr>
+
+<tr>
 <td align="left"><strong><em>RegexSearch</em></strong></td>
 <td align="left">Search regex in component</td>
 <td align="left"><code>RegexSearch(&quot;response&quot;, &quot;.*something$&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>RegexCount</em></strong></td>
+<td align="left">Return number of string match the regex in component</td>
+<td align="left"><code>RegexCount(&quot;response&quot;, &quot;.*something$&quot;)</code></td>
 </tr>
 
 <tr>
@@ -507,6 +519,18 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 <tr>
 <td align="left"><strong>response</strong></td>
 <td align="left">raw response of the request</td>
+<td align="left"><code>StringSearch(&quot;oresponse&quot;, &quot;something&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong>orequest</strong></td>
+<td align="left">raw original request</td>
+<td align="left"><code>StringSearch(&quot;orequest&quot;, &quot;something&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong>oresponse</strong></td>
+<td align="left">raw original request response of the request</td>
 <td align="left"><code>StringSearch(&quot;response&quot;, &quot;something&quot;)</code></td>
 </tr>
 
@@ -769,20 +793,20 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1573728525"></script>
-    <script src="/js/perfect-scrollbar.min.js?1573728525"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1573728525"></script>
-    <script src="/js/jquery.sticky.js?1573728525"></script>
-    <script src="/js/featherlight.min.js?1573728525"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1573728525"></script>
-    <script src="/js/highlight.pack.js?1573728525"></script>
+    <script src="/js/clipboard.min.js?1574217472"></script>
+    <script src="/js/perfect-scrollbar.min.js?1574217472"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1574217472"></script>
+    <script src="/js/jquery.sticky.js?1574217472"></script>
+    <script src="/js/featherlight.min.js?1574217472"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1574217472"></script>
+    <script src="/js/highlight.pack.js?1574217472"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1573728525"></script>
-    <script src="/js/learn.js?1573728525"></script>
-    <script src="/js/hugo-learn.js?1573728525"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1574217472"></script>
+    <script src="/js/learn.js?1574217472"></script>
+    <script src="/js/hugo-learn.js?1574217472"></script>
 
-    <link href="/mermaid/mermaid.css?1573728525" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1573728525"></script>
+    <link href="/mermaid/mermaid.css?1574217472" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1574217472"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
