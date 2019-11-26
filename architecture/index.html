@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Understand Signatures :: Jaeles Scanner</title>
+    <title>Architecture :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1574735420" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/signatures/">
+  <body class="" data-url="/architecture/">
     <nav id="sidebar" class="">
 
 
@@ -98,8 +98,8 @@
   
     
     <li data-nav-id="/architecture/" title="Architecture" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/architecture/">
@@ -256,8 +256,8 @@
   
     
     <li data-nav-id="/signatures/" title="Understand Signatures" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/signatures/">
@@ -406,7 +406,7 @@
                   <span class="links">
                  
                  
-                   Understand Signatures 
+                   Architecture 
                  
                   </span>
                 </div>
@@ -417,14 +417,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#each-signature-basically-split-in-two-part-and-written-in-yaml-format">Each signature basically split in two part and written in YAML format.</a></li>
-<li><a href="#info">Info</a></li>
-<li><a href="#request-builder">Request Builder</a></li>
-<li><a href="#more-advanced-request-builder">More advanced request builder</a></li>
-<li><a href="#optional-reference">[Optional] Reference</a></li>
-</ul></li>
+<li><a href="#overview-flow">Overview flow</a></li>
+<li><a href="#signature-in-depth">Signature In-depth</a></li>
+<li><a href="#request-builder-in-depth">Request builder In-depth</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -443,7 +438,7 @@
           
             <h1>
               
-              Understand Signatures
+              Architecture
             </h1>
           
 
@@ -454,171 +449,18 @@
 
 	
 
-<p>Take a look at this <a href="https://github.com/jaeles-project/jaeles-signatures">repo</a> for more examples.</p>
+<h2 id="overview-flow">Overview flow</h2>
 
-<h3 id="each-signature-basically-split-in-two-part-and-written-in-yaml-format">Each signature basically split in two part and written in YAML format.</h3>
+<p><img src="architecture/overview.png" alt="architecture-1" />
+<h5 align="center">Take list of Urls or raw request and combine with signature to generate request. Sending those requests and run detections script to determine request is vulnerable or not</h5></p>
 
-<ul>
-<li><a href="/signatures/#info"><strong>Info</strong></a></li>
-<li><a href="/signatures/#request-builder"><strong>Request builder</strong></a></li>
-</ul>
+<h2 id="signature-in-depth">Signature In-depth</h2>
 
-<p>There&rsquo;re 3 types of signature: <code>single, list, fuzz</code></p>
+<p><img src="architecture/signature-In-depth.png?width=50pc" alt="architecture-2" /></p>
 
-<hr />
+<h2 id="request-builder-in-depth">Request builder In-depth</h2>
 
-<p><img src="signatures/list-1.png?classes=border,shadow" alt="EX-0" /></p>
-
-<h3 id="info">Info</h3>
-
-<p>Some information about the signature to index in the DB</p>
-
-<pre><code># ID to index a signature
-id: common-01-01
-# Type of signature default is &quot;single&quot;
-type: list
-# Some info about signature
-info:
-  name: PHP Debug bar
-  # those feilds below are optional
-  # default is &quot;Info&quot;
-  risk: High
-  tech: general
-  os: general
-</code></pre>
-
-<h3 id="request-builder">Request Builder</h3>
-
-<p>Everything in a signature have template pattern <code>{{.variable_key}}</code> will be replace to generate request.</p>
-
-<p>There&rsquo;re some default template variable:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Default variable</th>
-<th align="left">E.g: <a href="http://example.com/a/b/c.php?q=123">http://example.com/a/b/c.php?q=123</a></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>{{.URL}}</code></td>
-<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.BaseURL}}</code></td>
-<td align="left"><code>http://example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Host}}</code></td>
-<td align="left"><code>example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Path}}</code></td>
-<td align="left"><code>/a/b/c</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Extension}}</code></td>
-<td align="left"><code>.php</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.oob}}</code></td>
-<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
-</tr>
-</tbody>
-</table>
-
-<pre><code># variables only used when signature type is &quot;list&quot;
-variables:
-  - ssrf: [google.com,example.com]
-
-# Each element in requests key will be generate and sending separately
-requests:
-  - method: GET
-    redirect: true
-    path: &gt;-
-     {{.BaseURL}}/confluence/plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}}
-    headers:
-      - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0
-      - X-Atlassian-Token: no-check
-    detections:
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
-</code></pre>
-
-<h3 id="more-advanced-request-builder">More advanced request builder</h3>
-
-<p>Use raw request as a template</p>
-
-<pre><code>requests:
-  - method: GET
-    redirect: true
-    detections:
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
-    # Request raw (make sure you're using &quot;|&quot; in this raw key)
-    raw: |
-      POST /search.php?test=query HTTP/1.1
-      Host: {{.Host}}
-      Content-Length: 25
-      Cache-Control: max-age=0
-      Origin: http://{{.Host}}
-      Upgrade-Insecure-Requests: 1
-      Content-Type: application/x-www-form-urlencoded
-      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3927.0 Safari/537.36
-      Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
-      Referer: http://{{.Host}}/
-      Accept-Encoding: gzip, deflate
-      Accept-Language: en-US,en;q=0.9
-      Connection: close
-</code></pre>
-
-<hr />
-
-<p>With Origin request to use Origin Detection API.</p>
-
-<pre><code>
-id: sensitive-01-01
-type: list
-
-# Original request to compare
-origin:
-  method: GET
-  redirect: true
-  path: &gt;-
-    {{.BaseURL}}
-
-variables:
-  # we can put list of it in a file and load it
-  - sensitive: /tmp/sensitive_path.txt
-
-requests:
-  - method: GET
-    redirect: true
-    path: &gt;-
-     {{.BaseURL}}/{{.stats}}
-
-    detections:
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;Secret&quot;)
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; !StringSearch(&quot;response&quot;, &quot;Not Found&quot;) &amp;&amp; Math.abs(ContentLength() - OriginContentLength() &gt; 1000)
-
-</code></pre>
-
-<h3 id="optional-reference">[Optional] Reference</h3>
-
-<p>This is just a reference info</p>
-
-<pre><code>reference:
-  - link: https://jira.atlassian.com/browse/JRASERVER-70018
-</code></pre>
+<p><img src="architecture/request-builder-in-depth.png" alt="architecture-3" /></p>
 
 
 
@@ -678,34 +520,6 @@ requests:
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -723,6 +537,9 @@ requests:
             
                 
                     
+                        
+                        
+                    
                 
                 
 
@@ -730,12 +547,6 @@ requests:
                     
                     
 
-                    
-            
-        
-                    
-            
-        
                     
                         
             
@@ -769,6 +580,9 @@ requests:
             
         
                     
+            
+        
+                    
                         
             
             
@@ -790,6 +604,37 @@ requests:
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -803,9 +648,6 @@ requests:
             
             
                 
-                    
-                        
-                        
                     
                 
                 
