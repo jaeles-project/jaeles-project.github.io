@@ -12,20 +12,20 @@
     <title>Understand Signatures :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1574735420" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1574735420" rel="stylesheet">
-    <link href="/css/hybrid.css?1574735420" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1574735420" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1574735420" rel="stylesheet">
-    <link href="/css/auto-complete.css?1574735420" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1574735420" rel="stylesheet">
-    <link href="/css/theme.css?1574735420" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1574735420" rel="stylesheet">
+    <link href="/css/nucleus.css?1575446456" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1575446456" rel="stylesheet">
+    <link href="/css/hybrid.css?1575446456" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1575446456" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1575446456" rel="stylesheet">
+    <link href="/css/auto-complete.css?1575446456" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1575446456" rel="stylesheet">
+    <link href="/css/theme.css?1575446456" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1575446456" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1574735420" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1575446456" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1574735420"></script>
+    <script src="/js/jquery-3.3.1.min.js?1575446456"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -52,14 +52,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1574735420"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1574735420"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1575446456"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1575446456"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1574735420"></script>
+<script type="text/javascript" src="/js/search.js?1575446456"></script>
 
     
   </div>
@@ -280,6 +280,25 @@
  
   
     
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
+        <a href="/signatures/variables/">
+        Variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/signatures/detection/" title="Detection" class="dd-item ">
         <a href="/signatures/detection/">
         Detection
@@ -419,10 +438,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#each-signature-basically-split-in-two-part-and-written-in-yaml-format">Each signature basically split in two part and written in YAML format.</a></li>
 <li><a href="#info">Info</a></li>
-<li><a href="#request-builder">Request Builder</a></li>
-<li><a href="#more-advanced-request-builder">More advanced request builder</a></li>
+<li><a href="#request-builder-overview">Request Builder Overview</a></li>
 <li><a href="#optional-reference">[Optional] Reference</a></li>
 </ul></li>
 </ul></li>
@@ -454,20 +471,42 @@
 
 	
 
-<p>Take a look at this <a href="https://github.com/jaeles-project/jaeles-signatures">repo</a> for more examples.</p>
+<p><img src="architecture/signature-In-depth.png?classes=border,shadow&amp;width=30pc" alt="architecture-2" /></p>
 
-<h3 id="each-signature-basically-split-in-two-part-and-written-in-yaml-format">Each signature basically split in two part and written in YAML format.</h3>
+<h4 align="center">Each signature basically split in three parts and written in YAML format.</h4>
 
-<ul>
-<li><a href="/signatures/#info"><strong>Info</strong></a></li>
-<li><a href="/signatures/#request-builder"><strong>Request builder</strong></a></li>
-</ul>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Description</th>
+</tr>
+</thead>
 
-<p>There&rsquo;re 3 types of signature: <code>single, list, fuzz</code></p>
+<tbody>
+<tr>
+<td><h5><a href="/signatures/#info">Info</a></h5></td>
+<td><h5>Information about the signature</h5></td>
+</tr>
+
+<tr>
+<td><h5><a href="/signatures/variables/">Variables &amp; Payloads</a></h5></td>
+<td><h5>Various way to generate input for a request</h5></td>
+</tr>
+
+<tr>
+<td><h5><a href="/signatures/#request-builder">Request builder Overview</a></h5></td>
+<td><h5>Define various comoponent of the request that will send</h4></td>
+</tr>
+
+<tr>
+<td><h5><a href="https://github.com/jaeles-project/jaeles-signatures">Examples Signatures</a></h5></td>
+<td><h5>Real Signature from base repository</h4></td>
+</tr>
+</tbody>
+</table>
 
 <hr />
-
-<p><img src="signatures/list-1.png?classes=border,shadow" alt="EX-0" /></p>
 
 <h3 id="info">Info</h3>
 
@@ -487,101 +526,28 @@ info:
   os: general
 </code></pre>
 
-<h3 id="request-builder">Request Builder</h3>
-
-<p>Everything in a signature have template pattern <code>{{.variable_key}}</code> will be replace to generate request.</p>
-
-<p>There&rsquo;re some default template variable:</p>
-
-<table>
-<thead>
-<tr>
-<th align="left">Default variable</th>
-<th align="left">E.g: <a href="http://example.com/a/b/c.php?q=123">http://example.com/a/b/c.php?q=123</a></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>{{.URL}}</code></td>
-<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.BaseURL}}</code></td>
-<td align="left"><code>http://example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Host}}</code></td>
-<td align="left"><code>example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Path}}</code></td>
-<td align="left"><code>/a/b/c</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Extension}}</code></td>
-<td align="left"><code>.php</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.oob}}</code></td>
-<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
-</tr>
-</tbody>
-</table>
-
-<pre><code># variables only used when signature type is &quot;list&quot;
-variables:
-  - ssrf: [google.com,example.com]
-
-# Each element in requests key will be generate and sending separately
-requests:
-  - method: GET
-    redirect: true
-    path: &gt;-
-     {{.BaseURL}}/confluence/plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}}
-    headers:
-      - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55.0
-      - X-Atlassian-Token: no-check
-    detections:
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
-</code></pre>
-
-<h3 id="more-advanced-request-builder">More advanced request builder</h3>
-
-<p>Use raw request as a template</p>
-
-<pre><code>requests:
-  - method: GET
-    redirect: true
-    detections:
-      - &gt;-
-        StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
-    # Request raw (make sure you're using &quot;|&quot; in this raw key)
-    raw: |
-      POST /search.php?test=query HTTP/1.1
-      Host: {{.Host}}
-      Content-Length: 25
-      Cache-Control: max-age=0
-      Origin: http://{{.Host}}
-      Upgrade-Insecure-Requests: 1
-      Content-Type: application/x-www-form-urlencoded
-      User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3927.0 Safari/537.36
-      Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
-      Referer: http://{{.Host}}/
-      Accept-Encoding: gzip, deflate
-      Accept-Language: en-US,en;q=0.9
-      Connection: close
-</code></pre>
-
 <hr />
 
-<p>With Origin request to use Origin Detection API.</p>
+<h3 id="request-builder-overview">Request Builder Overview</h3>
+
+<ul>
+<li><p><a href="/signatures/detection/"><strong>Detection</strong></a>: Do some logical on based on detections script to determine request is vulnerable or not.</p></li>
+
+<li><p><strong>Request comoponent</strong>: Define various comoponent of the request that will be send to the target and detect if it vulnerable or not by analyze response.</p>
+
+<ul>
+<li><a href="/signatures/generator/"><strong>Generator</strong></a>: Only available in fuzz signature. Provide some functions to generate request based on the template request with payloads.</li>
+<li><a href="/signatures/middleware/"><strong>Middleware</strong></a>: Doing some extra task before sending a request to target.</li>
+</ul></li>
+</ul>
+
+<p><img src="architecture/request-builder-in-depth.png?classes=border,shadow" alt="architecture-3" /></p>
+
+<p><img src="request-builder/request-component-1.png?classes=border,shadow" alt="architecture-2" />
+<h5 align="center">Example of request component</h5></p>
+
+<p><img src="request-builder/request-component-2.png?classes=border,shadow" alt="architecture-2" />
+<h5 align="center">You can even use burp style as a request component</h5></p>
 
 <pre><code>
 id: sensitive-01-01
@@ -602,8 +568,7 @@ requests:
   - method: GET
     redirect: true
     path: &gt;-
-     {{.BaseURL}}/{{.stats}}
-
+     {{.BaseURL}}/{{.stats}}s
     detections:
       - &gt;-
         StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;Secret&quot;)
@@ -612,12 +577,21 @@ requests:
 
 </code></pre>
 
+<h5 align="center">With Origin request to use Origin Detection API</h5>
+
+<hr />
+
 <h3 id="optional-reference">[Optional] Reference</h3>
 
-<p>This is just a reference info</p>
+<p>This is just a reference info used to describe where the signature come out.</p>
 
 <pre><code>reference:
+  # author of the CVE or peopel inspired you create this signature
+  - credit: @example
   - link: https://jira.atlassian.com/browse/JRASERVER-70018
+  # author of this signature
+  - author: @example
+  - affected_version: 1.2 - 2 
 </code></pre>
 
 
@@ -866,6 +840,22 @@ requests:
             
         
                     
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
             
         
                     
@@ -884,20 +874,20 @@ requests:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1574735420"></script>
-    <script src="/js/perfect-scrollbar.min.js?1574735420"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1574735420"></script>
-    <script src="/js/jquery.sticky.js?1574735420"></script>
-    <script src="/js/featherlight.min.js?1574735420"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1574735420"></script>
-    <script src="/js/highlight.pack.js?1574735420"></script>
+    <script src="/js/clipboard.min.js?1575446456"></script>
+    <script src="/js/perfect-scrollbar.min.js?1575446456"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1575446456"></script>
+    <script src="/js/jquery.sticky.js?1575446456"></script>
+    <script src="/js/featherlight.min.js?1575446456"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1575446456"></script>
+    <script src="/js/highlight.pack.js?1575446456"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1574735420"></script>
-    <script src="/js/learn.js?1574735420"></script>
-    <script src="/js/hugo-learn.js?1574735420"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1575446456"></script>
+    <script src="/js/learn.js?1575446456"></script>
+    <script src="/js/hugo-learn.js?1575446456"></script>
 
-    <link href="/mermaid/mermaid.css?1574735420" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1574735420"></script>
+    <link href="/mermaid/mermaid.css?1575446456" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1575446456"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

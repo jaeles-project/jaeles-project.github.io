@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/signatures/detection/</loc>
+    <loc>/signatures/variables/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
@@ -23,7 +23,7 @@
   </url>
   
   <url>
-    <loc>/signatures/generator/</loc>
+    <loc>/signatures/detection/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
@@ -33,13 +33,18 @@
   </url>
   
   <url>
-    <loc>/signatures/middleware/</loc>
+    <loc>/signatures/generator/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>
     <loc>/usage/</loc>
     <lastmod>2019-07-31T13:44:32+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/signatures/middleware/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>

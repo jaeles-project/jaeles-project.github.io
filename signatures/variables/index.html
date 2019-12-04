@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Middleware :: Jaeles Scanner</title>
+    <title>Variables :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1575446456" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/signatures/middleware/">
+  <body class="" data-url="/signatures/variables/">
     <nav id="sidebar" class="">
 
 
@@ -280,7 +280,7 @@
  
   
     
-      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item active">
         <a href="/signatures/variables/">
         Variables
         
@@ -337,7 +337,7 @@
  
   
     
-      <li data-nav-id="/signatures/middleware/" title="Middleware" class="dd-item active">
+      <li data-nav-id="/signatures/middleware/" title="Middleware" class="dd-item ">
         <a href="/signatures/middleware/">
         Middleware
         
@@ -425,14 +425,25 @@
                   <span class="links">
                  
                  
-                   Middleware 
+                   Variables 
                  
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
-
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li><a href="#default-variables-generated-from-input">Default variables generated from input</a></li>
+<li><a href="#list-of-avaliable-variables-function">List of avaliable Variables function</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
     </div>
 </div>
 
@@ -448,7 +459,7 @@
           
             <h1>
               
-              Middleware
+              Variables
             </h1>
           
 
@@ -456,12 +467,61 @@
 
 
 
-<p>This part will be executed right before request send to the target for doing some extra task before sending a request to target.</p>
+
+
+<p>This part will be executed first to generate for your signature list of input.</p>
+
+<h3 id="default-variables-generated-from-input">Default variables generated from input</h3>
 
 <table>
 <thead>
 <tr>
-<th align="left">API Detection</th>
+<th align="left">Default variable</th>
+<th align="left">E.g: <a href="http://example.com/a/b/c.php?q=123">http://example.com/a/b/c.php?q=123</a></th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="left"><code>{{.URL}}</code></td>
+<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.BaseURL}}</code></td>
+<td align="left"><code>http://example.com</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.Host}}</code></td>
+<td align="left"><code>example.com</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.Path}}</code></td>
+<td align="left"><code>/a/b/c</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.Extension}}</code></td>
+<td align="left"><code>.php</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.oob}}</code></td>
+<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+
+<h3 id="list-of-avaliable-variables-function">List of avaliable Variables function</h3>
+
+<table>
+<thead>
+<tr>
+<th align="left">API Variables</th>
 <th align="left">Description</th>
 <th align="left">Example</th>
 </tr>
@@ -469,15 +529,57 @@
 
 <tbody>
 <tr>
-<td align="left"><strong><em>InvokeCmd</em></strong></td>
-<td align="left">Execute Command line and get result of it</td>
-<td align="left"><code>InvokeCmd(&quot;phuip-fpizdam {{.URL}}&quot;)</code></td>
+<td align="left"><strong><em>File</em></strong></td>
+<td align="left">return string as content of file and split it by new line</td>
+<td align="left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>Host2IP</em></strong></td>
-<td align="left">Turn <code>Host: domain.com</code> header to <code>Host: IP address</code></td>
-<td align="left"><code>Host2IP()</code></td>
+<td align="left"><strong><em>InputCmd</em></strong></td>
+<td align="left">return string as output of os command</td>
+<td align="left"><code>InputCmd(&quot;echo 123&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>RandomString</em></strong></td>
+<td align="left">return random string with length</td>
+<td align="left"><code>RandomString(6)</code> will return string like this: <code>zkdlsa</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>RandomNumber</em></strong></td>
+<td align="left">return random number with length</td>
+<td align="left"><code>RandomNumber(4)</code> will return string like this: <code>6523</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>Range</em></strong></td>
+<td align="left">return random string with length</td>
+<td align="left"><code>Range(1,6)</code> will return list of strings like this 1 to 5`</td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>URLEncode</em></strong></td>
+<td align="left">return url encoded string</td>
+<td align="left"><code>URLEncode(&quot;samp le&quot;)</code> will return string like this: <code>sample%20le</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>URLEncodeByLines</em></strong></td>
+<td align="left">Like <strong><em>URLEncode</em></strong> but split input as a new line first</td>
+<td align="left"><code>URLEncodeByLines(&quot;samp le\ndummy&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>Base64Encode</em></strong></td>
+<td align="left">return base64 encoded string</td>
+<td align="left"><code>Base64Encode(&quot;a&quot;)</code> will return string like this: <code>YQo=</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>Base64EncodeByLines</em></strong></td>
+<td align="left">Like <strong><em>Base64Encode</em></strong> but split input as a new line first</td>
+<td align="left"><code>Base64EncodeByLines(&quot;samp\ndummy&quot;)</code></td>
 </tr>
 </tbody>
 </table>
@@ -664,6 +766,23 @@
             
                 
                     
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                         
                         
                     
@@ -714,26 +833,6 @@
             
             
                 
-                    
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
                     
                 
                 

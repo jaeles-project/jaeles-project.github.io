@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Variables</title>
+      <link>/signatures/variables/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/variables/</guid>
+      <description>This part will be executed first to generate for your signature list of input.
+Default variables generated from input    Default variable E.g: http://example.com/a/b/c.php?q=123     {{.URL}} http://example.com/a/b/c?q=123   {{.BaseURL}} http://example.com   {{.Host}} example.com   {{.Path}} /a/b/c   {{.Extension}} .php   {{.oob}} take from --ssrf xxx.burpcollab.net or select from DB    List of avaliable Variables function    API Variables Description Example     File return string as content of file and split it by new line File(&amp;quot;/tmp/sensitvie_paths.</description>
+    </item>
+    
+    <item>
       <title>Detection</title>
       <link>/signatures/detection/</link>
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
