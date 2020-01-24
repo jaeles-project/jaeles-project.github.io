@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/signatures/request-properties/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/signatures/variables/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
@@ -50,6 +55,14 @@
   <url>
     <loc>/showcases/</loc>
     <lastmod>2019-07-31T13:17:33+07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/signatures/passive/</loc>
+  </url>
+  
+  <url>
+    <loc>/signatures/conclusions-and-conditions/</loc>
   </url>
   
   <url>

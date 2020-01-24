@@ -12,13 +12,23 @@
     
     
     <item>
+      <title>Request Properties</title>
+      <link>/signatures/request-properties/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/request-properties/</guid>
+      <description>Some core properties for draft a request.
+Properties for building a request    Property Description Default Value     method Request Method This field is required in single or list signature   url URL for sending request This field is required in single or list signature   headers Headers of the request default is blank   body Body of the request default is blank   engine Client to send a request default is blank.</description>
+    </item>
+    
+    <item>
       <title>Variables</title>
       <link>/signatures/variables/</link>
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
       <guid>/signatures/variables/</guid>
       <description>This part will be executed first to generate for your signature list of input.
-Default variables generated from input    Default variable E.g: http://example.com/a/b/c.php?q=123     {{.URL}} http://example.com/a/b/c?q=123   {{.BaseURL}} http://example.com   {{.Host}} example.com   {{.Path}} /a/b/c   {{.Extension}} .php   {{.oob}} take from --ssrf xxx.burpcollab.net or select from DB    List of avaliable Variables function    API Variables Description Example     File return string as content of file and split it by new line File(&amp;quot;/tmp/sensitvie_paths.</description>
+Default variables generated from input    Default variable E.g: http://example.com/a/b/c.php?q=123     {{.URL}} http://example.com/a/b/c?q=123   {{.BaseURL}} http://example.com   {{.Host}} example.com   {{.Path}} /a/b/c   {{.Extension}} .php   {{.Raw}} http://example.com/a/b/c.php?q=123   {{.oob}} take from --ssrf xxx.burpcollab.net or select from DB    List of avaliable Variables function    API Variables Description Example     File return string as content of file and split it by new line File(&amp;quot;/tmp/sensitvie_paths.</description>
     </item>
     
     <item>
@@ -42,7 +52,7 @@ Run Jaeles as server mode by using this command jaeles server -v.</description>
       <guid>/signatures/detection/</guid>
       <description>This part will be executed right after Jaeles got response from the request and do a logic for determine the request is vulnerable or not.
 Detections was written in Javascript so you can write whatever you want with some predefind function below as long as you return boolean value to determine it&amp;rsquo;s found something or not.
-Examples Detection # Reponse Status code equal 200 and the reponse body contain a string &#39;google.</description>
+Examples Detection # Response Status code equal 200 and the response body contain a string &#39;google.</description>
     </item>
     
     <item>
@@ -51,8 +61,8 @@ Examples Detection # Reponse Status code equal 200 and the reponse body contain 
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
       <guid>/signatures/generator/</guid>
-      <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request. Generator inly avaliable in type: fuzz signature.
-Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;), Query(&amp;quot;{{.original}}{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.</description>
+      <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request. Generator only available in type: fuzz signature.
+Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;[[.original]]{{.payload}}&amp;quot;), Query(&amp;quot;[[.original]]{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.</description>
     </item>
     
     <item>
@@ -63,6 +73,29 @@ Generator    API Generator Description Example     Method Gen request based on m
       <guid>/signatures/middleware/</guid>
       <description>This part will be executed right before request send to the target for doing some extra task before sending a request to target.
    API Detection Description Example     InvokeCmd Execute Command line and get result of it InvokeCmd(&amp;quot;phuip-fpizdam {{.URL}}&amp;quot;)   Host2IP Turn Host: domain.com header to Host: IP address Host2IP()    </description>
+    </item>
+    
+    <item>
+      <title>Passive Detection</title>
+      <link>/signatures/passive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/signatures/passive/</guid>
+      <description>Enable passive detection via --passive option.
+ This part used to detection common pattern in the request and execute on every request after detection part done.
+Default passive signatures can be found here
+First time you run jaeles, it will installed passive to ~/.jaeles/passives.
+Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
+Sample passive signature name: &#39;common pattern&#39; desc: &#39;grep for common interesting pattern&#39; rules: - id: directory-listing-01 reason: &#39;Directory Listing&#39; detections: - StringSearch(&amp;quot;response&amp;quot;, &#39;Index of /&#39;) &amp;amp;&amp;amp; StringSearch(&amp;quot;response&amp;quot;, &#39;&amp;gt;Last Modified&amp;lt;&#39;) - id: sensitive-pattern-01 reason: &#39;PHP Info&#39; detections: - StringSearch(&amp;quot;response&amp;quot;, &#39;PHP Configuration&#39;) &amp;amp;&amp;amp; StringSearch(&amp;quot;response&amp;quot;, &#39;&amp;lt;title&amp;gt;phpinfo()&amp;lt;/title&amp;gt;&#39;)  Usage Jaeles look for passive signature in file and rules in single signatures.</description>
+    </item>
+    
+    <item>
+      <title>Conclusions &amp; Conditions</title>
+      <link>/signatures/conclusions-and-conditions/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/signatures/conclusions-and-conditions/</guid>
+      <description>Sample signature used conclusions and conditions id: fuzz-01-02 info: name: Fuzz Injection variables: - xss: | sam foo requests: - method: GET values: - custom: &amp;quot;z1123zzz&amp;quot; url: &amp;gt;- {{.BaseURL}}/tests/sinks.html?name=[[.custom]]{{.xss}} detections: - StringSearch(&amp;quot;response&amp;quot;, &amp;quot;mysql_fetch_array&amp;quot;) conclusions: - SetValue(&amp;quot;code&amp;quot;, StatusCode()) - conditions: - ValueOf(&amp;quot;code&amp;quot;) == &amp;quot;200&amp;quot; method: GET url: &amp;gt;- {{.BaseURL}}/tests/sinks.html?name=2222222222222 detections: - StringSearch(&amp;quot;response&amp;quot;, &amp;quot;mysql_fetch_array&amp;quot;)  Conditions If present, this part will be run before continue to generate request. Just some logic to check to prevent sending too much false positive request.</description>
     </item>
     
     <item>

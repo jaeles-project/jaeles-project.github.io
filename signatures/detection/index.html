@@ -12,20 +12,20 @@
     <title>Detection :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1575699076" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1575699076" rel="stylesheet">
-    <link href="/css/hybrid.css?1575699076" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1575699076" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1575699076" rel="stylesheet">
-    <link href="/css/auto-complete.css?1575699076" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1575699076" rel="stylesheet">
-    <link href="/css/theme.css?1575699076" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1575699076" rel="stylesheet">
+    <link href="/css/nucleus.css?1579858463" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1579858463" rel="stylesheet">
+    <link href="/css/hybrid.css?1579858463" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1579858463" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1579858463" rel="stylesheet">
+    <link href="/css/auto-complete.css?1579858463" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1579858463" rel="stylesheet">
+    <link href="/css/theme.css?1579858463" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1579858463" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1575699076" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1579858463" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1575699076"></script>
+    <script src="/js/jquery-3.3.1.min.js?1579858463"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -43,7 +43,8 @@
   <div id="header-wrapper">
     <div id="header">
       <a href="/"><img src="/images/favicon.png" /></a>
-<p style="color: #fff;font-size: 1.2em"><a href="https://github.com/j3ssie/Jaeles">Jaeles Scanner</a></p>
+<p style="color: #000;font-size: 1.2em">Jaeles Scanner</p>
+
     </div>
     
         <div class="searchbox">
@@ -52,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1575699076"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1575699076"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1579858463"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1579858463"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1575699076"></script>
+<script type="text/javascript" src="/js/search.js?1579858463"></script>
 
     
   </div>
@@ -280,6 +281,25 @@
  
   
     
+      <li data-nav-id="/signatures/request-properties/" title="Request Properties" class="dd-item ">
+        <a href="/signatures/request-properties/">
+        Request Properties
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
       <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
         <a href="/signatures/variables/">
         Variables
@@ -340,6 +360,44 @@
       <li data-nav-id="/signatures/middleware/" title="Middleware" class="dd-item ">
         <a href="/signatures/middleware/">
         Middleware
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/passive/" title="Passive Detection" class="dd-item ">
+        <a href="/signatures/passive/">
+        Passive Detection
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/conclusions-and-conditions/" title="Conclusions &amp; Conditions" class="dd-item ">
+        <a href="/signatures/conclusions-and-conditions/">
+        Conclusions &amp; Conditions
         
         </a>
     </li>
@@ -477,14 +535,14 @@
 
 <h3 id="examples-detection">Examples Detection</h3>
 
-<pre><code># Reponse Status code equal 200 and the reponse body contain a string 'google.com' or 'example.com'
+<pre><code># Response Status code equal 200 and the response body contain a string 'google.com' or 'example.com'
 StatusCode() == 200 &amp;&amp; (StringSearch(&quot;response&quot;, &quot;google.com&quot;) || StringSearch(&quot;response&quot;, &quot;example.com&quot;))
 
 # Content Length of the response have to greater than original request
 ContentLength() - OriginContentLength() &gt; 5000
 
 # Response time of the request greater or smaller than original response time
-Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
+Math.abs(ResponseTime() &gt; OriginResponseTime()) &gt; 3
 </code></pre>
 
 <h3 id="normal-detection">Normal Detection</h3>
@@ -530,9 +588,9 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 </tr>
 
 <tr>
-<td align="left"><strong><em>ResponeTime</em></strong></td>
+<td align="left"><strong><em>ResponseTime</em></strong></td>
 <td align="left">Response time of the response (second)</td>
-<td align="left"><code>ResponeTime() &gt; 3</code></td>
+<td align="left"><code>ResponseTime() &gt; 3</code></td>
 </tr>
 
 <tr>
@@ -548,15 +606,27 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 </tr>
 
 <tr>
-<td align="left"><strong><em>OriginResponeTime</em></strong></td>
+<td align="left"><strong><em>OriginResponseTime</em></strong></td>
 <td align="left">Response time of the Original response (second)</td>
-<td align="left"><code>ResponeTime() &gt; OriginResponeTime()</code></td>
+<td align="left"><code>ResponseTime() &gt; OriginResponseTime()</code></td>
 </tr>
 
 <tr>
 <td align="left"><strong><em>OriginContentLength</em></strong></td>
 <td align="left">Content Length of Original response</td>
 <td align="left"><code>ContentLength() - OriginContentLength() &gt; 5000</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>ValueOf</em></strong></td>
+<td align="left">Value of variables</td>
+<td align="left"><code>ValueOf(&quot;foo&quot;) == &quot;bar&quot;</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>HasPopUp</em></strong></td>
+<td align="left">Check if is there any pop-up box while requesting to a URL (only available when using <code>engine: chrome</code>)</td>
+<td align="left"><code>StatusCode() == 200 &amp;&amp; HasPopUp()</code></td>
 </tr>
 </tbody>
 </table>
@@ -582,24 +652,36 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 <tr>
 <td align="left"><strong>response</strong></td>
 <td align="left">raw response of the request</td>
-<td align="left"><code>StringSearch(&quot;oresponse&quot;, &quot;something&quot;)</code></td>
+<td align="left"><code>StringSearch(&quot;oResponse&quot;, &quot;something&quot;)</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong>orequest</strong></td>
+<td align="left"><strong>resHeaders</strong></td>
+<td align="left">raw headers of the response</td>
+<td align="left"><code>StringSearch(&quot;resHeaders&quot;, &quot;something&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong>resBody</strong></td>
+<td align="left">raw body of the response</td>
+<td align="left"><code>StringSearch(&quot;resBody&quot;, &quot;something&quot;)</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong>oRequest</strong></td>
 <td align="left">raw original request</td>
-<td align="left"><code>StringSearch(&quot;orequest&quot;, &quot;something&quot;)</code></td>
+<td align="left"><code>StringSearch(&quot;oRequest&quot;, &quot;something&quot;)</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong>oresponse</strong></td>
+<td align="left"><strong>oResponse</strong></td>
 <td align="left">raw original request response of the request</td>
 <td align="left"><code>StringSearch(&quot;response&quot;, &quot;something&quot;)</code></td>
 </tr>
 
 <tr>
 <td align="left"><strong>middleware</strong></td>
-<td align="left">output of middleware</td>
+<td align="left">output of the middleware</td>
 <td align="left"><code>StringSearch(&quot;middleware&quot;, &quot;Success!&quot;)</code></td>
 </tr>
 </tbody>
@@ -619,7 +701,7 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
 <tbody>
 <tr>
 <td align="left"><strong>Collab</strong></td>
-<td align="left">Grepping collaborator reponse in Reuqest response or <br> Do Real Polling with BurpCollab secret.</td>
+<td align="left">Grepping collaborator response in Reuqest response or <br> Do Real Polling with BurpCollab secret.</td>
 <td align="left"><code>Collab(&quot;{{.oob}}&quot;)</code></td>
 </tr>
 </tbody>
@@ -826,6 +908,22 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
             
                 
                     
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
                     
                 
                 
@@ -845,6 +943,38 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -907,20 +1037,20 @@ Math.abs(ResponeTime() &gt; OriginResponeTime()) &gt; 3
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1575699076"></script>
-    <script src="/js/perfect-scrollbar.min.js?1575699076"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1575699076"></script>
-    <script src="/js/jquery.sticky.js?1575699076"></script>
-    <script src="/js/featherlight.min.js?1575699076"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1575699076"></script>
-    <script src="/js/highlight.pack.js?1575699076"></script>
+    <script src="/js/clipboard.min.js?1579858463"></script>
+    <script src="/js/perfect-scrollbar.min.js?1579858463"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1579858463"></script>
+    <script src="/js/jquery.sticky.js?1579858463"></script>
+    <script src="/js/featherlight.min.js?1579858463"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1579858463"></script>
+    <script src="/js/highlight.pack.js?1579858463"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1575699076"></script>
-    <script src="/js/learn.js?1575699076"></script>
-    <script src="/js/hugo-learn.js?1575699076"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1579858463"></script>
+    <script src="/js/learn.js?1579858463"></script>
+    <script src="/js/hugo-learn.js?1579858463"></script>
 
-    <link href="/mermaid/mermaid.css?1575699076" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1575699076"></script>
+    <link href="/mermaid/mermaid.css?1579858463" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1579858463"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

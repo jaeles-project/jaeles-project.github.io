@@ -17,7 +17,7 @@
     --MENU-SECTIONS-ACTIVE-BG-color:#44475A; /* Background color of the active section and its childs */
     --MENU-SECTIONS-BG-color:#252c31; /* Background color of other sections */
     --MENU-SECTIONS-LINK-color: #ccc; /* Color of links in menu */
-    --MENU-SECTIONS-LINK-HOVER-color: #e6e6e6;  /* Color of links in menu, when hovered */
+    --MENU-SECTIONS-LINK-HOVER-color: #f6f8fa;  /* Color of links in menu, when hovered */
     --MENU-SECTION-ACTIVE-CATEGORY-color: #8BE9FD; /* Color of active category text */
     --MENU-SECTION-ACTIVE-CATEGORY-BG-color: #44475A; /* Color of background for the active category (only) */
 
@@ -70,7 +70,7 @@ a:hover {
 	background-color: var(--MENU-SECTIONS-BG-color);
 }
 #sidebar #header-wrapper {
-    background: var(--MENU-HEADER-BG-color);
+    background: var(--MENU-SECTIONS-LINK-HOVER-color);
     color: var(--MENU-SEARCH-BOX-color);
     border-color: var(--MENU-HEADER-BORDER-color);
 }
@@ -99,5 +99,5 @@ a:hover {
 }
 
 #sidebar hr {
-    border-color: var(--MENU-SECTION-HR-color);
+    border-color: var(--MENU-SECTIONS-LINK-HOVER-color);
 }

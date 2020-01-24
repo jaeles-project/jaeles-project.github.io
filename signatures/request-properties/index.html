@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Variables :: Jaeles Scanner</title>
+    <title>Request Properties :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1579858463" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/signatures/variables/">
+  <body class="" data-url="/signatures/request-properties/">
     <nav id="sidebar" class="">
 
 
@@ -281,7 +281,7 @@
  
   
     
-      <li data-nav-id="/signatures/request-properties/" title="Request Properties" class="dd-item ">
+      <li data-nav-id="/signatures/request-properties/" title="Request Properties" class="dd-item active">
         <a href="/signatures/request-properties/">
         Request Properties
         
@@ -300,7 +300,7 @@
  
   
     
-      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item active">
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
         <a href="/signatures/variables/">
         Variables
         
@@ -483,7 +483,7 @@
                   <span class="links">
                  
                  
-                   Variables 
+                   Request Properties 
                  
                   </span>
                 </div>
@@ -496,8 +496,12 @@
 <ul>
 <li>
 <ul>
-<li><a href="#default-variables-generated-from-input">Default variables generated from input</a></li>
-<li><a href="#list-of-avaliable-variables-function">List of avaliable Variables function</a></li>
+<li><a href="#properties-for-building-a-request">Properties for building a request</a></li>
+<li><a href="#some-examples-in-real-signatures">Some Examples in real signatures</a>
+<ul>
+<li><a href="#elastic-search-misconfigure">Elastic Search Misconfigure</a></li>
+<li><a href="#with-real-browser">With real browser</a></li>
+</ul></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -517,7 +521,7 @@
           
             <h1>
               
-              Variables
+              Request Properties
             </h1>
           
 
@@ -527,125 +531,119 @@
 
 
 
-<p>This part will be executed first to generate for your signature list of input.</p>
+<p>Some core properties for draft a request.</p>
 
-<h3 id="default-variables-generated-from-input">Default variables generated from input</h3>
-
-<table>
-<thead>
-<tr>
-<th align="left">Default variable</th>
-<th align="left">E.g: <code>http://example.com/a/b/c.php?q=123</code></th>
-</tr>
-</thead>
-
-<tbody>
-<tr>
-<td align="left"><code>{{.URL}}</code></td>
-<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.BaseURL}}</code></td>
-<td align="left"><code>http://example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Host}}</code></td>
-<td align="left"><code>example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Path}}</code></td>
-<td align="left"><code>/a/b/c</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Extension}}</code></td>
-<td align="left"><code>.php</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Raw}}</code></td>
-<td align="left"><code>http://example.com/a/b/c.php?q=123</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.oob}}</code></td>
-<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
-</tr>
-</tbody>
-</table>
-
-<hr />
-
-<h3 id="list-of-avaliable-variables-function">List of avaliable Variables function</h3>
+<h3 id="properties-for-building-a-request">Properties for building a request</h3>
 
 <table>
 <thead>
 <tr>
-<th align="left">API Variables</th>
+<th>Property</th>
 <th align="left">Description</th>
-<th align="left">Example</th>
+<th align="left">Default Value</th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
-<td align="left"><strong><em>File</em></strong></td>
-<td align="left">return string as content of file and split it by new line</td>
-<td align="left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
+<td><strong>method</strong></td>
+<td align="left">Request Method</td>
+<td align="left">This field is required in single or list signature</td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>InputCmd</em></strong></td>
-<td align="left">return string as output of os command</td>
-<td align="left"><code>InputCmd(&quot;echo 123&quot;)</code></td>
+<td><strong>url</strong></td>
+<td align="left">URL for sending request</td>
+<td align="left">This field is required in single or list signature</td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>RandomString</em></strong></td>
-<td align="left">return random string with length</td>
-<td align="left"><code>RandomString(6)</code> will return string like this: <code>zkdlsa</code></td>
+<td><strong>headers</strong></td>
+<td align="left">Headers of the request</td>
+<td align="left">default is <strong>blank</strong></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>RandomNumber</em></strong></td>
-<td align="left">return random number with length</td>
-<td align="left"><code>RandomNumber(4)</code> will return string like this: <code>6523</code></td>
+<td><strong>body</strong></td>
+<td align="left">Body of the request</td>
+<td align="left">default is <strong>blank</strong></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>Range</em></strong></td>
-<td align="left">return random string with length</td>
-<td align="left"><code>Range(1,6)</code> will return list of strings like this 1 to 5`</td>
+<td><strong>engine</strong></td>
+<td align="left">Client to send a request</td>
+<td align="left">default is <strong>blank</strong>. Use <code>engine: chrome</code> for sending with real browser</td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>URLEncode</em></strong></td>
-<td align="left">return url encoded string</td>
-<td align="left"><code>URLEncode(&quot;samp le&quot;)</code> will return string like this: <code>sample%20le</code></td>
+<td><strong>timeout</strong></td>
+<td align="left">HTTP Timeout for request (this will override <code>--timeout</code> option)</td>
+<td align="left">value of <code>--timeout</code> option</td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>URLEncodeByLines</em></strong></td>
-<td align="left">Like <strong><em>URLEncode</em></strong> but split input as a new line first</td>
-<td align="left"><code>URLEncodeByLines(&quot;samp le\ndummy&quot;)</code></td>
+<td><strong>repeat</strong></td>
+<td align="left">Repeat the request</td>
+<td align="left"><code>repeat: 0</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>Base64Encode</em></strong></td>
-<td align="left">return base64 encoded string</td>
-<td align="left"><code>Base64Encode(&quot;a&quot;)</code> will return string like this: <code>YQo=</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Base64EncodeByLines</em></strong></td>
-<td align="left">Like <strong><em>Base64Encode</em></strong> but split input as a new line first</td>
-<td align="left"><code>Base64EncodeByLines(&quot;samp\ndummy&quot;)</code></td>
+<td><strong>values</strong></td>
+<td align="left">Another place to put variables but will replace with <code>[[.variable_name]]</code> format.</td>
+<td align="left">default is <strong>blank</strong></td>
 </tr>
 </tbody>
 </table>
+
+<h3 id="some-examples-in-real-signatures">Some Examples in real signatures</h3>
+
+<h4 id="elastic-search-misconfigure">Elastic Search Misconfigure</h4>
+
+<pre><code># info to search signature
+id: elasctic-misconfigure-01
+info:
+  name: Elasctic Search Misconfiguration
+  risk: Medium
+
+requests:
+  - method: GET
+    url: {{.BaseURL}}
+    headers:
+      - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55
+    detections:
+      - StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, '&quot;cluster_name&quot;') &amp;&amp; StringSearch(&quot;response&quot;, &quot;Content-Type: application/json&quot;)
+
+  - method: GET
+    url: {{.BaseURL}}/_search
+    headers:
+      - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55
+    detections:
+      - StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, 'took') &amp;&amp; StringSearch(&quot;response&quot;, &quot;Content-Type: application/json&quot;)
+</code></pre>
+
+<h4 id="with-real-browser">With real browser</h4>
+
+<pre><code># info to search signature
+id: dom-xss-01
+info:
+  name: DOM XSS test
+  risk: High
+
+# tested on https://brutelogic.com.br/tests/sinks.html?name=hello
+
+variables:
+  - xss: |
+      sam
+      %3Cimg+src+onerror=alert(1)%3E
+
+requests:
+  - method: GET
+    engine: chrome
+    timeout: 10
+    url: {{.BaseURL}}/tests/sinks.html?name={{.xss}}
+    detections:
+      - StatusCode() == 200 &amp;&amp; HasPopUp()
+</code></pre>
 
 
 <footer class=" footline" >
@@ -829,25 +827,6 @@
             
                 
                     
-                        
-                        
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -867,6 +846,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 

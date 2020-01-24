@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Variables :: Jaeles Scanner</title>
+    <title>Conclusions &amp; Conditions :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1579858463" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/signatures/variables/">
+  <body class="" data-url="/signatures/conclusions-and-conditions/">
     <nav id="sidebar" class="">
 
 
@@ -300,7 +300,7 @@
  
   
     
-      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item active">
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
         <a href="/signatures/variables/">
         Variables
         
@@ -395,7 +395,7 @@
  
   
     
-      <li data-nav-id="/signatures/conclusions-and-conditions/" title="Conclusions &amp; Conditions" class="dd-item ">
+      <li data-nav-id="/signatures/conclusions-and-conditions/" title="Conclusions &amp; Conditions" class="dd-item active">
         <a href="/signatures/conclusions-and-conditions/">
         Conclusions &amp; Conditions
         
@@ -483,7 +483,7 @@
                   <span class="links">
                  
                  
-                   Variables 
+                   Conclusions &amp; Conditions 
                  
                   </span>
                 </div>
@@ -496,8 +496,9 @@
 <ul>
 <li>
 <ul>
-<li><a href="#default-variables-generated-from-input">Default variables generated from input</a></li>
-<li><a href="#list-of-avaliable-variables-function">List of avaliable Variables function</a></li>
+<li><a href="#sample-signature-used-conclusions-and-conditions">Sample signature used conclusions and conditions</a></li>
+<li><a href="#conditions">Conditions</a></li>
+<li><a href="#conclusions">Conclusions</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -517,7 +518,7 @@
           
             <h1>
               
-              Variables
+              Conclusions &amp; Conditions
             </h1>
           
 
@@ -527,64 +528,54 @@
 
 
 
-<p>This part will be executed first to generate for your signature list of input.</p>
+<h3 id="sample-signature-used-conclusions-and-conditions">Sample signature used conclusions and conditions</h3>
 
-<h3 id="default-variables-generated-from-input">Default variables generated from input</h3>
+<pre><code>id: fuzz-01-02
+info:
+  name: Fuzz Injection
 
-<table>
-<thead>
-<tr>
-<th align="left">Default variable</th>
-<th align="left">E.g: <code>http://example.com/a/b/c.php?q=123</code></th>
-</tr>
-</thead>
+variables:
+  - xss: |
+      sam
+      foo
 
-<tbody>
-<tr>
-<td align="left"><code>{{.URL}}</code></td>
-<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
-</tr>
+requests:
+  - method: GET
+    values:
+      - custom: &quot;z1123zzz&quot;
+    url: &gt;-
+      {{.BaseURL}}/tests/sinks.html?name=[[.custom]]{{.xss}}
+    detections:
+      - StringSearch(&quot;response&quot;, &quot;mysql_fetch_array&quot;)
+    conclusions:
+      - SetValue(&quot;code&quot;, StatusCode())
 
-<tr>
-<td align="left"><code>{{.BaseURL}}</code></td>
-<td align="left"><code>http://example.com</code></td>
-</tr>
+  - conditions:
+      - ValueOf(&quot;code&quot;) == &quot;200&quot;
+    method: GET
+    url: &gt;-
+      {{.BaseURL}}/tests/sinks.html?name=2222222222222
+    detections:
+      - StringSearch(&quot;response&quot;, &quot;mysql_fetch_array&quot;)
 
-<tr>
-<td align="left"><code>{{.Host}}</code></td>
-<td align="left"><code>example.com</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Path}}</code></td>
-<td align="left"><code>/a/b/c</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Extension}}</code></td>
-<td align="left"><code>.php</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.Raw}}</code></td>
-<td align="left"><code>http://example.com/a/b/c.php?q=123</code></td>
-</tr>
-
-<tr>
-<td align="left"><code>{{.oob}}</code></td>
-<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
-</tr>
-</tbody>
-</table>
+</code></pre>
 
 <hr />
 
-<h3 id="list-of-avaliable-variables-function">List of avaliable Variables function</h3>
+<h3 id="conditions">Conditions</h3>
+
+<p>If present, this part will be run before continue to generate request. Just some logic to check to prevent sending too much false positive request.</p>
+
+<p>Usage of <code>conditions</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a>.</p>
+
+<h3 id="conclusions">Conclusions</h3>
+
+<p>Set some extra value based on the request for later use before we run detection part.</p>
 
 <table>
 <thead>
 <tr>
-<th align="left">API Variables</th>
+<th>Property</th>
 <th align="left">Description</th>
 <th align="left">Example</th>
 </tr>
@@ -592,60 +583,26 @@
 
 <tbody>
 <tr>
-<td align="left"><strong><em>File</em></strong></td>
-<td align="left">return string as content of file and split it by new line</td>
-<td align="left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
+<td><strong>SetValue</strong></td>
+<td align="left">assign something to a variable</td>
+<td align="left"><code>SetValue(&quot;value_name&quot;, StatusCode())</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>InputCmd</em></strong></td>
-<td align="left">return string as output of os command</td>
-<td align="left"><code>InputCmd(&quot;echo 123&quot;)</code></td>
+<td><strong>StringSelect</strong></td>
+<td align="left">Select a string from component</td>
+<td align="left"><code>StringSelect(&quot;component&quot;, &quot;res1&quot;, &quot;right&quot;, &quot;left&quot;)</code></td>
 </tr>
 
 <tr>
-<td align="left"><strong><em>RandomString</em></strong></td>
-<td align="left">return random string with length</td>
-<td align="left"><code>RandomString(6)</code> will return string like this: <code>zkdlsa</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>RandomNumber</em></strong></td>
-<td align="left">return random number with length</td>
-<td align="left"><code>RandomNumber(4)</code> will return string like this: <code>6523</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Range</em></strong></td>
-<td align="left">return random string with length</td>
-<td align="left"><code>Range(1,6)</code> will return list of strings like this 1 to 5`</td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>URLEncode</em></strong></td>
-<td align="left">return url encoded string</td>
-<td align="left"><code>URLEncode(&quot;samp le&quot;)</code> will return string like this: <code>sample%20le</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>URLEncodeByLines</em></strong></td>
-<td align="left">Like <strong><em>URLEncode</em></strong> but split input as a new line first</td>
-<td align="left"><code>URLEncodeByLines(&quot;samp le\ndummy&quot;)</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Base64Encode</em></strong></td>
-<td align="left">return base64 encoded string</td>
-<td align="left"><code>Base64Encode(&quot;a&quot;)</code> will return string like this: <code>YQo=</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Base64EncodeByLines</em></strong></td>
-<td align="left">Like <strong><em>Base64Encode</em></strong> but split input as a new line first</td>
-<td align="left"><code>Base64EncodeByLines(&quot;samp\ndummy&quot;)</code></td>
+<td><strong>RegexSelect</strong></td>
+<td align="left">Select a string from component by regex</td>
+<td align="left"><code>RegexSelect(&quot;component&quot;, &quot;var_name&quot;, &quot;regex&quot;)</code> or <code>RegexSelect(&quot;component&quot;, &quot;var_name&quot;, &quot;regex&quot;, &quot;position&quot;)</code></td>
 </tr>
 </tbody>
 </table>
+
+<p>Please refer to <a href="/signatures/detection/"><strong>detection</strong></a> for some similar usage.</p>
 
 
 <footer class=" footline" >
@@ -848,26 +805,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -947,6 +884,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
