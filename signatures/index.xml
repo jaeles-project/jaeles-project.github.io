@@ -28,7 +28,7 @@ Properties for building a request    Property Description Default Value     meth
       
       <guid>/signatures/variables/</guid>
       <description>This part will be executed first to generate for your signature list of input.
-Default variables generated from input    Default variable E.g: http://example.com/a/b/c.php?q=123     {{.URL}} http://example.com/a/b/c?q=123   {{.BaseURL}} http://example.com   {{.Host}} example.com   {{.Path}} /a/b/c   {{.Extension}} .php   {{.Raw}} http://example.com/a/b/c.php?q=123   {{.oob}} take from --ssrf xxx.burpcollab.net or select from DB    List of avaliable Variables function    API Variables Description Example     File return string as content of file and split it by new line File(&amp;quot;/tmp/sensitvie_paths.</description>
+Default variables generated from input    Default variable E.g: http://example.com/a/b/c.php?q=123     {{.URL}} http://example.com/a/b/c?q=123   {{.BaseURL}} http://example.com   {{.Host}} example.com   {{.Path}} /a/b/c   {{.Extension}} .php   {{.Raw}} http://example.com/a/b/c.php?q=123   {{.oob}} take from --ssrf xxx.burpcollab.net or select from DB   {{.custom}} take from --params &#39;bar=111&#39; --params &#39;foo=222&#39;    List of avaliable Variables function    API Variables Description Example     Base64EncodeByLines Like Base64Encode but split input as a new line first Base64EncodeByLines(&amp;quot;samp\ndummy&amp;quot;)   Base64Encode return base64 encoded string Base64Encode(&amp;quot;a&amp;quot;) will return string like this: YQo=   File return string as content of file and split it by new line File(&amp;quot;/tmp/sensitvie_paths.</description>
     </item>
     
     <item>

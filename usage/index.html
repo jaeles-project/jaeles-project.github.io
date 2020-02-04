@@ -12,20 +12,20 @@
     <title>Usage :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1579858463" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1579858463" rel="stylesheet">
-    <link href="/css/hybrid.css?1579858463" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1579858463" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1579858463" rel="stylesheet">
-    <link href="/css/auto-complete.css?1579858463" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1579858463" rel="stylesheet">
-    <link href="/css/theme.css?1579858463" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1579858463" rel="stylesheet">
+    <link href="/css/nucleus.css?1580832657" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1580832657" rel="stylesheet">
+    <link href="/css/hybrid.css?1580832657" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1580832657" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1580832657" rel="stylesheet">
+    <link href="/css/auto-complete.css?1580832657" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1580832657" rel="stylesheet">
+    <link href="/css/theme.css?1580832657" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1580832657" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1579858463" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1580832657" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1579858463"></script>
+    <script src="/js/jquery-3.3.1.min.js?1580832657"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1579858463"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1579858463"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1580832657"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1580832657"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1579858463"></script>
+<script type="text/javascript" src="/js/search.js?1580832657"></script>
 
     
   </div>
@@ -494,7 +494,7 @@
 <ul>
 <li>
 <ul>
-<li><a href="#modes">Modes</a>
+<li>
 <ul>
 <li><a href="#examples-command">Examples Command</a></li>
 </ul></li>
@@ -535,13 +535,6 @@
 
 	
 
-<h2 id="modes">Modes</h2>
-
-<ul>
-<li><a href="/usage/#scan"><strong>Scan Mode</strong></a></li>
-<li><a href="/usage/#fuzz"><strong>Fuzz Modde</strong></a></li>
-</ul>
-
 <h3 id="examples-command">Examples Command</h3>
 
 <pre><code class="language-bash">jaeles scan -u http://example.com
@@ -550,7 +543,9 @@
 jaeles scan -s signatures/common/phpdebug.yaml -U /tmp/list_of_urls.txt
 
 # scan for multiple signature and enable passive scan
-jaeles scan -v --passive --verbose -s &quot;signatures/cves/jira-*&quot; -U /tmp/list_of_urls.txt -o /tmp/vuls
+jaeles scan -v --passive -s &quot;signatures/cves/jira-*&quot; -u http://example.com --params 'oob=xxx.burpcollaboraborator.net'
+
+jaeles scan --passive --verbose -s &quot;signatures/cves/jira-*&quot; -U /tmp/list_of_urls.txt -o /tmp/vuls
 
 # scan API server on http://127.0.0.1:5000
 jaeles server
@@ -562,23 +557,24 @@ jaeles --verbose server -s sqli
 
 <hr />
 
-<pre><code class="language-bash">Jaeles - The Swiss Army knife for automated Web Application Testing - beta v0.3.0 by @j3ssiejjj
+<pre><code class="language-bash">Jaeles - The Swiss Army knife for automated Web Application Testing - beta v0.4 by @j3ssiejjj
 
 Usage:
-  jaeles [command]
-
-Available Commands:
-  config      Configuration CLI
-  help        Help about any command
-  scan        Scan list of URLs based on signatures
-  server      Start API server
+  jaeles scan [flags]
 
 Flags:
+  -h, --help          help for scan
+  -r, --raw string    Raw request from Burp for origin
+  -s, --sign string   Provide custom header seperate by ','
+      --ssrf string   Fill your BurpCollab or any Out of Band host
+  -u, --url string    URL of target
+  -U, --urls string   URLs file of target
+
+Global Flags:
   -c, --concurrency int     concurrency (default 20)
       --config string       config file (default is $HOME/.jaeles/config.yaml)
       --debug               Debug
       --delay int           Milliseconds delay for polling new job (default 100)
-  -h, --help                help for jaeles
   -l, --log string          log file
       --no-background       Do not run background task
       --no-output           Do not store raw output
@@ -595,8 +591,6 @@ Flags:
       --signDir string      Folder contain default signatures (default &quot;~/.jaeles/signatures-base/&quot;)
       --timeout int         HTTP timeout (default 20)
   -v, --verbose             Verbose
-
-Use &quot;jaeles [command] --help&quot; for more information about a command.
 </code></pre>
 
 <hr />
@@ -979,20 +973,20 @@ Flags:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1579858463"></script>
-    <script src="/js/perfect-scrollbar.min.js?1579858463"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1579858463"></script>
-    <script src="/js/jquery.sticky.js?1579858463"></script>
-    <script src="/js/featherlight.min.js?1579858463"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1579858463"></script>
-    <script src="/js/highlight.pack.js?1579858463"></script>
+    <script src="/js/clipboard.min.js?1580832657"></script>
+    <script src="/js/perfect-scrollbar.min.js?1580832657"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1580832657"></script>
+    <script src="/js/jquery.sticky.js?1580832657"></script>
+    <script src="/js/featherlight.min.js?1580832657"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1580832657"></script>
+    <script src="/js/highlight.pack.js?1580832657"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1579858463"></script>
-    <script src="/js/learn.js?1579858463"></script>
-    <script src="/js/hugo-learn.js?1579858463"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1580832657"></script>
+    <script src="/js/learn.js?1580832657"></script>
+    <script src="/js/hugo-learn.js?1580832657"></script>
 
-    <link href="/mermaid/mermaid.css?1579858463" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1579858463"></script>
+    <link href="/mermaid/mermaid.css?1580832657" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1580832657"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
