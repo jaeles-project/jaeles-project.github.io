@@ -12,20 +12,20 @@
     <title>Usage :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1580832657" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1580832657" rel="stylesheet">
-    <link href="/css/hybrid.css?1580832657" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1580832657" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1580832657" rel="stylesheet">
-    <link href="/css/auto-complete.css?1580832657" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1580832657" rel="stylesheet">
-    <link href="/css/theme.css?1580832657" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1580832657" rel="stylesheet">
+    <link href="/css/nucleus.css?1583762615" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583762615" rel="stylesheet">
+    <link href="/css/hybrid.css?1583762615" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583762615" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583762615" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583762615" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583762615" rel="stylesheet">
+    <link href="/css/theme.css?1583762615" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583762615" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1580832657" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1583762615" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1580832657"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583762615"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1580832657"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1580832657"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583762615"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583762615"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1580832657"></script>
+<script type="text/javascript" src="/js/search.js?1583762615"></script>
 
     
   </div>
@@ -498,10 +498,6 @@
 <ul>
 <li><a href="#examples-command">Examples Command</a></li>
 </ul></li>
-<li><a href="#scan">Scan</a>
-<ul>
-<li><a href="#examples-command-1">Examples Command</a></li>
-</ul></li>
 <li><a href="#fuzz">Fuzz</a>
 <ul>
 <li><a href="#burp-integration">Burp Integration</a></li>
@@ -537,92 +533,113 @@
 
 <h3 id="examples-command">Examples Command</h3>
 
-<pre><code class="language-bash">jaeles scan -u http://example.com
+<pre><code class="language-bash">
 
-# Scan for single signature with many input
-jaeles scan -s signatures/common/phpdebug.yaml -U /tmp/list_of_urls.txt
+                                                ,+izzir,
+                                              '*K@@Q8&amp;Q@@8t'
+                                            !Q@N;'',~~;\D@@t'
+                                            ,Q@q. '~~~~~~;5@@L
+                                            L@@+  '~~~~~~~^Q@X
+                                            ^@@z  '~~~~~~~|Q@y
+                                            'Z@@7  '~~~~;TQ@N,
+                                              ^%@QhJ7fmDQ@Q7'     ~}DQ@@@Qqv,
+                                                ~jdQ@@Qdjr'     ,U@@qv=|tm#@QY
+                                                  *@@=         D@&amp;;  ,~~~;f@@^
+                                                  &lt;@@+        .@@L  '~~~~~~K@P
+                                                ,&lt;zb@@K7&lt;~'    'Q@f  '_~~~~!N@j
+                                            !XQ@QA5jEbWQ@@Ri.'*Q@@D+'',;=jQ@#.
+                                          _d@@a!  ';^rr=7kQ@QQ@RzoQ@@Q#Q@@Nz.
+                                          ;Q@D_  '~^^r^^rr^|K@@K   ';*\vi=_'
+                                        '8@%'   ~^^r^r^^^r^=A@@'
+                ,&lt;}kKKhI='               =@@*  ^qfr^rrrrj8U&lt;^iQ@*
+              !b@@NXaURQ@@U;         ''~+P@@L  z@Qv^^^rrz6y=r7@@=
+            'y@@a~ ',~~;LD@@7  '^^' \Q@@@Q@@W' 'y@@RXXDdT^^r=b@@'
+            T@@i  ',~~~~~;E@@= ,D%~ '&lt;^~''~Q@%~  =ENQQNKi^rLD@@7
+            X@#'  '~~~~~~~&lt;Q@o             ,6@@X+' ,!+^+&lt;J6Q@&amp;+
+            n@@^   ,~~~~~~f@@i               '7R@@QgDWQQ@@@Q&lt;
+            'b@Qi' ',~~~^S@@m'                  '^iYjjxi^=Q@%,
+            '7Q@QEzLYmDQ@BL'                             :8@#~
+              '+yb#QQNKf^'                                ,R@Q; '''
+                                                            'b@@#Q@@QDj^'
+                                                          ,X@@K?!=|7mQ@Q}'
+                                                          ,N@W; '~~~~~;IQ@q'
+                                                          }@Q~  ,~~~~~~~f@@=
+                                                          E@Q'  ~~~~~~~~7@@L
+                                                          +@@}' ,~~~~~~^%@Q_
+                                                          ^Q@Qz,,~;^\UQ@D_
+                                                            .iD@@QQQ@@QU='
+                                                              '^|iL&gt;~'
 
-# scan for multiple signature and enable passive scan
-jaeles scan -v --passive -s &quot;signatures/cves/jira-*&quot; -u http://example.com --params 'oob=xxx.burpcollaboraborator.net'
 
-jaeles scan --passive --verbose -s &quot;signatures/cves/jira-*&quot; -U /tmp/list_of_urls.txt -o /tmp/vuls
+                            🚀 Jaeles beta v0.5.6 by @j3ssiejjj 🚀
 
-# scan API server on http://127.0.0.1:5000
-jaeles server
+                    The Swiss Army knife for automated Web Application Testing
 
-# scan API server on http://127.0.0.1:5000 with default signature sqli
-jaeles --verbose server -s sqli
+                                          ¯\_(ツ)_/¯
+
+  Scan Usage example:
+    jaeles scan -s &lt;signature&gt; -u &lt;url&gt;
+    jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt; -L &lt;level-of-signatures&gt;
+    jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt;
+    jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt; [-p 'name=value']
+    jaeles scan -v -c 50 -s &lt;signature&gt; -U list_target.txt -o /tmp/output
+    jaeles scan -s &lt;signature&gt; -s &lt;another-selector&gt; -u http://example.com
+    cat list_target.txt | jaeles scan -c 100 -s &lt;signature&gt;
+
+
+  Examples:
+    jaeles scan -s 'jira' -s 'ruby' -u target.com
+    jaeles scan -c 50 -s 'java' -x 'tomcat' -U list_of_urls.txt
+    jaeles scan -c 50 -s '/tmp/custom-signature/.*' -U list_of_urls.txt
+    cat urls.txt | grep 'interesting' | jaeles scan -L 5 -c 50 -s 'fuzz/.*' -U list_of_urls.txt --proxy http://127.0.0.1:8080
 
 </code></pre>
 
 <hr />
 
-<pre><code class="language-bash">Jaeles - The Swiss Army knife for automated Web Application Testing - beta v0.4 by @j3ssiejjj
+<pre><code class="language-bash">Usage:
+  jaeles [command]
 
-Usage:
-  jaeles scan [flags]
+Available Commands:
+  config      Configuration CLI
+  help        Help about any command
+  scan        Scan list of URLs based on signatures
+  server      Start API server
 
 Flags:
-  -h, --help          help for scan
-  -r, --raw string    Raw request from Burp for origin
-  -s, --sign string   Provide custom header seperate by ','
-      --ssrf string   Fill your BurpCollab or any Out of Band host
-  -u, --url string    URL of target
-  -U, --urls string   URLs file of target
+  -c, --concurrency int         concurrency (default 20)
+      --config string           config file (default is $HOME/.jaeles/config.yaml)
+      --debug                   Debug
+      --delay int               Milliseconds delay for polling new job (default 100)
+  -x, --exclude strings         Exclude Signature selector (Multiple -x flags are accepted)
+  -h, --help                    help for jaeles
+  -L, --level int               Filter signature by level (default 1)
+  -l, --log string              log file
+      --no-background           Do not run background task
+      --no-output               Do not store raw output
+  -o, --output string           output folder name (default &quot;out&quot;)
+  -p, --params strings          Custom params --params='foo=bar'
+  -G, --passive                 Turn on passive detections
+      --passiveOutput string    Passive output folder (default is passive-out)
+      --passiveSummary string   Passive Summary file
+      --proxy string            proxy
+      --refresh int             Refresh (default 10)
+      --retry int               retry
+      --rootDir string          root Project (default &quot;~/.jaeles/&quot;)
+      --save-raw                save raw request
+      --scanID string           Scan ID
+  -S, --selectorFile string     Signature selector from file
+      --signDir string          Folder contain default signatures (default &quot;~/.jaeles/base-signatures/&quot;)
+  -s, --signs strings           Signature selector (Multiple -s flags are accepted)
+      --sp string               Selector for passive detections (default &quot;*&quot;)
+  -O, --summaryOutput string    Summary output file
+      --timeout int             HTTP timeout (default 20)
+  -v, --verbose                 Verbose
 
-Global Flags:
-  -c, --concurrency int     concurrency (default 20)
-      --config string       config file (default is $HOME/.jaeles/config.yaml)
-      --debug               Debug
-      --delay int           Milliseconds delay for polling new job (default 100)
-  -l, --log string          log file
-      --no-background       Do not run background task
-      --no-output           Do not store raw output
-  -o, --output string       output folder name (default &quot;out&quot;)
-  -p, --params strings      Custom params --params='foo=bar'
-      --passive             Do not run passive detections
-      --passiveDir string   Folder contain default passives (default &quot;~/.jaeles/passives/&quot;)
-      --proxy string        proxy
-      --refresh int         Refresh (default 10)
-      --retry int           retry
-      --rootDir string      root Project (default &quot;~/.jaeles/&quot;)
-      --save-raw            save raw request
-      --scanID string       Scan ID
-      --signDir string      Folder contain default signatures (default &quot;~/.jaeles/signatures-base/&quot;)
-      --timeout int         HTTP timeout (default 20)
-  -v, --verbose             Verbose
+Use &quot;jaeles [command] --help&quot; for more information about a command.
 </code></pre>
 
 <hr />
-
-<h2 id="scan">Scan</h2>
-
-<pre><code>Scan list of URLs based on signatures
-
-Usage:
-  jaeles scan [flags]
-
-Flags:
-  -h, --help          help for scan
-  -s, --sign string   Provide custom header seperate by ','
-      --ssrf string   Fill your BurpCollab or any Out of Band host
-  -u, --url string    URL of target
-  -U, --urls string   URLs file of target
-
-</code></pre>
-
-<h3 id="examples-command-1">Examples Command</h3>
-
-<pre><code class="language-bash"># scan all signature for single url
-jaeles scan -u http://example.com 
-
-# scan phpdebug.yaml signature for list of urls
-jaeles scan -s signatures/common/phpdebug.yaml -U /tmp/list_of_urls.txt
-
-# scan all signatures with &quot;aem&quot; prefix for list of urls
-jaeles scan --retry 3 --verbose -s &quot;signatures/cves/aem-*&quot; -U /tmp/list_of_urls.txt
-
-</code></pre>
 
 <h2 id="fuzz">Fuzz</h2>
 
@@ -634,16 +651,14 @@ Usage:
 Flags:
   -h, --help          help for server
       --host string   IP address to bind the server (default &quot;127.0.0.1&quot;)
-  -l, --level int16   Provide custom header seperate by ';' (default 1)
       --port string   Port (default &quot;5000&quot;)
-  -s, --sign string   Provide custom header seperate by ';'
 </code></pre>
 
 <h3 id="burp-integration">Burp Integration</h3>
 
 <p><img src="https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/Burp-Integration.gif?raw=true" alt="Burp Integration" /></p>
 
-<p>Plugin can be found <a href="https://github.com/jaeles-project/jaeles-plugins/blob/master/jaeles-burp.py">here</a> and Video Guide <a href="https://youtu.be/1lxsYhfTq3M">here</a></p>
+<h5 align="center">Plugin can be found <a href="https://github.com/jaeles-project/jaeles-plugins/blob/master/jaeles-burp.py">here</a> and Video Guide <a href="https://youtu.be/1lxsYhfTq3M">here</a></h5>
 
 
 
@@ -973,20 +988,20 @@ Flags:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1580832657"></script>
-    <script src="/js/perfect-scrollbar.min.js?1580832657"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1580832657"></script>
-    <script src="/js/jquery.sticky.js?1580832657"></script>
-    <script src="/js/featherlight.min.js?1580832657"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1580832657"></script>
-    <script src="/js/highlight.pack.js?1580832657"></script>
+    <script src="/js/clipboard.min.js?1583762615"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583762615"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583762615"></script>
+    <script src="/js/jquery.sticky.js?1583762615"></script>
+    <script src="/js/featherlight.min.js?1583762615"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1583762615"></script>
+    <script src="/js/highlight.pack.js?1583762615"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1580832657"></script>
-    <script src="/js/learn.js?1580832657"></script>
-    <script src="/js/hugo-learn.js?1580832657"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583762615"></script>
+    <script src="/js/learn.js?1583762615"></script>
+    <script src="/js/hugo-learn.js?1583762615"></script>
 
-    <link href="/mermaid/mermaid.css?1580832657" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1580832657"></script>
+    <link href="/mermaid/mermaid.css?1583762615" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583762615"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

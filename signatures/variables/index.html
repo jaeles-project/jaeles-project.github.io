@@ -12,20 +12,20 @@
     <title>Variables :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1580832657" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1580832657" rel="stylesheet">
-    <link href="/css/hybrid.css?1580832657" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1580832657" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1580832657" rel="stylesheet">
-    <link href="/css/auto-complete.css?1580832657" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1580832657" rel="stylesheet">
-    <link href="/css/theme.css?1580832657" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1580832657" rel="stylesheet">
+    <link href="/css/nucleus.css?1583762615" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1583762615" rel="stylesheet">
+    <link href="/css/hybrid.css?1583762615" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1583762615" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1583762615" rel="stylesheet">
+    <link href="/css/auto-complete.css?1583762615" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1583762615" rel="stylesheet">
+    <link href="/css/theme.css?1583762615" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1583762615" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1580832657" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1583762615" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1580832657"></script>
+    <script src="/js/jquery-3.3.1.min.js?1583762615"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1580832657"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1580832657"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1583762615"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1583762615"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1580832657"></script>
+<script type="text/javascript" src="/js/search.js?1583762615"></script>
 
     
   </div>
@@ -535,24 +535,34 @@
 <thead>
 <tr>
 <th align="left">Default variable</th>
-<th align="left">E.g: <code>http://example.com/a/b/c.php?q=123</code></th>
+<th align="left">E.g: <code>http://example.com:8080/a/b/c.php?q=123</code></th>
 </tr>
 </thead>
 
 <tbody>
 <tr>
 <td align="left"><code>{{.URL}}</code></td>
-<td align="left"><code>http://example.com/a/b/c?q=123</code></td>
+<td align="left"><code>http://example.com:8080/a/b/c?q=123</code></td>
 </tr>
 
 <tr>
 <td align="left"><code>{{.BaseURL}}</code></td>
-<td align="left"><code>http://example.com</code></td>
+<td align="left"><code>http://example.com:8080</code></td>
 </tr>
 
 <tr>
 <td align="left"><code>{{.Host}}</code></td>
+<td align="left"><code>example.com:8080</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.Domain}}</code></td>
 <td align="left"><code>example.com</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.Port}}</code></td>
+<td align="left"><code>8080</code></td>
 </tr>
 
 <tr>
@@ -571,13 +581,18 @@
 </tr>
 
 <tr>
-<td align="left"><code>{{.oob}}</code></td>
-<td align="left">take from <code>--ssrf xxx.burpcollab.net</code> or select from DB</td>
+<td align="left"><code>{{.bar}}</code></td>
+<td align="left">take from <code>--params 'bar=111'</code></td>
 </tr>
 
 <tr>
-<td align="left"><code>{{.custom}}</code></td>
-<td align="left">take from <code>--params 'bar=111' --params 'foo=222'</code></td>
+<td align="left"><code>{{.Resources}}</code></td>
+<td align="left">Resources path <code>~/.jaeles/resources</code></td>
+</tr>
+
+<tr>
+<td align="left"><code>{{.ThirdParty}}</code></td>
+<td align="left">Third party path <code>~/.jaeles/thirdparty</code></td>
 </tr>
 </tbody>
 </table>
@@ -982,20 +997,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1580832657"></script>
-    <script src="/js/perfect-scrollbar.min.js?1580832657"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1580832657"></script>
-    <script src="/js/jquery.sticky.js?1580832657"></script>
-    <script src="/js/featherlight.min.js?1580832657"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1580832657"></script>
-    <script src="/js/highlight.pack.js?1580832657"></script>
+    <script src="/js/clipboard.min.js?1583762615"></script>
+    <script src="/js/perfect-scrollbar.min.js?1583762615"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1583762615"></script>
+    <script src="/js/jquery.sticky.js?1583762615"></script>
+    <script src="/js/featherlight.min.js?1583762615"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1583762615"></script>
+    <script src="/js/highlight.pack.js?1583762615"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1580832657"></script>
-    <script src="/js/learn.js?1580832657"></script>
-    <script src="/js/hugo-learn.js?1580832657"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1583762615"></script>
+    <script src="/js/learn.js?1583762615"></script>
+    <script src="/js/hugo-learn.js?1583762615"></script>
 
-    <link href="/mermaid/mermaid.css?1580832657" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1580832657"></script>
+    <link href="/mermaid/mermaid.css?1583762615" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1583762615"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
