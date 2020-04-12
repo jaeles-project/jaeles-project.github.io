@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Installation on Jaeles Scanner</title>
+    <link>/installation/</link>
+    <description>Recent content in Installation on Jaeles Scanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 31 Jul 2019 13:17:33 +0700</lastBuildDate>
+    
+	<atom:link href="/installation/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Burp Integration</title>
+      <link>/installation/burp-integration/</link>
+      <pubDate>Wed, 31 Jul 2019 13:01:12 +0700</pubDate>
+      
+      <guid>/installation/burp-integration/</guid>
+      <description>Plugin can be found here and Video Guide here
+How to install Burp plugin Download the plugin on from this URL.
+Run Jaeles as server mode by using this command jaeles server -v. First time you run jaeles server, it&amp;rsquo;s gonna create default credentials on ~/.jaeles/burp.json. (Delete ~/.jaeles/ folder and run it again if you have any issue)
+Make sure you have Jython installed on Burp then load it. Burp -&amp;gt; Extender -&amp;gt; Add jaeles-burp.</description>
+    </item>
+    
+    <item>
+      <title>Persistent Burpcollaborator</title>
+      <link>/installation/persistent-burpcollaborator/</link>
+      <pubDate>Wed, 31 Jul 2019 13:02:57 +0700</pubDate>
+      
+      <guid>/installation/persistent-burpcollaborator/</guid>
+      <description>Get Collaborator Secret token Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Upstream Proxy Server -&amp;gt; then run command below
+mitmdump -q -p 8667 -s burpcollaborator-oob.py  Burp -&amp;gt; Project Options -&amp;gt; Connections -&amp;gt; Mics -&amp;gt; -&amp;gt; Burp Collaborator Server. Check on Poll over unencrypted HTTP.Now open Collaborator Client and click Poll now.Copy as many collab as need to be and store it in a file.Default log will be store in .</description>
+    </item>
+    
+  </channel>
+</rss>
