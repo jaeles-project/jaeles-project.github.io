@@ -81,7 +81,7 @@
 	"title": "Passive Detection",
 	"tags": [],
 	"description": "",
-	"content": " Enable passive detection via --passive or -G option.\n This part used to detection common pattern in the request and execute on every request after detection part done.\nDefault passive signatures can be found here\nFirst time you run jaeles, it will installed passive to ~/.jaeles/passives.\nAdd new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.\nSample passive signature name: 'common pattern' desc: 'grep for common interesting pattern' rules: - id: directory-listing-01 reason: 'Directory Listing' detections: - StringSearch(\u0026quot;response\u0026quot;, 'Index of /') \u0026amp;\u0026amp; StringSearch(\u0026quot;response\u0026quot;, '\u0026gt;Last Modified\u0026lt;') - id: sensitive-pattern-01 reason: 'PHP Info' detections: - StringSearch(\u0026quot;response\u0026quot;, 'PHP Configuration') \u0026amp;\u0026amp; StringSearch(\u0026quot;response\u0026quot;, '\u0026lt;title\u0026gt;phpinfo()\u0026lt;/title\u0026gt;')  Usage Jaeles look for passive signature in file and rules in single signatures. id and reason used for Usage of detections section is same from the detection.\n"
+	"content": " Like Detection part but check for every request Enable passive detection via --passive or -G option.\n Default passive signatures can be found here\nFirst time you run jaeles, it will installed passive to ~/.jaeles/passives.\nAdd new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.\nSample passive signature Usage Jaeles look for passive signature in file and rules in single signatures. id and reason used for Usage of detections section is same from the detection.\n"
 },
 {
 	"uri": "/signatures/conclusions-and-conditions/",
@@ -102,7 +102,7 @@
 	"title": "Example Signatures",
 	"tags": [],
 	"description": "",
-	"content": " Take a look at this repo repo for more examples.\n Single signature List signature Fuzz signature  Single signature Sending request to URLs with append /_debugbar/open?max=20\u0026amp;offset=0 and look for {\u0026quot;id\u0026quot;:\u0026quot; string in the reponse if it success.\nList signature Sending request to URLs with append /{{.jira}}plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}} with {{.jira}} and {{.ssrf}} get from variables.\nSimulate Directory Bruteforce with content from /tmp/sensitive_paths.txt. Confirm the path exist if Secret is in the reponse or Not Found word isn\u0026rsquo;t in the repsonse and different lengoth of the request and original \u0026gt; 1000.\nFuzz signature Repeat request recive from API and change replace the query value by the payload and look for error in the response.\nRepeat exactly request recive from API and change Content-Type of it and look for change in status code and response length to confirm that Content-Type can be used in application.\n"
+	"content": " Take a look at this repo repo for more examples.\nImplement CVE-2020-2096 Scan for log file and secret file Fuzz signature "
 },
 {
 	"uri": "/installation/persistent-burpcollaborator/",

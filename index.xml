@@ -80,12 +80,11 @@ Generator    API Generator Description Example     Method Gen request based on m
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/signatures/passive/</guid>
-      <description>Enable passive detection via --passive or -G option.
- This part used to detection common pattern in the request and execute on every request after detection part done.
-Default passive signatures can be found here
+      <description>Like Detection part but check for every request Enable passive detection via --passive or -G option.
+ Default passive signatures can be found here
 First time you run jaeles, it will installed passive to ~/.jaeles/passives.
 Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
-Sample passive signature name: &#39;common pattern&#39; desc: &#39;grep for common interesting pattern&#39; rules: - id: directory-listing-01 reason: &#39;Directory Listing&#39; detections: - StringSearch(&amp;quot;response&amp;quot;, &#39;Index of /&#39;) &amp;amp;&amp;amp; StringSearch(&amp;quot;response&amp;quot;, &#39;&amp;gt;Last Modified&amp;lt;&#39;) - id: sensitive-pattern-01 reason: &#39;PHP Info&#39; detections: - StringSearch(&amp;quot;response&amp;quot;, &#39;PHP Configuration&#39;) &amp;amp;&amp;amp; StringSearch(&amp;quot;response&amp;quot;, &#39;&amp;lt;title&amp;gt;phpinfo()&amp;lt;/title&amp;gt;&#39;)  Usage Jaeles look for passive signature in file and rules in single signatures.</description>
+Sample passive signature Usage Jaeles look for passive signature in file and rules in single signatures.</description>
     </item>
     
     <item>
@@ -103,10 +102,8 @@ Sample passive signature name: &#39;common pattern&#39; desc: &#39;grep for comm
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
       <guid>/signatures/examples/</guid>
-      <description>Take a look at this repo repo for more examples.
- Single signature List signature Fuzz signature  Single signature Sending request to URLs with append /_debugbar/open?max=20&amp;amp;offset=0 and look for {&amp;quot;id&amp;quot;:&amp;quot; string in the reponse if it success.
-List signature Sending request to URLs with append /{{.jira}}plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}} with {{.jira}} and {{.ssrf}} get from variables.
-Simulate Directory Bruteforce with content from /tmp/sensitive_paths.txt. Confirm the path exist if Secret is in the reponse or Not Found word isn&amp;rsquo;t in the repsonse and different lengoth of the request and original &amp;gt; 1000.</description>
+      <description> Take a look at this repo repo for more examples.
+Implement CVE-2020-2096 Scan for log file and secret file Fuzz signature </description>
     </item>
     
     <item>
