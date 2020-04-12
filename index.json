@@ -46,7 +46,7 @@
 	"title": "Installation",
 	"tags": [],
 	"description": "",
-	"content": " Jaeles installation Download precompiled version here.\nIf you have a Go environment, make sure you have Go \u0026gt;= 1.13 with Go Modules enable and run the following command.\nGO111MODULE=on go get -u github.com/jaeles-project/jaeles  Inittialize Signature and Web UI This gonna pull latest signature and UI build from default repo.\njaeles config -a init  Load new signature to Database Just save new signature to anywhere then load it by the command below.\njaeles config -a reload --signDir /tmp/custom-signatures/  with /tmp/custom-signatures/ is your custom signature folder.\nOr you can just use new signature directly by using this command\njaeles scan -s new_sign.yaml -u example.com  "
+	"content": " Jaeles installation Download precompiled version here.\nIf you have a Go environment, make sure you have Go \u0026gt;= 1.13 with Go Modules enable and run the following command.\nGO111MODULE=on go get -u github.com/jaeles-project/jaeles  Initialize Signature and Web UI This gonna pull latest signature and UI build from default repo.\njaeles config -a init  Load new signature to Database Just save new signature to anywhere then load it by the command below.\njaeles config -a reload --signDir /tmp/custom-signatures/  with /tmp/custom-signatures/ is your custom signature folder.\nOr you can just use new signature directly by using this command\njaeles scan -s new_sign.yaml -u example.com  "
 },
 {
 	"uri": "/signatures/generator/",
