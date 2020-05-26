@@ -61,7 +61,7 @@ Examples Detection # Response Status code equal 200 and the response body contai
       
       <guid>/signatures/generator/</guid>
       <description>This part will be executed before parsing request input with the signature for generate variation request base on the original request. Generator only available in type: fuzz signature.
-Generator    API Generator Description Example     Method Gen request based on method Method(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;[[.original]]{{.payload}}&amp;quot;), Query(&amp;quot;[[.original]]{{.payload}}&amp;quot;, &amp;quot;new&amp;quot;)   Path Gen request based on Path of URL Path(&amp;quot;{{.</description>
+Generator    API Generator Description Example     Fuzz Gen request by replace template Fuzz(&amp;quot;{{.payload}}&amp;quot;, Fuzz(&amp;quot;{{.payload}}&amp;quot;, &amp;quot;{{.inject}}&amp;quot;)   Replace Gen request by replace words Replace(&amp;quot;{{.payload}}&amp;quot;)   Fuzz Gen request by replace words Fuzz(&amp;quot;PUT&amp;quot;) , Method()   Query Gen request based on Query String Query(&amp;quot;[[.</description>
     </item>
     
     <item>
