@@ -12,20 +12,20 @@
     <title>Example Signatures :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1590495424" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1590495424" rel="stylesheet">
-    <link href="/css/hybrid.css?1590495424" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1590495424" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1590495424" rel="stylesheet">
-    <link href="/css/auto-complete.css?1590495424" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1590495424" rel="stylesheet">
-    <link href="/css/theme.css?1590495424" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1590495424" rel="stylesheet">
+    <link href="/css/nucleus.css?1593248016" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1593248016" rel="stylesheet">
+    <link href="/css/hybrid.css?1593248016" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1593248016" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1593248016" rel="stylesheet">
+    <link href="/css/auto-complete.css?1593248016" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1593248016" rel="stylesheet">
+    <link href="/css/theme.css?1593248016" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1593248016" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1590495424" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1593248016" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1590495424"></script>
+    <script src="/js/jquery-3.3.1.min.js?1593248016"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1590495424"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1590495424"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1593248016"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1593248016"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1590495424"></script>
+<script type="text/javascript" src="/js/search.js?1593248016"></script>
 
     
   </div>
@@ -496,8 +496,8 @@
 <ul>
 <li>
 <ul>
-<li><a href="#implement-cve-2020-2096">Implement CVE-2020-2096</a></li>
-<li><a href="#scan-for-log-file-and-secret-file">Scan for log file and secret file</a></li>
+<li><a href="#single-signature">Single signature</a></li>
+<li><a href="#list-signature">List signature</a></li>
 <li><a href="#fuzz-signature">Fuzz signature</a></li>
 </ul></li>
 </ul></li>
@@ -530,23 +530,39 @@
 
 <p>Take a look at this <a href="https://github.com/jaeles-project/jaeles-signatures">repo</a> repo for more examples.</p>
 
-<h3 id="implement-cve-2020-2096">Implement CVE-2020-2096</h3>
+<ul>
+<li><a href="/signatures/examples#scan"><strong>Single signature</strong></a></li>
+<li><a href="/signatures/examples#fuzz"><strong>List signature</strong></a></li>
+<li><a href="/signatures/examples#fuzz"><strong>Fuzz signature</strong></a></li>
+</ul>
 
-<p><img src="examples/jenkins-xss.png?classes=border,shadow" alt="single" /></p>
+<h3 id="single-signature">Single signature</h3>
+
+<p><img src="signatures/single-1.png?classes=border,shadow" alt="single" /></p>
+
+<p>Sending request to URLs with append <code>/_debugbar/open?max=20&amp;offset=0</code> and look for <code>{&quot;id&quot;:&quot;</code> string in the reponse if it success.</p>
 
 <hr />
 
-<h3 id="scan-for-log-file-and-secret-file">Scan for log file and secret file</h3>
+<h3 id="list-signature">List signature</h3>
 
-<p><img src="examples/log-file.png?classes=border,shadow" alt="log-file" /></p>
+<p><img src="signatures/list-1.png?classes=border,shadow" alt="list-1" /></p>
 
-<p><img src="examples/wp-misconfig.png?classes=border,shadow" alt="log-file" /></p>
+<p>Sending request to URLs with append <code>/{{.jira}}plugins/servlet/gadgets/makeRequest?url=https://127.0.0.1:443@{{.ssrf}}</code> with <code>{{.jira}} and {{.ssrf}}</code> get from variables.</p>
+
+<p><img src="signatures/list-2.png?classes=border,shadow" alt="list-2" /></p>
+
+<p>Simulate Directory Bruteforce with content from <code>/tmp/sensitive_paths.txt</code>. Confirm the path exist if <strong>Secret</strong> is in the reponse or <code>Not Found</code> word isn&rsquo;t in the repsonse and different lengoth of the request and original &gt; 1000.</p>
 
 <hr />
 
 <h3 id="fuzz-signature">Fuzz signature</h3>
 
-<p><img src="examples/rxss-path.png?classes=border,shadow" alt="rxss-path" /></p>
+<p><img src="signatures/fuzz-1.png?classes=border,shadow" alt="fuzz-1" />
+Repeat request recive from API and change replace the query value by the payload and look for error in the response.</p>
+
+<p><img src="signatures/fuzz-2.png?classes=border,shadow" alt="fuzz-2" />
+Repeat exactly request recive from API and change <code>Content-Type</code> of it and look for change in status code and response length to confirm that <code>Content-Type</code> can be used in application.</p>
 
 
 <footer class=" footline" >
@@ -875,20 +891,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1590495424"></script>
-    <script src="/js/perfect-scrollbar.min.js?1590495424"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1590495424"></script>
-    <script src="/js/jquery.sticky.js?1590495424"></script>
-    <script src="/js/featherlight.min.js?1590495424"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1590495424"></script>
-    <script src="/js/highlight.pack.js?1590495424"></script>
+    <script src="/js/clipboard.min.js?1593248016"></script>
+    <script src="/js/perfect-scrollbar.min.js?1593248016"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1593248016"></script>
+    <script src="/js/jquery.sticky.js?1593248016"></script>
+    <script src="/js/featherlight.min.js?1593248016"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1593248016"></script>
+    <script src="/js/highlight.pack.js?1593248016"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1590495424"></script>
-    <script src="/js/learn.js?1590495424"></script>
-    <script src="/js/hugo-learn.js?1590495424"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1593248016"></script>
+    <script src="/js/learn.js?1593248016"></script>
+    <script src="/js/hugo-learn.js?1593248016"></script>
 
-    <link href="/mermaid/mermaid.css?1590495424" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1590495424"></script>
+    <link href="/mermaid/mermaid.css?1593248016" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1593248016"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

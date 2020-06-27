@@ -12,20 +12,20 @@
     <title>Detection :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1590495424" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1590495424" rel="stylesheet">
-    <link href="/css/hybrid.css?1590495424" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1590495424" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1590495424" rel="stylesheet">
-    <link href="/css/auto-complete.css?1590495424" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1590495424" rel="stylesheet">
-    <link href="/css/theme.css?1590495424" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1590495424" rel="stylesheet">
+    <link href="/css/nucleus.css?1593248016" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1593248016" rel="stylesheet">
+    <link href="/css/hybrid.css?1593248016" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1593248016" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1593248016" rel="stylesheet">
+    <link href="/css/auto-complete.css?1593248016" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1593248016" rel="stylesheet">
+    <link href="/css/theme.css?1593248016" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1593248016" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1590495424" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1593248016" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1590495424"></script>
+    <script src="/js/jquery-3.3.1.min.js?1593248016"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1590495424"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1590495424"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1593248016"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1593248016"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1590495424"></script>
+<script type="text/javascript" src="/js/search.js?1593248016"></script>
 
     
   </div>
@@ -531,7 +531,7 @@
 
 <p>This part will be executed right after Jaeles got response from the request and do a logic for determine the request is vulnerable or not.</p>
 
-<p>Detections was written in <strong>Javascript</strong> so you can write whatever you want with some predefined function below  as long as you return <strong>boolean</strong> value to determine it&rsquo;s found something or not.</p>
+<p>Detections was written in <strong>Javascript</strong> so you can write whatever you want with some predefind function below  as long as you return <strong>boolean</strong> value to determine it&rsquo;s found something or not.</p>
 
 <h3 id="examples-detection">Examples Detection</h3>
 
@@ -547,12 +547,6 @@ Math.abs(ResponseTime() - OriginResponseTime()) &gt; 3
 # Get value of previous request
 ContentLength() - parseInt(ValueOf(&quot;404html&quot;)) &gt; 1000
 OriginResponseTime() - parseFloat(ValueOf(&quot;resTime&quot;)) &gt; 5
-
-# Expected different response
-StatusCode() == 200 &amp;&amp; !RegexSearch(&quot;response&quot;, &quot;(?i)(Oops!|Whoops!|not\sfound|Request\sRejected|Access\sDenied|a\sbad\sURL|has\sbeen\slocked)&quot;) &amp;&amp; (Math.abs(ContentLength() - OriginContentLength()) &gt; 1000)
-
-# Do passive scan if previous detection satisfied
-StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;jcr:title&quot;) &amp;&amp; StringSearch(&quot;response&quot;, &quot;sling:resourceType&quot;) &amp;&amp; DoPassive()
 </code></pre>
 
 <h3 id="normal-detection">Normal Detection</h3>
@@ -731,12 +725,6 @@ StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;jcr:titl
 <td align="left"><strong>Collab</strong></td>
 <td align="left">Grepping collaborator response in Reuqest response or <br> Do Real Polling with BurpCollab secret.</td>
 <td align="left"><code>Collab(&quot;{{.oob}}&quot;)</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong>DoPassive</strong></td>
-<td align="left">Do passive scan for this request if it satisfied the detection</td>
-<td align="left"><code>DoPassive(&quot;)</code></td>
 </tr>
 </tbody>
 </table>
@@ -1071,20 +1059,20 @@ StatusCode() == 200 &amp;&amp; StringSearch(&quot;response&quot;, &quot;jcr:titl
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1590495424"></script>
-    <script src="/js/perfect-scrollbar.min.js?1590495424"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1590495424"></script>
-    <script src="/js/jquery.sticky.js?1590495424"></script>
-    <script src="/js/featherlight.min.js?1590495424"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1590495424"></script>
-    <script src="/js/highlight.pack.js?1590495424"></script>
+    <script src="/js/clipboard.min.js?1593248016"></script>
+    <script src="/js/perfect-scrollbar.min.js?1593248016"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1593248016"></script>
+    <script src="/js/jquery.sticky.js?1593248016"></script>
+    <script src="/js/featherlight.min.js?1593248016"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1593248016"></script>
+    <script src="/js/highlight.pack.js?1593248016"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1590495424"></script>
-    <script src="/js/learn.js?1590495424"></script>
-    <script src="/js/hugo-learn.js?1590495424"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1593248016"></script>
+    <script src="/js/learn.js?1593248016"></script>
+    <script src="/js/hugo-learn.js?1593248016"></script>
 
-    <link href="/mermaid/mermaid.css?1590495424" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1590495424"></script>
+    <link href="/mermaid/mermaid.css?1593248016" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1593248016"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
