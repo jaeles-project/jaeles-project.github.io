@@ -12,20 +12,20 @@
     <title>Passive Detection :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1593248016" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1593248016" rel="stylesheet">
-    <link href="/css/hybrid.css?1593248016" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1593248016" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1593248016" rel="stylesheet">
-    <link href="/css/auto-complete.css?1593248016" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1593248016" rel="stylesheet">
-    <link href="/css/theme.css?1593248016" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1593248016" rel="stylesheet">
+    <link href="/css/nucleus.css?1594351435" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1594351435" rel="stylesheet">
+    <link href="/css/hybrid.css?1594351435" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1594351435" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1594351435" rel="stylesheet">
+    <link href="/css/auto-complete.css?1594351435" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1594351435" rel="stylesheet">
+    <link href="/css/theme.css?1594351435" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1594351435" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1593248016" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1594351435" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1593248016"></script>
+    <script src="/js/jquery-3.3.1.min.js?1594351435"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1593248016"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1593248016"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1594351435"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1594351435"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1593248016"></script>
+<script type="text/javascript" src="/js/search.js?1594351435"></script>
 
     
   </div>
@@ -530,12 +530,12 @@
 
 
 
+<h4 align="center">Like Detection part but check for every request</h4>
+
 
 <div class="notices note" ><p>Enable passive detection via  <code>--passive</code> or <code>-G</code> option.</p>
 </div>
 
-
-<p>This part used to detection common pattern in the request and execute on every request after <a href="/signatures/detection/"><strong>detection</strong></a> part done.</p>
 
 <p>Default passive signatures can be found <a href="https://github.com/jaeles-project/jaeles-signatures/blob/master/passives/"><strong>here</strong></a></p>
 
@@ -547,19 +547,7 @@
 
 <h4 id="sample-passive-signature">Sample passive signature</h4>
 
-<pre><code>name: 'common pattern'
-desc: 'grep for common interesting pattern'
-rules:
-  - id: directory-listing-01
-    reason: 'Directory Listing'
-    detections:
-      - StringSearch(&quot;response&quot;, 'Index of /') &amp;&amp; StringSearch(&quot;response&quot;, '&gt;Last Modified&lt;')
-
-  - id: sensitive-pattern-01
-    reason: 'PHP Info'
-    detections:
-      - StringSearch(&quot;response&quot;, 'PHP Configuration') &amp;&amp; StringSearch(&quot;response&quot;, '&lt;title&gt;phpinfo()&lt;/title&gt;')
-</code></pre>
+<p><img src="examples/passive-secret.png?classes=border,shadow" alt="single" /></p>
 
 <h4 id="usage">Usage</h4>
 
@@ -897,20 +885,20 @@ Usage of <code>detections</code> section is same from the <a href="/signatures/d
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1593248016"></script>
-    <script src="/js/perfect-scrollbar.min.js?1593248016"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1593248016"></script>
-    <script src="/js/jquery.sticky.js?1593248016"></script>
-    <script src="/js/featherlight.min.js?1593248016"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1593248016"></script>
-    <script src="/js/highlight.pack.js?1593248016"></script>
+    <script src="/js/clipboard.min.js?1594351435"></script>
+    <script src="/js/perfect-scrollbar.min.js?1594351435"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1594351435"></script>
+    <script src="/js/jquery.sticky.js?1594351435"></script>
+    <script src="/js/featherlight.min.js?1594351435"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1594351435"></script>
+    <script src="/js/highlight.pack.js?1594351435"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1593248016"></script>
-    <script src="/js/learn.js?1593248016"></script>
-    <script src="/js/hugo-learn.js?1593248016"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1594351435"></script>
+    <script src="/js/learn.js?1594351435"></script>
+    <script src="/js/hugo-learn.js?1594351435"></script>
 
-    <link href="/mermaid/mermaid.css?1593248016" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1593248016"></script>
+    <link href="/mermaid/mermaid.css?1594351435" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1594351435"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
