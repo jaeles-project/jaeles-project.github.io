@@ -84,7 +84,7 @@ Generator    API Generator Description Example     Fuzz Gen request by replace t
  Default passive signatures can be found here
 First time you run jaeles, it will installed passive to ~/.jaeles/passives.
 Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
-Sample passive signature Usage Jaeles look for passive signature in file and rules in single signatures.</description>
+You can also enable passives check in single active signatures with this passive: true.</description>
     </item>
     
     <item>
