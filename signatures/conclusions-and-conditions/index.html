@@ -12,20 +12,20 @@
     <title>Conclusions &amp; Conditions :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -528,11 +528,6 @@
 
 
 
-
-<div class="notices note" ><p>To use Conclusions &amp; Conditions you need to enable single mode in signatures with <code>single: true</code></p>
-</div>
-
-
 <h3 id="sample-signature-used-conclusions-and-conditions">Sample signature used conclusions and conditions</h3>
 
 <pre><code>id: fuzz-01-02
@@ -575,8 +570,7 @@ requests:
 
 <p>If present, this part will be run before continue to generate request. Just some logic to check to prevent sending too much false positive request.</p>
 
-<p>Usage of <code>conditions</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a>.
-Please refer to <a href="/signatures/detection/"><strong>detection</strong></a> for some similar usage.</p>
+<p>Usage of <code>conditions</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a>.</p>
 
 <h3 id="conclusions">Conclusions</h3>
 
@@ -612,25 +606,12 @@ Please refer to <a href="/signatures/detection/"><strong>detection</strong></a> 
 <tr>
 <td><strong>RegexSelect</strong></td>
 <td align="left">Select a string from component by regex</td>
-<td align="left"><code>RegexSelect(&quot;component&quot;, &quot;regex&quot;)</code></td>
+<td align="left"><code>RegexSelect(&quot;component&quot;, &quot;var_name&quot;, &quot;regex&quot;)</code> or <code>RegexSelect(&quot;component&quot;, &quot;var_name&quot;, &quot;regex&quot;, &quot;position&quot;)</code></td>
 </tr>
 </tbody>
 </table>
 
-<p>Regex Select use <a href="https://www.regular-expressions.info/named.html">Named Capturing Groups</a></p>
-
-<p>For example we have this response</p>
-
-<pre><code>HTTP/1.1 200 OK
-Date: Thu, 09 Jul 2020 09:36:32 GMT
-X-Frame-Options: SAMEORIGIN
-Set-Cookie: JSESSIONID=4F6904C386821F445B9C961CF1A10811; Path=/; Secure; HttpOnlyExpires: Thu, 19 Nov 1981 08:52:00 GMT
-Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
-</code></pre>
-
-<p>then this regex <code>JSESSIONID\=(?P&lt;sess&gt;.*);\sP</code> will give us <code>4F6904C386821F445B9C961CF1A10811</code> value as <code>sess</code> variables.</p>
-
-<p>Usage of <code>RegexSelect</code> for this case is <code>RegexSelect(&quot;resHeaders&quot;, &quot;JSESSIONID=(?P&lt;sess&gt;.*);\\sP&quot;)</code>. Note that we need to escape <code>\\s</code> instead of use <code>\s</code>.</p>
+<p>Please refer to <a href="/signatures/detection/"><strong>detection</strong></a> for some similar usage.</p>
 
 
 <footer class=" footline" >
@@ -962,20 +943,20 @@ Cache-Control: no-store, no-cache, must-revalidate, post-check=0, pre-check=0
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

@@ -12,20 +12,20 @@
     <title>Variables :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -498,7 +498,6 @@
 <ul>
 <li><a href="#default-variables-generated-from-input">Default variables generated from input</a></li>
 <li><a href="#list-of-avaliable-variables-function">List of avaliable Variables function</a></li>
-<li><a href="#example-of-using-variables-func">Example of using variables func</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -583,7 +582,7 @@
 
 <tr>
 <td align="left"><code>{{.bar}}</code></td>
-<td align="left">take from <code>--params 'bar=111'</code> or <code>-p 'bar=111</code></td>
+<td align="left">take from <code>--params 'bar=111'</code></td>
 </tr>
 
 <tr>
@@ -613,12 +612,6 @@
 
 <tbody>
 <tr>
-<td align="left"><strong><em>File</em></strong></td>
-<td align="left">return string as content of file and split it by new line</td>
-<td align="left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
-</tr>
-
-<tr>
 <td align="left"><strong><em>Base64EncodeByLines</em></strong></td>
 <td align="left">Like <strong><em>Base64Encode</em></strong> but split input as a new line first</td>
 <td align="left"><code>Base64EncodeByLines(&quot;samp\ndummy&quot;)</code></td>
@@ -628,6 +621,12 @@
 <td align="left"><strong><em>Base64Encode</em></strong></td>
 <td align="left">return base64 encoded string</td>
 <td align="left"><code>Base64Encode(&quot;a&quot;)</code> will return string like this: <code>YQo=</code></td>
+</tr>
+
+<tr>
+<td align="left"><strong><em>File</em></strong></td>
+<td align="left">return string as content of file and split it by new line</td>
+<td align="left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
 </tr>
 
 <tr>
@@ -667,40 +666,6 @@
 </tr>
 </tbody>
 </table>
-
-<h3 id="example-of-using-variables-func">Example of using variables func</h3>
-
-<pre><code>id: xss-param-fuzz-02
-type: fuzz
-level: 1
-info:
-  name: XSS Fuzz on Param Basic 02
-  risk: Medium
-
-params:
-  - rand6: RandomString(6)
-
-# read content of `~/.jaeles/resources/lite-params.txt` and return as a list
-variables:
-  - name: File(&quot;{{.Resources}}/lite-params.txt&quot;)
-
-payloads:
-  - &gt;-
-    '&gt;&lt;h1&gt;{{.rand6}}
-  - &gt;-
-    &gt;&lt;h1&gt;{{.rand6}}
-  - &gt;-
-    \&quot;&gt;&lt;h1&gt;{{.rand6}}
-  - &gt;-
-    `&gt;&lt;h1&gt;{{.rand6}}
-
-requests:
-  - generators:
-      - Query(&quot;{{.payload}}&quot;, &quot;{{.name}}&quot;)
-    detections:
-      - &gt;-
-        StringSearch(&quot;resHeaders&quot;, &quot;text/html&quot;) &amp;&amp; StringSearch(&quot;response&quot;, &quot;{{.payload}}&quot;) &amp;&amp; (StatusCode() &lt; 400 &amp;&amp; StatusCode() &gt;= 300)
-</code></pre>
 
 
 <footer class=" footline" >
@@ -1032,20 +997,20 @@ requests:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

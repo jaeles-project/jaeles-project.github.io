@@ -12,20 +12,20 @@
     <title>Generator :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -500,7 +500,6 @@
 <li><a href="#method">Method</a></li>
 <li><a href="#query-body-and-header">Query, Body and Header</a></li>
 <li><a href="#path">Path</a></li>
-<li><a href="#fuzz-and-replace">Fuzz and Replace</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -545,33 +544,15 @@
 
 <tbody>
 <tr>
-<td align="left"><strong><em>Fuzz</em></strong></td>
-<td align="left">Gen request by replace template</td>
-<td align="left"><code>Fuzz(&quot;{{.payload}}&quot;</code>, <code>Fuzz(&quot;{{.payload}}&quot;, &quot;{{.inject}}&quot;)</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Replace</em></strong></td>
-<td align="left">Gen request by replace words</td>
-<td align="left"><code>Replace(&quot;{{.payload}}&quot;)</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Fuzz</em></strong></td>
-<td align="left">Gen request by replace words</td>
-<td align="left"><code>Fuzz(&quot;PUT&quot;)</code> , <code>Method()</code></td>
+<td align="left"><strong><em>Method</em></strong></td>
+<td align="left">Gen request based on method</td>
+<td align="left"><code>Method(&quot;PUT&quot;)</code> , <code>Method()</code></td>
 </tr>
 
 <tr>
 <td align="left"><strong><em>Query</em></strong></td>
 <td align="left">Gen request based on Query String</td>
 <td align="left"><code>Query(&quot;[[.original]]{{.payload}}&quot;)</code>, <code>Query(&quot;[[.original]]{{.payload}}&quot;, &quot;new&quot;)</code></td>
-</tr>
-
-<tr>
-<td align="left"><strong><em>Method</em></strong></td>
-<td align="left">Gen request based on method</td>
-<td align="left"><code>Method(&quot;PUT&quot;)</code> , <code>Method()</code></td>
 </tr>
 
 <tr>
@@ -696,37 +677,6 @@ Path: =&gt; /rest/products/6/reviews
 </table>
 
 <p>If you don&rsquo;t specified position parameter like this <code>Path(&quot;{{.payload}}&quot;)</code>, by default it&rsquo;s equal to <code>Path(&quot;{{.payload}}&quot;, &quot;last&quot;)</code>.</p>
-
-<h3 id="fuzz-and-replace">Fuzz and Replace</h3>
-
-<pre><code># info to search signature
-id: fuzz-01-01
-type: fuzz
-
-# origin: gonna come from Burp 
-payloads:
-  - 'new'
-
-requests:
-  - method: GET
-    generators:
-      - Fuzz(&quot;{{.payload}}&quot;)
-    detections:
-      - &gt;-
-        StringSearch(&quot;response&quot;, &quot;{{.payload}}&quot;)
-
-  - method: GET
-    generators:
-      - Replace(&quot;{{.payload}}&quot;)
-    detections:
-      - &gt;-
-        StringSearch(&quot;response&quot;, &quot;{{.payload}}&quot;)
-</code></pre>
-
-<p>For <code>Fuzz</code> generator URL should be like this <code>http://example.com/a/b/reviews.php?q={{.fuzz}}</code>.
-For <code>Replace</code> generator URL should be like this <code>http://example.com/a/b/reviews.php?q=FUZZ</code>.</p>
-
-<p>then after generator process the URL will become <code>http://example.com/a/b/reviews.php?q=new</code></p>
 
 
 <footer class=" footline" >
@@ -1058,20 +1008,20 @@ For <code>Replace</code> generator URL should be like this <code>http://example.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

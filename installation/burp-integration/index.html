@@ -12,20 +12,20 @@
     <title>Burp Integration :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -494,11 +494,9 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#how-to-install-burp-plugin">How to install Burp plugin</a></li>
 <li><a href="#how-to-get-jwt">How to get JWT</a></li>
-</ul></li>
+<li><a href="#how-to-install-burp-plugin">How to install Burp plugin</a></li>
+<li><a href="#sending-request-to-jaeles-server-without-burp">Sending request to Jaeles Server without burp</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -531,30 +529,12 @@
 
 <p><img src="https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/Burp-Integration.gif?raw=true" alt="Burp Integration" /></p>
 
-<h3 id="how-to-install-burp-plugin">How to install Burp plugin</h3>
-
-<p>Download the plugin on from this <a href="https://github.com/jaeles-project/jaeles-plugins/blob/master/jaeles-burp.py">URL</a>.</p>
-
-<p>Run <strong>Jaeles</strong> as server mode by using this command <code>jaeles server -v</code>. First time you run jaeles server, it&rsquo;s gonna create default credentials on <code>~/.jaeles/burp.json</code>. (Delete <code>~/.jaeles/</code> folder and run it again if you have any issue)</p>
-
-<p>Make sure you have <strong>Jython</strong> installed on Burp then load it.
-Burp -&gt; Extender -&gt; Add <code>jaeles-burp.py</code> as python extensions.</p>
-
-<p><img src="screenshots/burp-ext.png?classes=border,shadow" alt="Burp-Extensions" /></p>
-
-<p>When Plugin is loaded it gonna auto do login and store persistence JWT in <code>~/.jaeles/burp.json</code>. Otherswise you only need to click reload then press <strong>Test Connection</strong> again to make sure you&rsquo;re ready to send.</p>
-
-<hr />
-
-<p><img src="screenshots/ext-0.png?classes=border,shadow" alt="Burp-Extensions" />
-<h4 align="center">Get input from Burp</h4></p>
-
-<h3 id="how-to-get-jwt">How to get JWT</h3>
+<h2 id="how-to-get-jwt">How to get JWT</h2>
 
 <p><img src="screenshots/first-time.png?classes=border,shadow" alt="API" />
 First time you run Jaeles, it&rsquo;ll setup some config and credentials at <code>~/.jaeles/config.yaml</code></p>
 
-<pre><code>POST /auth/login HTTP/1.1
+<pre><code class="language-text">POST /auth/login HTTP/1.1
 Content-Type: application/json
 User-Agent: Jaeles Scanner
 Host: 127.0.0.1:5000
@@ -570,6 +550,47 @@ Connection: close
 <p>Use that credentials to get your JWT.</p>
 
 <p><img src="screenshots/auth-req.png?classes=border,shadow" alt="Burp-Extensions" /></p>
+
+
+<div class="notices warning" ><p>You can run jaeles server <strong>without authentication</strong> with <code>-A</code> option but keep in mind that some signatures allow <strong>execute command</strong> on your machine. So make sure you only bind this server on <code>127.0.0.1</code>.</p>
+</div>
+
+
+<h2 id="how-to-install-burp-plugin">How to install Burp plugin</h2>
+
+<p>Download the plugin on from this <a href="https://github.com/jaeles-project/jaeles-plugins/blob/master/jaeles-burp.py">URL</a>.</p>
+
+<p>Run <strong>Jaeles</strong> as server mode by using this command <code>jaeles server -v</code>. First time you run, it&rsquo;s gonna create default credentials on <code>~/.jaeles/burp.json</code>. (Delete <code>~/.jaeles/</code> folder and run it again if you have any issue)</p>
+
+<p>Make sure you have <strong>Jython</strong> intalled on Burp then load it.
+Burp -&gt; Extender -&gt; Add <code>jaeles-burp.py</code> as python extensions.</p>
+
+<p><img src="screenshots/burp-ext.png?classes=border,shadow" alt="Burp-Extensions" /></p>
+
+<p>When Plugin is loaded it gonna auto do login and store persistance JWT in <code>~/.jaeles/burp.json</code>.</p>
+
+<hr />
+
+<p><img src="screenshots/ext-0.png?classes=border,shadow" alt="Burp-Extensions" />
+<h4 align="center">Get input from Burp</h4></p>
+
+<h2 id="sending-request-to-jaeles-server-without-burp">Sending request to Jaeles Server without burp</h2>
+
+<p>You can also send request directly to Jaeles Server without burp plugins. Just follow this request body below</p>
+
+<pre><code class="language-text">POST /api/parse HTTP/1.1
+Host: 127.0.0.1:5000
+User-Agent: Jaeles Scanner
+Authora: Jaeles &lt;Your_JWT_here&gt;
+Content-Type: application/json
+Connection: close
+
+{
+    &quot;url&quot;: &quot;http://target.com/api/foo&quot;,
+    &quot;req&quot;: &quot;&lt;base64_request&gt;&quot;,
+    &quot;res&quot;: &quot;&lt;base64_response&gt;&quot;
+}
+</code></pre>
 
 
 <footer class=" footline" >
@@ -898,20 +919,20 @@ Connection: close
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

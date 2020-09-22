@@ -12,20 +12,20 @@
     <title>Usage :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -498,11 +498,10 @@
 <ul>
 <li><a href="#examples-command">Examples Command</a></li>
 </ul></li>
-<li><a href="#fuzz-with-server">Fuzz with server</a>
+<li><a href="#fuzz">Fuzz</a>
 <ul>
 <li><a href="#burp-integration">Burp Integration</a></li>
 </ul></li>
-<li><a href="#full-usage">Full Usage</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -572,74 +571,95 @@
                                                               '^|iL&gt;~'
 
 
-                            🚀 Jaeles beta v0.11 by @j3ssiejjj 🚀
+                            🚀 Jaeles beta v0.13 by @j3ssiejjj 🚀
 
                     The Swiss Army knife for automated Web Application Testing
 
                                           ¯\_(ツ)_/¯
 
-    Usage:
-      jaeles scan|server|config [options]
-      jaeles scan|server|config|report -h -- Show usage message
 
-    Subcommands:
-      jaeles scan   --  Scan list of URLs based on selected signatures
-      jaeles server --  Start API server
-      jaeles config --  Configuration CLI
-      jaeles report --  Generate HTML report based on scanned output
+Usage:
+ jaeles scan|server|config [options]
+ jaeles scan|server|config|report -h -- Show usage message
 
-    Core Flags:
-      -c, --concurrency int         Set the concurrency level (default 20)
-      -o, --output string           output folder name (default &quot;out&quot;)
-      -s, --signs strings           Signature selector (Multiple -s flags are accepted)
-      -x, --exclude strings         Exclude Signature selector (Multiple -x flags are accepted)
-      -L, --level int               Filter signatures by level (default 1)
-      -G, --passive                 Turn on passive detections
-      -p, --params strings          Custom params -p='foo=bar' (Multiple -p flags are accepted)
-      -H, --headers strings         Custom headers (e.g: -H 'Referer: {{.BaseURL}}') (Multiple -H flags are accepted)
+Subcommands:
+  jaeles scan   --  Scan list of URLs based on selected signatures
+  jaeles server --  Start API server
+  jaeles config --  Configuration CLI
+  jaeles report --  Generate HTML report based on scanned output
 
-    Mics Flags:
-          --proxy string            proxy
-          --timeout int             HTTP timeout (default 20)
-          --debug                   Debug
-      -v, --verbose                 Verbose
-      -f, --found string            Run host OS command when vulnerable found
-      -O, --summaryOutput string    Summary output file
-          --passiveOutput string    Passive output folder (default is passive-out)
-          --passiveSummary string   Passive Summary file
-      -S, --selectorFile string     Signature selector from file
-          --sp string               Selector for passive detections (default &quot;*&quot;)
-          --single string           Forced running in single mode
-      -q, --quite                   Quite Output
-      -Q, --quiteFormat string      Format for quite output (default &quot;{{.VulnURL}}&quot;)
-      -R, --report string     		HTML report file name
-          --html string     		Enable generate HTML reports after the scan done
+Core Flags:
+  -c, --concurrency int         Set the concurrency level (default 20)
+  -o, --output string           Output folder name (default &quot;out&quot;)
+  -s, --signs strings           Signature selector (Multiple -s flags are accepted)
+  -x, --exclude strings         Exclude Signature selector (Multiple -x flags are accepted)
+  -L, --level int               Filter signatures by level (default 1)
+  -G, --passive                 Turn on passive detections
+  -p, --params strings          Custom params -p='foo=bar' (Multiple -p flags are accepted)
+  -H, --headers strings         Custom headers (e.g: -H 'Referer: {{.BaseURL}}') (Multiple -H flags are accepted)
+
+Mics Flags:
+      --proxy string            proxy
+      --timeout int             HTTP timeout (default 20)
+      --debug                   Debug
+  -v, --verbose                 Verbose
+      --no-db                   Disable Database
+  -S, --selectorFile string     Signature selector from file
+  -J, --format-input            Enable special input format (default is false)
+  -f, --found string            Run host OS command when vulnerable found
+  -O, --summaryOutput string    Summary output file (default is &quot;jaeles-summary.txt&quot;)
+      --passiveOutput string    Passive output folder (default is &quot;passive-out&quot;)
+      --passiveSummary string   Passive Summary file
+      --sp string               Selector for passive detections (default &quot;*&quot;)
+      --single string           Forced running in single mode
+      --sverbose bool           Store verbose info in summary file
+  -N  --no-output bool          Disable store output
+      --json bool               Store output as JSON format
+      --chunk bool              Enable chunk running against big input
+  -q, --quiet                   Enable Quiet Output
+  -Q, --quietFormat string      Format for quiet output (default &quot;{{.VulnURL}}&quot;)
+  -R, --report string           HTML report file name
+      --title string            HTML report title
+      --html string             Enable generate HTML reports after the scan done
+      --hh string               Full help message
+      --lc                      Shortcut for '--proxy http://127.0.0.1:8080'
+      --ba                      Shortcut for -p 'BaseURL=[[.Raw]]' or -p 'root=[[.Raw]]'
 
 
-    Examples Commands:
-      jaeles scan -s 'jira' -s 'ruby' -u target.com
-      jaeles scan -c 50 -s 'java' -x 'tomcat' -U list_of_urls.txt
-      jaeles scan -G -c 50 -s '/tmp/custom-signature/.*' -U list_of_urls.txt
-      jaeles scan -c 50 -S list_of_selectors.txt -U list_of_urls.txt -H 'Referer: {{.BaseURL}}/x'
-      jaeles scan -s &lt;signature&gt; -s &lt;another-selector&gt; -u http://example.com
-      cat list_target.txt | jaeles scan -c 50 -s &lt;signature&gt;
+Examples Commands:
+  jaeles scan -s &lt;signature&gt; -u &lt;url&gt;
+  jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt; -L &lt;level-of-signatures&gt;
+  jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt;
+  jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt; -p 'dest=xxx.burpcollaborator.net'
+  jaeles scan -c 50 -s &lt;signature&gt; -U &lt;list_urls&gt; -f 'noti_slack &quot;{{.vulnInfo}}&quot;'
+  jaeles scan -v -c 50 -s &lt;signature&gt; -U list_target.txt -o /tmp/output
+  jaeles scan -s &lt;signature&gt; -s &lt;another-selector&gt; -u http://example.com
+  echo '{&quot;BaseURL&quot;:&quot;https://example.com/sub/&quot;}' | jaeles scan -s sign.yaml -J
+  jaeles scan -G -s &lt;signature&gt; -s &lt;another-selector&gt; -x &lt;exclude-selector&gt; -u http://example.com
+  cat list_target.txt | jaeles scan -c 100 -s &lt;signature&gt;
 
-    Others Commands:
-      jaeles server -s '/tmp/custom-signature/sensitive/.*' -L 2
-      jaeles config -a reload --signDir /tmp/signatures-folder/
-      jaeles config -a update --repo https://github.com/jaeles-project/jaeles-signatures
-      jaeles report -o /tmp/scanned/out
+Others Commands:
+  jaeles server -s '/tmp/custom-signature/sensitive/.*' -L 2
+  jaeles server --host 0.0.0.0 --port 5000 -s '/tmp/custom-signature/sensitive/.*' -L 2
+  jaeles config reload --signDir /tmp/standard-signatures/
+  jaeles config add -B /tmp/custom-active-signatures/
+  jaeles config update --repo https://github.com/jaeles-project/jaeles-signatures
+  jaeles report -o /tmp/scanned/out
+  jaeles report -o /tmp/scanned/out --title 'Passive Report'
+  jaeles report -o /tmp/scanned/out --title 'Verbose Report' --sverbose
 
+Use &quot;jaeles [command] --help&quot; for more information about a command.
 </code></pre>
 
 <hr />
 
-<h2 id="fuzz-with-server">Fuzz with server</h2>
+<h2 id="fuzz">Fuzz</h2>
 
 <pre><code class="language-bash">Start API Server
 
 Usage:
   jaeles server [flags]
+
 
 Flags:
   -h, --help          help for server
@@ -653,67 +673,6 @@ Flags:
 <p><img src="https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/Burp-Integration.gif?raw=true" alt="Burp Integration" /></p>
 
 <h5 align="center">Plugin can be found <a href="https://github.com/jaeles-project/jaeles-plugins/blob/master/jaeles-burp.py">here</a> and Video Guide <a href="https://youtu.be/1lxsYhfTq3M">here</a></h5>
-
-<hr />
-
-<h2 id="full-usage">Full Usage</h2>
-
-<pre><code class="language-bash">Usage:
-  jaeles [command]
-
-Available Commands:
-  config      Configuration CLI
-  help        Help about any command
-  report      Generate HTML report based on scanned output
-  scan        Scan list of URLs based on selected signatures
-  server      Start API server
-
-Flags:
-      --ba                      Shortcut for -p 'BaseURL=[[.Raw]]' or -p 'root=[[.Raw]]'
-  -c, --concurrency int         Set the concurrency level (default 20)
-      --config string           config file (default is $HOME/.jaeles/config.yaml)
-      --debug                   Debug
-      --delay int               Delay time between requests
-  -x, --exclude strings         Exclude Signature selector (Multiple -x flags are accepted)
-  -J, --format-input            Enable special input format
-  -f, --found string            Run host OS command when vulnerable found
-  -H, --headers strings         Custom headers (e.g: -H 'Referer: {{.BaseURL}}') (Multiple -H flags are accepted)
-  -h, --help                    help for jaeles
-      --hh                      Show full help message
-      --lc                      Shortcut for '--proxy http://127.0.0.1:8080'
-  -L, --level int               Filter signature by level (default 1)
-  -l, --log string              log file
-      --no-background           Do not run background task
-      --no-db                   Disable Database
-      --no-output               Do not store raw output
-  -o, --output string           Output folder name (default &quot;out&quot;)
-  -p, --params strings          Custom params -p='foo=bar' (Multiple -p flags are accepted)
-  -G, --passive                 Turn on passive detections
-      --passiveOutput string    Passive output folder (default is passive-out)
-      --passiveSummary string   Passive Summary file
-      --proxy string            proxy
-  -q, --quiet                   Quiet Output
-  -Q, --quietFormat string      Format for quiet output (default &quot;{{.VulnURL}}&quot;)
-      --refresh int             Refresh time for background task (default 10)
-  -R, --report string           Report name
-      --retry int               HTTP Retry
-      --rootDir string          root Project (default &quot;~/.jaeles/&quot;)
-      --save-raw                save raw request
-      --scanID string           Scan ID
-  -S, --selectorFile string     Signature selector from file
-  -B, --signDir string          Folder contain default signatures (default &quot;~/.jaeles/base-signatures/&quot;)
-  -s, --signs strings           Signature selector (Multiple -s flags are accepted)
-      --single                  Disable parallel mode (use this when you need logic in single signature
-      --sp string               Selector for passive detections (default &quot;*&quot;)
-  -O, --summaryOutput string    Summary output file
-      --summaryVuln string      Summary output file
-      --timeout int             HTTP timeout (default 20)
-      --title string            Report title name
-  -v, --verbose                 Verbose output
-  -V, --version                 Print version of Jaeles
-
-Use &quot;jaeles [command] --help&quot; for more information about a command.
-</code></pre>
 
 
 
@@ -1043,20 +1002,20 @@ Use &quot;jaeles [command] --help&quot; for more information about a command.
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

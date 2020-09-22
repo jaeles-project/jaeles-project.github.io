@@ -12,20 +12,20 @@
     <title>Passive Detection :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -494,14 +494,10 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li>
-<ul>
+<li><a href="#syntax">Syntax</a></li>
 <li><a href="#sample-passive-signature">Sample passive signature</a></li>
+<li><a href="#using-passive-check-inside-active-normal-signatures">Using passive check inside active (normal) signatures</a></li>
 <li><a href="#usage">Usage</a></li>
-</ul></li>
-</ul></li>
 </ul></li>
 </ul>
 </nav>
@@ -530,12 +526,12 @@
 
 
 
-<h4 align="center">Like Detection part but check for every request</h4>
-
 
 <div class="notices note" ><p>Enable passive detection via  <code>--passive</code> or <code>-G</code> option.</p>
 </div>
 
+
+<p>This part used to detection common pattern in the request and execute on every request after <a href="/signatures/detection/"><strong>detection</strong></a> part done.</p>
 
 <p>Default passive signatures can be found <a href="https://github.com/jaeles-project/jaeles-signatures/blob/master/passives/"><strong>here</strong></a></p>
 
@@ -543,62 +539,113 @@
 
 <p>Add new passive signature as single file in <code>~/.jaeles/passives</code> folder or just add new rule to exist passive signature in <strong>rules</strong> section.</p>
 
-<p>You can also enable passives check in single active signatures with this <code>passive: true</code>.</p>
-
 <hr />
 
-<h4 id="sample-passive-signature">Sample passive signature</h4>
+<h2 id="syntax">Syntax</h2>
 
-<p><img src="examples/passive-secret.png?classes=border,shadow" alt="single" /></p>
+<p><strong>Jaeles</strong> look for passive signature in file and rules in single signatures.
+<code>id</code> and <code>reason</code> used for
+Usage of <code>detections</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a>.</p>
 
-<p>Using it inside active signature.</p>
+<h2 id="sample-passive-signature">Sample passive signature</h2>
 
-<pre><code>id: route-bypass-fuzz-01
-type: fuzz
-passive: true
-info:
-  name: Route Bypass Fuzz on Path 01
-  risk: Medium
-
-variables:
-  - params: File(&quot;{{.Resources}}/secret-route.txt&quot;)
-  - prefix: |
-      ..;/
-      ..%3B/
-      %0A../
-      %0D../
-      %00../
-      ../
-      /////////////////////////////
-
-payloads:
-  - '{{.prefix}}{{.params}}'
-
-requests:
-  # 404 request
-  - method: GET
-    redirect: false
-    headers:
-      - User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55
-    url: &gt;-
-      {{.BaseURL}}/{{.prefix}}/hopefully404/
-    conclusions:
-      - SetValue(&quot;404Content&quot;, ContentLength())
-
-  - generators:
-      - Path(&quot;{{.payload}}&quot;, &quot;*&quot;)
+<pre><code class="language-yaml">name: &quot;secret pattern&quot;
+desc: &quot;grep for secret pattern&quot;
+risk: &quot;High&quot;
+level: 1
+rules:
+  - id: secret-base64-01
+    reason: &quot;Base64&quot;
     detections:
       - &gt;-
-        StatusCode() == 200 &amp;&amp; !StringSearch(&quot;response&quot;, &quot;Not found&quot;) &amp;&amp; !StringSearch(&quot;response&quot;, &quot;Request Rejected&quot;) &amp;&amp; Math.abs(ContentLength() - parseInt(ValueOf(&quot;404Content&quot;))) &gt; 1000
+        RegexSearch(&quot;response&quot;, '([^A-Za-z0-9+/]|^)(eyJ|YTo|Tzo|PD[89]|aHR0cHM6L|aHR0cDo|rO0)[%a-zA-Z0-9+/]+={0,2}')
+
+  ### Private key
+  - id: secret-key-01
+    reason: &quot;Private key &amp; Private key base64&quot;
+    detections:
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN [ A-Za-z0-9]*PRIVATE KEY[ A-Za-z0-9]*-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN .{3,100}-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN PGP PRIVATE KEY BLOCK-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;LS0tLS1CRUdJTiBQR1AgUFJJVkFURSBLRVkgQkxPQ0stLS0tL[%a-zA-Z0-9+/]+={0,2}&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN RSA PRIVATE KEY-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tL[%a-zA-Z0-9+/]+={0,2}&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN DSA PRIVATE KEY-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;LS0tLS1CRUdJTiBEU0EgUFJJVkFURSBLRVktLS0tL[%a-zA-Z0-9+/]+={0,2}&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN EC PRIVATE KEY-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0t[%a-zA-Z0-9+/]+={0,2}&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;-----BEGIN OPENSSH PRIVATE KEY-----&quot;)
+      - &gt;-
+        RegexSearch(&quot;response&quot;, &quot;LS0tLS1CRUdJTiBPUEVOU1NIIFBSSVZBVEUgS0VZLS0tLS[%a-zA-Z0-9+/]+={0,2}&quot;)
+</code></pre>
+
+<h2 id="using-passive-check-inside-active-normal-signatures">Using passive check inside active (normal) signatures</h2>
+
+<p>you can enable passive by adding <code>passive: true</code> at the beginning of normal signature.</p>
+
+<pre><code class="language-yaml">id: passive-only
+passive: true
+info:
+  name: Passive only
+
+params:
+  - root: '{{.Raw}}'
+
+requests:
+  - method: 'GET'
+    url: &gt;-
+      {{.root}}
+    headers:
+      - User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55'
 
 </code></pre>
 
-<h4 id="usage">Usage</h4>
+<hr />
 
-<p><strong>Jaeles</strong> look for passive signature in file and rules in single signatures.
-<code>id</code> and <code>reason</code> used for</p>
+<p>you can enable passive check with some condition like this signature.</p>
 
-<p>Usage of <code>detections</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a>.</p>
+<pre><code class="language-yaml">id: passive-on-success
+info:
+  name: Passive on success HTTP
+
+params:
+  - root: '{{.Raw}}'
+  - me: 'GET'
+
+requests:
+  - method: GET
+    url: &gt;-
+      {{.root}}
+    headers:
+      - User-Agent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:55.0) Gecko/20100101 Firefox/55'
+    # Only do passive check if response is 200
+    detections:
+      - &gt;-
+        StatusCode() == 200 &amp;&amp; ContentLength(&quot;body&quot;) &gt; 100 &amp;&amp; DoPassive()
+</code></pre>
+
+<h2 id="usage">Usage</h2>
+
+<p>Enable passive check for all request</p>
+
+<pre><code class="language-shell">cat urls.txt | jaeles scan -G -s &lt;selector&gt; ...
+</code></pre>
+
+<p>or rely on your active signatures like some examples above</p>
+
+<pre><code class="language-shell">jaeles scan -s &lt;selector&gt; ...
+</code></pre>
 
 
 <footer class=" footline" >
@@ -930,20 +977,20 @@ requests:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

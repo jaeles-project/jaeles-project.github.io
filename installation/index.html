@@ -12,20 +12,20 @@
     <title>Installation :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600793707" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600793707" rel="stylesheet">
-    <link href="/css/hybrid.css?1600793707" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600793707" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600793707" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600793707" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600793707" rel="stylesheet">
-    <link href="/css/theme.css?1600793707" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600793707" rel="stylesheet">
+    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
+    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
+    <link href="/css/theme.css?1600796859" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600793707" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600793707"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600793707"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600793707"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600793707"></script>
+<script type="text/javascript" src="/js/search.js?1600796859"></script>
 
     
   </div>
@@ -495,8 +495,9 @@
 <li>
 <ul>
 <li><a href="#jaeles-installation">Jaeles installation</a></li>
-<li><a href="#initialize-signature-and-web-ui">Initialize Signature and Web UI</a></li>
+<li><a href="#inittialize-signature-and-web-ui">Inittialize Signature and Web UI</a></li>
 <li><a href="#load-new-signature-to-database">Load new signature to Database</a></li>
+<li><a href="#if-you-got-my-standard-signatures-structure">If you got my standard signatures structure</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -535,35 +536,48 @@
 <pre><code class="language-shell">GO111MODULE=on go get github.com/jaeles-project/jaeles
 </code></pre>
 
-<hr />
-
-<h2 id="initialize-signature-and-web-ui">Initialize Signature and Web UI</h2>
+<h2 id="inittialize-signature-and-web-ui">Inittialize Signature and Web UI</h2>
 
 <p>This gonna pull latest signature and UI build from default repo.</p>
 
-<pre><code>jaeles config -a update --repo http://github.com/jaeles-project/jaeles-signatures
+<pre><code>jaeles config init
 </code></pre>
 
 <hr />
 
 <h2 id="load-new-signature-to-database">Load new signature to Database</h2>
 
-<p>Try to clone signatures folder to somewhere like this</p>
+<p>Just save new signature to anywhere then load it by the command below.</p>
 
-<pre><code>git clone --depth=1 https://github.com/jaeles-project/jaeles-signatures /tmp/jaeles-signatures/
-
-</code></pre>
-
-<p>then reload them in the DB with this command.</p>
-
-<pre><code>jaeles config -a reload --signDir /tmp/custom-signatures/
+<pre><code class="language-shell">jaeles config add --signDir /tmp/your-custom-signatures/
 </code></pre>
 
 <p>with <code>/tmp/custom-signatures/</code> is your custom signature folder.</p>
 
 <p>Or you can just use new signature directly by using this command</p>
 
-<pre><code>jaeles scan -s new_sign.yaml -u example.com
+<pre><code class="language-shell">jaeles scan -s new_sign.yaml -u example.com
+</code></pre>
+
+<h2 id="if-you-got-my-standard-signatures-structure">If you got my standard signatures structure</h2>
+
+<pre><code class="language-shell">jaeles config reload --signDir /tmp/standard-signatures/
+</code></pre>
+
+<p>standard signatures structure look like this.</p>
+
+<pre><code class="language-text">.
+├── README.md
+├── discovery
+├── exper
+├── fuzz
+├── lite-fuzz
+├── mics
+├── passives
+├── products
+├── resources
+├── sensitive
+└── thirdparty
 </code></pre>
 
 
@@ -894,20 +908,20 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600793707"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600793707"></script>
-    <script src="/js/jquery.sticky.js?1600793707"></script>
-    <script src="/js/featherlight.min.js?1600793707"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600793707"></script>
-    <script src="/js/highlight.pack.js?1600793707"></script>
+    <script src="/js/clipboard.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
+    <script src="/js/jquery.sticky.js?1600796859"></script>
+    <script src="/js/featherlight.min.js?1600796859"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
+    <script src="/js/highlight.pack.js?1600796859"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600793707"></script>
-    <script src="/js/learn.js?1600793707"></script>
-    <script src="/js/hugo-learn.js?1600793707"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
+    <script src="/js/learn.js?1600796859"></script>
+    <script src="/js/hugo-learn.js?1600796859"></script>
 
-    <link href="/mermaid/mermaid.css?1600793707" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600793707"></script>
+    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600796859"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
