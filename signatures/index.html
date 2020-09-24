@@ -12,20 +12,20 @@
     <title>Understand Signatures :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1600796859" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1600796859" rel="stylesheet">
-    <link href="/css/hybrid.css?1600796859" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1600796859" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1600796859" rel="stylesheet">
-    <link href="/css/auto-complete.css?1600796859" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1600796859" rel="stylesheet">
-    <link href="/css/theme.css?1600796859" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1600796859" rel="stylesheet">
+    <link href="/css/nucleus.css?1600924425" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1600924425" rel="stylesheet">
+    <link href="/css/hybrid.css?1600924425" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1600924425" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1600924425" rel="stylesheet">
+    <link href="/css/auto-complete.css?1600924425" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1600924425" rel="stylesheet">
+    <link href="/css/theme.css?1600924425" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1600924425" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1600796859" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1600924425" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1600796859"></script>
+    <script src="/js/jquery-3.3.1.min.js?1600924425"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1600796859"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1600796859"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1600924425"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1600924425"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1600796859"></script>
+<script type="text/javascript" src="/js/search.js?1600924425"></script>
 
     
   </div>
@@ -532,7 +532,7 @@
 <p><img src="architecture/signature-In-depth.png?classes=border,shadow&amp;width=30pc" alt="architecture-2" /></p>
 
 
-<div class="notices warning" ><p>Signature allow <strong>execute command</strong> on your machine. So make sure you read the signature before you run it.</p>
+<div class="notices warning" ><p>Signature have many ways allow to <strong>execute command</strong> on your machine. So make sure you read the signature before you run it.</p>
 </div>
 
 
@@ -577,14 +577,18 @@
 
 <pre><code># ID to index a signature
 id: common-01-01
-# Type of signature default is &quot;single&quot;
+# Type of signature: list, fuzz (default is &quot;list&quot;)
 type: list
+# detection once (default is false) indicate that skip multiples detection if request already vulnerable.
+donce: false
 # Some info about signature
 info:
   name: PHP Debug bar
-  # those feilds below are optional
+  # those fields below are optional
   # default is &quot;Info&quot;
   risk: High
+  # default is &quot;Tentative&quot;
+  confidence: Certain
   tech: general
   os: general
 </code></pre>
@@ -992,20 +996,20 @@ requests:
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1600796859"></script>
-    <script src="/js/perfect-scrollbar.min.js?1600796859"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1600796859"></script>
-    <script src="/js/jquery.sticky.js?1600796859"></script>
-    <script src="/js/featherlight.min.js?1600796859"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1600796859"></script>
-    <script src="/js/highlight.pack.js?1600796859"></script>
+    <script src="/js/clipboard.min.js?1600924425"></script>
+    <script src="/js/perfect-scrollbar.min.js?1600924425"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1600924425"></script>
+    <script src="/js/jquery.sticky.js?1600924425"></script>
+    <script src="/js/featherlight.min.js?1600924425"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1600924425"></script>
+    <script src="/js/highlight.pack.js?1600924425"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1600796859"></script>
-    <script src="/js/learn.js?1600796859"></script>
-    <script src="/js/hugo-learn.js?1600796859"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1600924425"></script>
+    <script src="/js/learn.js?1600924425"></script>
+    <script src="/js/hugo-learn.js?1600924425"></script>
 
-    <link href="/mermaid/mermaid.css?1600796859" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1600796859"></script>
+    <link href="/mermaid/mermaid.css?1600924425" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1600924425"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>

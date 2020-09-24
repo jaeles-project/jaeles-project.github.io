@@ -50,7 +50,7 @@ You can run jaeles server without authentication with -A option but keep in mind
       
       <guid>/signatures/detection/</guid>
       <description>This part will be executed right after Jaeles got response from the request and do a logic for determine the request is vulnerable or not.
-Detections was written in Javascript so you can write whatever you want with some predefind function below as long as you return boolean value to determine it&amp;rsquo;s found something or not.
+Detections was written in Javascript so you can write whatever you want with some predefined function below as long as you return boolean value to determine it&amp;rsquo;s found something or not.
 Examples Detection # Response Status code equal 200 and the response body contain a string &#39;google.</description>
     </item>
     
