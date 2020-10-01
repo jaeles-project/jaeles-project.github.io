@@ -11,5 +11,15 @@
 	<atom:link href="/usage/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Docker Usage</title>
+      <link>/usage/docker-usage/</link>
+      <pubDate>Wed, 31 Jul 2019 13:44:32 +0700</pubDate>
+      
+      <guid>/usage/docker-usage/</guid>
+      <description>Docker image can be found here Use with base image # pull latest image docker pull j3ssie/jaeles # do real scan here docker run j3ssie/jaeles scan -s &#39;&amp;lt;selector&amp;gt;&#39; -u http://example.com  Use with your custom signatures Assume your signatures is on /tmp/host/pro-signatures on your host machine.
+# test if you can select signatures fine docker run -v /tmp/host/pro-signatures:/tmp/pro-signatures j3ssie/jaeles config select -s /tmp/pro-signatures/sensitive/ # do real scan here docker run -v /tmp/host/pro-signatures:/tmp/pro-signatures j3ssie/jaeles scan -s /tmp/pro-signatures/sensitive/ -u http://example.</description>
+    </item>
+    
   </channel>
 </rss>

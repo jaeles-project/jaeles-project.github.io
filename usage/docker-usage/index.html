@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Donation :: Jaeles Scanner</title>
+    <title>Docker Usage :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1601547113" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/donation/">
+  <body class="" data-url="/usage/docker-usage/">
     <nav id="sidebar" class="">
 
 
@@ -191,7 +191,7 @@
   
     
     <li data-nav-id="/usage/" title="Usage" class="dd-item 
-        
+        parent
         
         
         ">
@@ -215,7 +215,7 @@
  
   
     
-      <li data-nav-id="/usage/docker-usage/" title="Docker Usage" class="dd-item ">
+      <li data-nav-id="/usage/docker-usage/" title="Docker Usage" class="dd-item active">
         <a href="/usage/docker-usage/">
         Docker Usage
         
@@ -286,8 +286,8 @@
   
     
     <li data-nav-id="/donation/" title="Donation" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/donation/">
@@ -534,7 +534,7 @@
                   <span class="links">
                  
                  
-                   Donation 
+                   Docker Usage 
                  
                   </span>
                 </div>
@@ -545,12 +545,8 @@
 <ul>
 <li>
 <ul>
-<li>
-<ul>
-<li><a href="#via-opencollective">Via Opencollective</a></li>
-<li><a href="#via-patreon">Via Patreon</a></li>
-<li><a href="#for-people-who-want-to-support-from-local-country">For people who want to support from local country</a></li>
-</ul></li>
+<li><a href="#use-with-base-image">Use with base image</a></li>
+<li><a href="#use-with-your-custom-signatures">Use with your custom signatures</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -569,7 +565,7 @@
           
             <h1>
               
-              Donation
+              Docker Usage
             </h1>
           
 
@@ -578,35 +574,34 @@
 
 
 
-	
 
-<p>If you love my tools and would like to support my work, please check out  some donation methods below.</p>
+<h5 align="center">Docker image can be found <a href="https://hub.docker.com/r/j3ssie/jaeles">here</a></h5>
 
-<h3 id="via-opencollective">Via Opencollective</h3>
+<h2 id="use-with-base-image">Use with base image</h2>
 
-<p><a href="https://opencollective.com/jaeles-project#backers"><img src="https://opencollective.com/jaeles-project/backers.svg?width=890" alt="Backers" /></a></p>
+<pre><code class="language-shell"># pull latest image
+docker pull j3ssie/jaeles
 
-<h3 id="via-patreon">Via Patreon</h3>
+# do real scan here
+docker run j3ssie/jaeles scan -s '&lt;selector&gt;' -u http://example.com
+</code></pre>
 
-<p><a href="https://patreon.com/j3ssie"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fj3ssie&style=for-the-badge"></a></p>
+<h2 id="use-with-your-custom-signatures">Use with your custom signatures</h2>
 
-<h3 id="for-people-who-want-to-support-from-local-country">For people who want to support from local country</h3>
+<p>Assume your signatures is on <code>/tmp/host/pro-signatures</code> on your host machine.</p>
 
-<p>If you want your name appear on this page just put <strong>[Jaeles]</strong> inside your transaction message.</p>
+<pre><code class="language-shell"># test if you can select signatures fine
+docker run -v /tmp/host/pro-signatures:/tmp/pro-signatures j3ssie/jaeles config select -s /tmp/pro-signatures/sensitive/
 
-<p><a href="screenshots/zalopay.jpg"><img alt="Via" src="https://img.shields.io/badge/via-zalopay-blue.svg"></a></p>
-
-<p><a href="screenshots/momo.jpg"><img alt="Via" src="https://img.shields.io/badge/via-momo-blueviolet.svg"></a></p>
-
-<hr />
-
-
-
+# do real scan here
+docker run -v /tmp/host/pro-signatures:/tmp/pro-signatures j3ssie/jaeles scan -s /tmp/pro-signatures/sensitive/ -u http://example.com
+</code></pre>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -722,18 +717,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -742,44 +725,6 @@
                     
                     
 
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
                     
                         
             
@@ -798,6 +743,9 @@
             
         
                     
+            
+        
+                    
                         
             
             
@@ -805,6 +753,54 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
@@ -981,3 +977,4 @@
 
   </body>
 </html>
+

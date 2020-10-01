@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Donation :: Jaeles Scanner</title>
+    <title>FAQ :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1601547113" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/donation/">
+  <body class="" data-url="/faq/">
     <nav id="sidebar" class="">
 
 
@@ -264,8 +264,8 @@
   
     
     <li data-nav-id="/faq/" title="FAQ" class="dd-item 
-        
-        
+        parent
+        active
         
         ">
       <a href="/faq/">
@@ -286,8 +286,8 @@
   
     
     <li data-nav-id="/donation/" title="Donation" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/donation/">
@@ -534,26 +534,14 @@
                   <span class="links">
                  
                  
-                   Donation 
+                   FAQ 
                  
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li>
-<ul>
-<li><a href="#via-opencollective">Via Opencollective</a></li>
-<li><a href="#via-patreon">Via Patreon</a></li>
-<li><a href="#for-people-who-want-to-support-from-local-country">For people who want to support from local country</a></li>
-</ul></li>
-</ul></li>
-</ul>
-</nav>
+
     </div>
 </div>
 
@@ -569,7 +557,7 @@
           
             <h1>
               
-              Donation
+              FAQ
             </h1>
           
 
@@ -578,27 +566,65 @@
 
 
 
-	
+	<p><details><summary>Your tools said it&rsquo;s <strong>vulnerable</strong>. Should I report it?</summary>
+<p></p>
 
-<p>If you love my tools and would like to support my work, please check out  some donation methods below.</p>
+<p>First of all, you definitely see <strong>many</strong> false positive in Fuzz signatures because I can&rsquo;t defined exactly what is vulnerable for everything. So make sure you gotta know what are you doing here. (same case might happened in <strong>sensitive</strong> signatures too)</p>
 
-<h3 id="via-opencollective">Via Opencollective</h3>
+<p>If you have false positive in other signatures please read the signature first then if <strong>detections</strong> part still catch wrong target. I would like to know which is signature cause that.</p>
 
-<p><a href="https://opencollective.com/jaeles-project#backers"><img src="https://opencollective.com/jaeles-project/backers.svg?width=890" alt="Backers" /></a></p>
-
-<h3 id="via-patreon">Via Patreon</h3>
-
-<p><a href="https://patreon.com/j3ssie"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2Fj3ssie&style=for-the-badge"></a></p>
-
-<h3 id="for-people-who-want-to-support-from-local-country">For people who want to support from local country</h3>
-
-<p>If you want your name appear on this page just put <strong>[Jaeles]</strong> inside your transaction message.</p>
-
-<p><a href="screenshots/zalopay.jpg"><img alt="Via" src="https://img.shields.io/badge/via-zalopay-blue.svg"></a></p>
-
-<p><a href="screenshots/momo.jpg"><img alt="Via" src="https://img.shields.io/badge/via-momo-blueviolet.svg"></a></p>
+<p></p>
+</details></p>
 
 <hr />
+
+<p><details><summary>I have error to connect DB?</summary></p>
+
+<p><p></p>
+
+<p>No idea how you have this issue cause I never have one.
+Maybe try to install these packages <code>gcc libc-dev</code>, consider use <code>--no-db</code> option or use docker version then.</p>
+
+<p></p>
+</details></p>
+
+<hr />
+
+<p><details><summary>Have errors with Jaeles in Windows?</summary></p>
+
+<p><p>
+Although I still have build release for windows. But I never have intention to support Windows. Please use docker, VM or maybe WSL.</p>
+
+<p></p>
+</details></p>
+
+<hr />
+
+<p><details><summary>How do I get JWT to use Jaeles Burp Plugin?</summary></p>
+
+<p><p></p>
+
+<p>Please watch <a href="https://youtu.be/1lxsYhfTq3M">this video guide</a> first?</p>
+
+<p>Still can&rsquo;t login. Run <code>jaeles server -A</code> for disable authentication.</p>
+
+<p></p>
+</details></p>
+
+<hr />
+
+<p><details><summary>How do I run Jaeles Server in my VPS?</summary></p>
+
+<p><p></p>
+
+<p>Just bind your jaeles server in others IP.</p>
+
+<pre><code class="language-shell">jaeles server --host &lt;your_vps_ip&gt;
+</code></pre>
+
+<p>or prefer to <a href="/installation/burp-integration/#sending-request-to-jaeles-server-without-burp">this guide</a> or raw usage without burp plugin.
+</p>
+</details></p>
 
 
 
@@ -770,22 +796,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                     
                 
                 
@@ -805,6 +815,22 @@
                     
                         
                         
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
                     
                 
                 
