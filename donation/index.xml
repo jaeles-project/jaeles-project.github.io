@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Donation on Jaeles Scanner</title>
+    <link>/donation/</link>
+    <description>Recent content in Donation on Jaeles Scanner</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 08 Aug 2019 20:48:08 +0700</lastBuildDate><atom:link href="/donation/index.xml" rel="self" type="application/rss+xml" />
+  </channel>
+</rss>

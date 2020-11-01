@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.77.0" />
+    <meta name="description" content="The Swiss Army knife for automated Web Application Testing">
+<meta name="author" content="j3ssie">
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Usage :: Jaeles Scanner</title>
+    <base href="/">
+    
+    <link href="/css/nucleus.css?1604222231" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1604222231" rel="stylesheet">
+    <link href="/css/hybrid.css?1604222231" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1604222231" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1604222231" rel="stylesheet">
+    <link href="/css/auto-complete.css?1604222231" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1604222231" rel="stylesheet">
+    <link href="/css/theme.css?1604222231" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1604222231" rel="stylesheet">
+    
+      <link href="/css/theme-jaeles.css?1604222231" rel="stylesheet">
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1604222231"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/usage/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <a href="/"><img src="/images/favicon.png" /></a>
+<p style="color: #000;font-size: 1.2em">Jaeles Scanner</p>
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1604222231"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1604222231"></script>
+<script type="text/javascript">
+    
+        var baseurl = "\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1604222231"></script>
+
+    
+  </div>
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/introduction/" title="Introduction" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/introduction/">
+          <i class='fas fa-flask'></i> Introduction
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/architecture/" title="Architecture" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/architecture/">
+          <i class='fas fa-atom'></i> Architecture
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/" title="Installation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/installation/">
+          <i class='fas fa-feather'></i> Installation
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/installation/burp-integration/" title="Burp Integration" class="dd-item ">
+        <a href="/installation/burp-integration/">
+        Burp Integration
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/installation/persistent-burpcollaborator/" title="Persistent Burpcollaborator" class="dd-item ">
+        <a href="/installation/persistent-burpcollaborator/">
+        Persistent Burpcollaborator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/usage/" title="Usage" class="dd-item 
+        parent
+        active
+        
+        ">
+      <a href="/usage/">
+          <i class='fas fa-snowflake'></i> Usage
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/usage/docker-usage/" title="Docker Usage" class="dd-item ">
+        <a href="/usage/docker-usage/">
+        Docker Usage
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/showcases/" title="ShowCase" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/showcases/">
+          <i class='fas fa-bolt'></i> ShowCase
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/faq/" title="FAQ" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/faq/">
+          <i class='fas fa-info'></i> FAQ
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/donation/" title="Donation" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/donation/">
+          <i class='fas fa-donate'></i> Donation
+          
+      </a>
+      
+              
+    </li>
+  
+ 
+
+          
+          
+
+
+ 
+  
+    
+    <li data-nav-id="/signatures/" title="Understand Signatures" class="dd-item 
+        
+        
+        
+        ">
+      <a href="/signatures/">
+          <i class='fas fa-brain'></i> Understand Signatures
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+          
+          
+        
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/request-properties/" title="Request Properties" class="dd-item ">
+        <a href="/signatures/request-properties/">
+        Request Properties
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
+        <a href="/signatures/variables/">
+        Variables
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/detection/" title="Detection" class="dd-item ">
+        <a href="/signatures/detection/">
+        Detection
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/generator/" title="Generator" class="dd-item ">
+        <a href="/signatures/generator/">
+        Generator
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/middleware/" title="Middleware" class="dd-item ">
+        <a href="/signatures/middleware/">
+        Middleware
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/passive/" title="Passive Detection" class="dd-item ">
+        <a href="/signatures/passive/">
+        Passive Detection
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/conclusions-and-conditions/" title="Conclusions &amp; Conditions" class="dd-item ">
+        <a href="/signatures/conclusions-and-conditions/">
+        Conclusions &amp; Conditions
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+            
+            
+
+
+ 
+  
+    
+      <li data-nav-id="/signatures/examples/" title="Example Signatures" class="dd-item ">
+        <a href="/signatures/examples/">
+        Example Signatures
+        
+        </a>
+    </li>
+     
+  
+ 
+
+            
+          
+        
+        </ul>
+              
+    </li>
+  
+ 
+
+          
+         
+    </ul>
+
+    
+    
+      <section id="shortcuts">
+        <h3></h3>
+        <ul>
+          
+              <li> 
+                  <a class="padding" href="https://github.com/jaeles-project"><i class='fab fa-github'></i> Github repo</a>
+              </li>
+          
+        </ul>
+      </section>
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://twitter.com/j3ssiejjj">@j3ssiejjj</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                   Usage 
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#examples-command">Examples Command</a></li>
+      </ul>
+    </li>
+    <li><a href="#fuzz">Fuzz</a>
+      <ul>
+        <li><a href="#burp-integration">Burp Integration</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner">
+          
+            <h1>
+              
+              Usage
+            </h1>
+          
+
+        
+
+
+
+
+	<h3 id="examples-command">Examples Command</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+
+                                                ,+izzir,
+                                              <span style="color:#e6db74">&#39;*K@@Q8&amp;Q@@8t&#39;</span>
+                                            !Q@N;<span style="color:#e6db74">&#39;&#39;</span>,~~;<span style="color:#ae81ff">\D</span>@@t<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">                                            ,Q@q. &#39;</span>~~~~~~;5@@L
+                                            L@@+  <span style="color:#e6db74">&#39;~~~~~~~^Q@X
+</span><span style="color:#e6db74">                                            ^@@z  &#39;</span>~~~~~~~|Q@y
+                                            <span style="color:#e6db74">&#39;Z@@7  &#39;</span>~~~~;TQ@N,
+                                              ^%@QhJ7fmDQ@Q7<span style="color:#e6db74">&#39;     ~}DQ@@@Qqv,
+</span><span style="color:#e6db74">                                                ~jdQ@@Qdjr&#39;</span>     ,U@@qv<span style="color:#f92672">=</span>|tm#@QY
+                                                  *@@<span style="color:#f92672">=</span>         D@&amp;;  ,~~~;f@@^
+                                                  &lt;@@+        .@@L  <span style="color:#e6db74">&#39;~~~~~~K@P
+</span><span style="color:#e6db74">                                                ,&lt;zb@@K7&lt;~&#39;</span>    <span style="color:#e6db74">&#39;Q@f  &#39;</span>_~~~~!N@j
+                                            !XQ@QA5jEbWQ@@Ri.<span style="color:#e6db74">&#39;*Q@@D+&#39;&#39;,;=jQ@#.
+</span><span style="color:#e6db74">                                          _d@@a!  &#39;</span>;^rr<span style="color:#f92672">=</span>7kQ@QQ@RzoQ@@Q#Q@@Nz.
+                                          ;Q@D_  <span style="color:#e6db74">&#39;~^^r^^rr^|K@@K   &#39;</span>;*<span style="color:#ae81ff">\v</span>i<span style="color:#f92672">=</span>_<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">                                        &#39;</span>8@%<span style="color:#e6db74">&#39;   ~^^r^r^^^r^=A@@&#39;</span>
+                ,&lt;<span style="color:#f92672">}</span>kKKhI<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;               =@@*  ^qfr^rrrrj8U&lt;^iQ@*
+</span><span style="color:#e6db74">              !b@@NXaURQ@@U;         &#39;&#39;~+P@@L  z@Qv^^^rrz6y=r7@@=
+</span><span style="color:#e6db74">            &#39;</span>y@@a~ <span style="color:#e6db74">&#39;,~~;LD@@7  &#39;</span>^^<span style="color:#e6db74">&#39; \Q@@@Q@@W&#39;</span> <span style="color:#e6db74">&#39;y@@RXXDdT^^r=b@@&#39;</span>
+            T@@i  <span style="color:#e6db74">&#39;,~~~~~;E@@= ,D%~ &#39;</span>&lt;^~<span style="color:#e6db74">&#39;&#39;</span>~Q@%~  <span style="color:#f92672">=</span>ENQQNKi^rLD@@7
+            X@#<span style="color:#e6db74">&#39;  &#39;</span>~~~~~~~&lt;Q@o             ,6@@X+<span style="color:#e6db74">&#39; ,!+^+&lt;J6Q@&amp;+
+</span><span style="color:#e6db74">            n@@^   ,~~~~~~f@@i               &#39;</span>7R@@QgDWQQ@@@Q&lt;
+            <span style="color:#e6db74">&#39;b@Qi&#39;</span> <span style="color:#e6db74">&#39;,~~~^S@@m&#39;</span>                  <span style="color:#e6db74">&#39;^iYjjxi^=Q@%,
+</span><span style="color:#e6db74">            &#39;</span>7Q@QEzLYmDQ@BL<span style="color:#e6db74">&#39;                             :8@#~
+</span><span style="color:#e6db74">              &#39;</span>+yb#QQNKf^<span style="color:#e6db74">&#39;                                ,R@Q; &#39;&#39;&#39;</span>
+                                                            <span style="color:#e6db74">&#39;b@@#Q@@QDj^&#39;</span>
+                                                          ,X@@K?!<span style="color:#f92672">=</span>|7mQ@Q<span style="color:#f92672">}</span><span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">                                                          ,N@W; &#39;</span>~~~~~;IQ@q<span style="color:#e6db74">&#39;
+</span><span style="color:#e6db74">                                                          }@Q~  ,~~~~~~~f@@=
+</span><span style="color:#e6db74">                                                          E@Q&#39;</span>  ~~~~~~~~7@@L
+                                                          +@@<span style="color:#f92672">}</span><span style="color:#e6db74">&#39; ,~~~~~~^%@Q_
+</span><span style="color:#e6db74">                                                          ^Q@Qz,,~;^\UQ@D_
+</span><span style="color:#e6db74">                                                            .iD@@QQQ@@QU=&#39;</span>
+                                                              <span style="color:#e6db74">&#39;^|iL&gt;~&#39;</span>
+
+
+                            🚀 Jaeles beta v0.13 by @j3ssiejjj 🚀
+
+                    The Swiss Army knife <span style="color:#66d9ef">for</span> automated Web Application Testing
+
+                                          ¯<span style="color:#ae81ff">\_</span><span style="color:#f92672">(</span>ツ<span style="color:#f92672">)</span>_/¯
+
+
+Usage:
+ jaeles scan|server|config <span style="color:#f92672">[</span>options<span style="color:#f92672">]</span>
+ jaeles scan|server|config|report -h -- Show usage message
+
+Subcommands:
+  jaeles scan   --  Scan list of URLs based on selected signatures
+  jaeles server --  Start API server
+  jaeles config --  Configuration CLI
+  jaeles report --  Generate HTML report based on scanned output
+
+Core Flags:
+  -c, --concurrency int         Set the concurrency level <span style="color:#f92672">(</span>default 20<span style="color:#f92672">)</span>
+  -o, --output string           Output folder name <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;out&#34;</span><span style="color:#f92672">)</span>
+  -s, --signs strings           Signature selector <span style="color:#f92672">(</span>Multiple -s flags are accepted<span style="color:#f92672">)</span>
+  -x, --exclude strings         Exclude Signature selector <span style="color:#f92672">(</span>Multiple -x flags are accepted<span style="color:#f92672">)</span>
+  -L, --level int               Filter signatures by level <span style="color:#f92672">(</span>default 1<span style="color:#f92672">)</span>
+  -G, --passive                 Turn on passive detections
+  -p, --params strings          Custom params -p<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;foo=bar&#39;</span> <span style="color:#f92672">(</span>Multiple -p flags are accepted<span style="color:#f92672">)</span>
+  -H, --headers strings         Custom headers <span style="color:#f92672">(</span>e.g: -H <span style="color:#e6db74">&#39;Referer: {{.BaseURL}}&#39;</span><span style="color:#f92672">)</span> <span style="color:#f92672">(</span>Multiple -H flags are accepted<span style="color:#f92672">)</span>
+
+Mics Flags:
+      --proxy string            proxy
+      --timeout int             HTTP timeout <span style="color:#f92672">(</span>default 20<span style="color:#f92672">)</span>
+      --debug                   Debug
+  -v, --verbose                 Verbose
+      --no-db                   Disable Database
+  -S, --selectorFile string     Signature selector from file
+  -J, --format-input            Enable special input format <span style="color:#f92672">(</span>default is false<span style="color:#f92672">)</span>
+  -f, --found string            Run host OS command when vulnerable found
+  -O, --summaryOutput string    Summary output file <span style="color:#f92672">(</span>default is <span style="color:#e6db74">&#34;jaeles-summary.txt&#34;</span><span style="color:#f92672">)</span>
+      --passiveOutput string    Passive output folder <span style="color:#f92672">(</span>default is <span style="color:#e6db74">&#34;passive-out&#34;</span><span style="color:#f92672">)</span>
+      --passiveSummary string   Passive Summary file
+      --sp string               Selector <span style="color:#66d9ef">for</span> passive detections <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;*&#34;</span><span style="color:#f92672">)</span>
+      --single string           Forced running in single mode
+      --sverbose bool           Store verbose info in summary file
+  -N  --no-output bool          Disable store output
+      --json bool               Store output as JSON format
+      --chunk bool              Enable chunk running against big input
+  -q, --quiet                   Enable Quiet Output
+  -Q, --quietFormat string      Format <span style="color:#66d9ef">for</span> quiet output <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;{{.VulnURL}}&#34;</span><span style="color:#f92672">)</span>
+  -R, --report string           HTML report file name
+      --title string            HTML report title
+      --html string             Enable generate HTML reports after the scan <span style="color:#66d9ef">done</span>
+      --hh string               Full help message
+      --lc                      Shortcut <span style="color:#66d9ef">for</span> <span style="color:#e6db74">&#39;--proxy http://127.0.0.1:8080&#39;</span>
+      --ba                      Shortcut <span style="color:#66d9ef">for</span> -p <span style="color:#e6db74">&#39;BaseURL=[[.Raw]]&#39;</span> or -p <span style="color:#e6db74">&#39;root=[[.Raw]]&#39;</span>
+
+
+Examples Commands:
+  jaeles scan -s &lt;signature&gt; -u &lt;url&gt;
+  jaeles scan -c <span style="color:#ae81ff">50</span> -s &lt;signature&gt; -U &lt;list_urls&gt; -L &lt;level-of-signatures&gt;
+  jaeles scan -c <span style="color:#ae81ff">50</span> -s &lt;signature&gt; -U &lt;list_urls&gt;
+  jaeles scan -c <span style="color:#ae81ff">50</span> -s &lt;signature&gt; -U &lt;list_urls&gt; -p <span style="color:#e6db74">&#39;dest=xxx.burpcollaborator.net&#39;</span>
+  jaeles scan -c <span style="color:#ae81ff">50</span> -s &lt;signature&gt; -U &lt;list_urls&gt; -f <span style="color:#e6db74">&#39;noti_slack &#34;{{.vulnInfo}}&#34;&#39;</span>
+  jaeles scan -v -c <span style="color:#ae81ff">50</span> -s &lt;signature&gt; -U list_target.txt -o /tmp/output
+  jaeles scan -s &lt;signature&gt; -s &lt;another-selector&gt; -u http://example.com
+  echo <span style="color:#e6db74">&#39;{&#34;BaseURL&#34;:&#34;https://example.com/sub/&#34;}&#39;</span> | jaeles scan -s sign.yaml -J
+  jaeles scan -G -s &lt;signature&gt; -s &lt;another-selector&gt; -x &lt;exclude-selector&gt; -u http://example.com
+  cat list_target.txt | jaeles scan -c <span style="color:#ae81ff">100</span> -s &lt;signature&gt;
+
+Others Commands:
+  jaeles server -s <span style="color:#e6db74">&#39;/tmp/custom-signature/sensitive/.*&#39;</span> -L <span style="color:#ae81ff">2</span>
+  jaeles server --host 0.0.0.0 --port <span style="color:#ae81ff">5000</span> -s <span style="color:#e6db74">&#39;/tmp/custom-signature/sensitive/.*&#39;</span> -L <span style="color:#ae81ff">2</span>
+  jaeles config reload --signDir /tmp/standard-signatures/
+  jaeles config add -B /tmp/custom-active-signatures/
+  jaeles config update --repo https://github.com/jaeles-project/jaeles-signatures
+  jaeles report -o /tmp/scanned/out
+  jaeles report -o /tmp/scanned/out --title <span style="color:#e6db74">&#39;Passive Report&#39;</span>
+  jaeles report -o /tmp/scanned/out --title <span style="color:#e6db74">&#39;Verbose Report&#39;</span> --sverbose
+
+Use <span style="color:#e6db74">&#34;jaeles [command] --help&#34;</span> <span style="color:#66d9ef">for</span> more information about a command.
+</code></pre></div><hr>
+<h2 id="fuzz">Fuzz</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Start API Server
+
+Usage:
+  jaeles server <span style="color:#f92672">[</span>flags<span style="color:#f92672">]</span>
+
+
+Flags:
+  -h, --help          help <span style="color:#66d9ef">for</span> server
+      --host string   IP address to bind the server <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;127.0.0.1&#34;</span><span style="color:#f92672">)</span>
+  -A, --no-auth       Turn off authenticated on API server
+      --port string   Port <span style="color:#f92672">(</span>default <span style="color:#e6db74">&#34;5000&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><h3 id="burp-integration">Burp Integration</h3>
+<p><img src="https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/Burp-Integration.gif?raw=true" alt="Burp Integration"></p>
+<!-- raw HTML omitted -->
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+        </div> 
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+        
+        
+
+
+	 
+	 
+    </div>
+
+    </section>
+    
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1604222231"></script>
+    <script src="/js/perfect-scrollbar.min.js?1604222231"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1604222231"></script>
+    <script src="/js/jquery.sticky.js?1604222231"></script>
+    <script src="/js/featherlight.min.js?1604222231"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1604222231"></script>
+    <script src="/js/highlight.pack.js?1604222231"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1604222231"></script>
+    <script src="/js/learn.js?1604222231"></script>
+    <script src="/js/hugo-learn.js?1604222231"></script>
+
+    <link href="/mermaid/mermaid.css?1604222231" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1604222231"></script>
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+    
+
+  </body>
+</html>
