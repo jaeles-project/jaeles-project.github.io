@@ -12,20 +12,20 @@
     <title>FAQ :: Jaeles Scanner</title>
     <base href="/">
     
-    <link href="/css/nucleus.css?1604222231" rel="stylesheet">
-    <link href="/css/fontawesome-all.min.css?1604222231" rel="stylesheet">
-    <link href="/css/hybrid.css?1604222231" rel="stylesheet">
-    <link href="/css/featherlight.min.css?1604222231" rel="stylesheet">
-    <link href="/css/perfect-scrollbar.min.css?1604222231" rel="stylesheet">
-    <link href="/css/auto-complete.css?1604222231" rel="stylesheet">
-    <link href="/css/atom-one-dark-reasonable.css?1604222231" rel="stylesheet">
-    <link href="/css/theme.css?1604222231" rel="stylesheet">
-    <link href="/css/hugo-theme.css?1604222231" rel="stylesheet">
+    <link href="/css/nucleus.css?1605436961" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1605436961" rel="stylesheet">
+    <link href="/css/hybrid.css?1605436961" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1605436961" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1605436961" rel="stylesheet">
+    <link href="/css/auto-complete.css?1605436961" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1605436961" rel="stylesheet">
+    <link href="/css/theme.css?1605436961" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1605436961" rel="stylesheet">
     
-      <link href="/css/theme-jaeles.css?1604222231" rel="stylesheet">
+      <link href="/css/theme-jaeles.css?1605436961" rel="stylesheet">
     
 
-    <script src="/js/jquery-3.3.1.min.js?1604222231"></script>
+    <script src="/js/jquery-3.3.1.min.js?1605436961"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -53,14 +53,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/js/lunr.min.js?1604222231"></script>
-<script type="text/javascript" src="/js/auto-complete.js?1604222231"></script>
+<script type="text/javascript" src="/js/lunr.min.js?1605436961"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1605436961"></script>
 <script type="text/javascript">
     
         var baseurl = "\/";
     
 </script>
-<script type="text/javascript" src="/js/search.js?1604222231"></script>
+<script type="text/javascript" src="/js/search.js?1605436961"></script>
 
     
   </div>
@@ -541,7 +541,15 @@
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents"></nav>
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
@@ -566,33 +574,25 @@
 
 
 
-	<!-- raw HTML omitted -->
+	<h4 id="your-tools-said-its-vulnerable-should-i-report-it">Your tools said it&rsquo;s <strong>vulnerable</strong>. Should I report it?</h4>
 <p>First of all, you definitely see <strong>many</strong> false positive in Fuzz signatures because I can&rsquo;t defined exactly what is vulnerable for everything. So make sure you gotta know what are you doing here. (same case might happened in <strong>sensitive</strong> signatures too)</p>
 <p>If you have false positive in other signatures please read the signature first then if <strong>detections</strong> part still catch wrong target. I would like to know which is signature cause that.</p>
-<!-- raw HTML omitted -->
 <hr>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h4 id="i-have-error-to-connect-db">I have error to connect DB?</h4>
 <p>No idea how you have this issue cause I never have one.
 Maybe try to install these packages <code>gcc libc-dev</code>, consider use <code>--no-db</code> option or use docker version then.</p>
-<!-- raw HTML omitted -->
 <hr>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h4 id="have-errors-with-jaeles-in-windows">Have errors with Jaeles in Windows?</h4>
+<p>Although I still have build release for windows. But I never have intention to support Windows. Please use docker, VM or maybe WSL.</p>
 <hr>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h4 id="how-do-i-get-jwt-to-use-jaeles-burp-plugin">How do I get JWT to use Jaeles Burp Plugin?</h4>
 <p>Please watch <a href="https://youtu.be/1lxsYhfTq3M">this video guide</a> first?</p>
 <p>Still can&rsquo;t login. Run <code>jaeles server -A</code> for disable authentication.</p>
-<!-- raw HTML omitted -->
 <hr>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<h4 id="how-do-i-run-jaeles-server-in-my-vps">How do I run Jaeles Server in my VPS?</h4>
 <p>Just bind your jaeles server in others IP.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jaeles server --host &lt;your_vps_ip&gt;
 </code></pre></div><p>or prefer to <a href="/installation/burp-integration/#sending-request-to-jaeles-server-without-burp">this guide</a> or raw usage without burp plugin.</p>
-<!-- raw HTML omitted -->
 
 
 
@@ -954,20 +954,20 @@ Maybe try to install these packages <code>gcc libc-dev</code>, consider use <cod
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/js/clipboard.min.js?1604222231"></script>
-    <script src="/js/perfect-scrollbar.min.js?1604222231"></script>
-    <script src="/js/perfect-scrollbar.jquery.min.js?1604222231"></script>
-    <script src="/js/jquery.sticky.js?1604222231"></script>
-    <script src="/js/featherlight.min.js?1604222231"></script>
-    <script src="/js/html5shiv-printshiv.min.js?1604222231"></script>
-    <script src="/js/highlight.pack.js?1604222231"></script>
+    <script src="/js/clipboard.min.js?1605436961"></script>
+    <script src="/js/perfect-scrollbar.min.js?1605436961"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1605436961"></script>
+    <script src="/js/jquery.sticky.js?1605436961"></script>
+    <script src="/js/featherlight.min.js?1605436961"></script>
+    <script src="/js/html5shiv-printshiv.min.js?1605436961"></script>
+    <script src="/js/highlight.pack.js?1605436961"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/js/modernizr.custom-3.6.0.js?1604222231"></script>
-    <script src="/js/learn.js?1604222231"></script>
-    <script src="/js/hugo-learn.js?1604222231"></script>
+    <script src="/js/modernizr.custom-3.6.0.js?1605436961"></script>
+    <script src="/js/learn.js?1605436961"></script>
+    <script src="/js/hugo-learn.js?1605436961"></script>
 
-    <link href="/mermaid/mermaid.css?1604222231" rel="stylesheet" />
-    <script src="/mermaid/mermaid.js?1604222231"></script>
+    <link href="/mermaid/mermaid.css?1605436961" rel="stylesheet" />
+    <script src="/mermaid/mermaid.js?1605436961"></script>
     <script>
         mermaid.initialize({ startOnLoad: true });
     </script>
