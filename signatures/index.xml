@@ -18,17 +18,6 @@ Properties for building a request    Property Description Default Value     meth
     </item>
     
     <item>
-      <title>Routine</title>
-      <link>/signatures/routine/</link>
-      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
-      
-      <guid>/signatures/routine/</guid>
-      <description>Routine is signature type which run after matching the condition from the previous signatures.
-You can see the example below.
-id: wordpress-routine type: routine # required info: name: Wordpress Routine risk: Potential params: - root: &#39;{{.BaseURL}}&#39; routines: # {{.BaseSign}} is default at ~/.jaeles/base-signatures/ - signs: - wp: &#39;{{.BaseSign}}/probe/wordpress-detect.yaml&#39; - wp2: &#39;{{.BaseSign}}/probe/wordpress-login-page.yaml&#39; logics: # wp() is true when signatures at {{.BaseSign}}/probe/wordpress-detect.yaml found something - expr: &#39;wp() &amp;amp;&amp;amp; wp2()&#39; invokes: - &#39;{{.BaseSign}}/common/wordpress-directory-listing.yaml&#39; - &#39;{{.</description>
-    </item>
-    
-    <item>
       <title>Variables</title>
       <link>/signatures/variables/</link>
       <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
@@ -81,6 +70,17 @@ Default passive signatures can be found here
 First time you run jaeles, it will installed passive to ~/.jaeles/passives.
 Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
  Syntax Jaeles look for passive signature in file and rules in single signatures.</description>
+    </item>
+    
+    <item>
+      <title>Routine</title>
+      <link>/signatures/routine/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/routine/</guid>
+      <description>Routine is signature type which run after matching the condition from the previous signatures.
+You can see the example below.
+id: wordpress-routine type: routine # required info: name: Wordpress Routine risk: Potential params: - root: &#39;{{.BaseURL}}&#39; routines: # {{.BaseSign}} is default at ~/.jaeles/base-signatures/ - signs: - wp: &#39;{{.BaseSign}}/probe/wordpress-detect.yaml&#39; - wp2: &#39;{{.BaseSign}}/probe/wordpress-login-page.yaml&#39; logics: # wp() is true when signatures at {{.BaseSign}}/probe/wordpress-detect.yaml found something - expr: &#39;wp() &amp;amp;&amp;amp; wp2()&#39; invokes: - &#39;{{.BaseSign}}/common/wordpress-directory-listing.yaml&#39; - &#39;{{.</description>
     </item>
     
     <item>
