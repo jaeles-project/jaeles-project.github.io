@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Introduction :: Jaeles Scanner</title>
+    <title>Routine :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1606063836" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/introduction/">
+  <body class="" data-url="/signatures/routine/">
     <nav id="sidebar" class="">
 
 
@@ -77,8 +77,8 @@
   
     
     <li data-nav-id="/introduction/" title="Introduction" class="dd-item 
-        parent
-        active
+        
+        
         
         ">
       <a href="/introduction/">
@@ -308,7 +308,7 @@
   
     
     <li data-nav-id="/signatures/" title="Understand Signatures" class="dd-item 
-        
+        parent
         
         
         ">
@@ -351,7 +351,7 @@
  
   
     
-      <li data-nav-id="/signatures/routine/" title="Routine" class="dd-item ">
+      <li data-nav-id="/signatures/routine/" title="Routine" class="dd-item active">
         <a href="/signatures/routine/">
         Routine
         
@@ -553,23 +553,14 @@
                   <span class="links">
                  
                  
-                   Introduction 
+                   Routine 
                  
                   </span>
                 </div>
                 
                     <div class="progress">
     <div class="wrapper">
-<nav id="TableOfContents">
-  <ul>
-    <li>
-      <ul>
-        <li><a href="#signatures--plugins">Signatures &amp; Plugins</a></li>
-        <li><a href="#ui-access">UI Access</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav>
+<nav id="TableOfContents"></nav>
     </div>
 </div>
 
@@ -585,7 +576,7 @@
           
             <h1>
               
-              Introduction
+              Routine
             </h1>
           
 
@@ -593,26 +584,38 @@
 
 
 
+<p>Routine is signature type which run after matching the condition from the previous signatures.</p>
+<p>You can see the example below.</p>
+<pre><code>id: wordpress-routine
+type: routine # required
+info:
+  name: Wordpress Routine
+  risk: Potential
 
-	<p><img src="screenshots/jaeles-architecture.png?classes=border,shadow" alt="architechture"></p>
-<!-- raw HTML omitted -->
-<hr>
-<h3 id="signatures--plugins">Signatures &amp; Plugins</h3>
-<p><img src="screenshots/signature-ex.png?classes=border,shadow" alt="EX-0"></p>
-<p><img src="screenshots/signatures.png?classes=border,shadow" alt="EX-1"></p>
-<!-- raw HTML omitted -->
-<p><img src="https://github.com/jaeles-project/jaeles-plugins/blob/master/imgs/Burp-Integration.gif?raw=true" alt="Burp Integration"></p>
-<h3 id="ui-access">UI Access</h3>
-<p><img src="screenshots/ui-1.png?classes=border,shadow" alt="UI-0"></p>
-<p><img src="screenshots/ui-2.png?classes=border,shadow" alt="UI-0"></p>
+params:
+  - root: '{{.BaseURL}}'
 
-
-
+routines:
+  # {{.BaseSign}} is default at ~/.jaeles/base-signatures/
+  - signs:
+      - wp: '{{.BaseSign}}/probe/wordpress-detect.yaml'
+      - wp2: '{{.BaseSign}}/probe/wordpress-login-page.yaml'
+    logics:
+      # wp() is true when signatures at {{.BaseSign}}/probe/wordpress-detect.yaml found something
+      - expr: 'wp() &amp;&amp; wp2()'
+        invokes:
+          - '{{.BaseSign}}/common/wordpress-directory-listing.yaml'
+          - '{{.BaseSign}}/common/wordpress-misconfig.yaml'
+          - '{{.BaseSign}}/common/wordpress-rest-api.yaml'
+          - '{{.BaseSign}}/common/wordpress-user-enum.yaml'
+</code></pre><p>First we detect if target running wordpress or not then run 4 signatures in <code>invokes</code> if the conditions matched in <code>expr</code>.</p>
+<p>Usage of <code>expr</code> section is same from the <a href="/signatures/detection/"><strong>detection</strong></a> but function is name of items in <code>signs</code>.</p>
 
 
 <footer class=" footline" >
 	
 </footer>
+
 
         
         </div> 
@@ -645,137 +648,8 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
                         
                         
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -849,10 +723,146 @@
             
         
                     
+            
+        
+                    
                         
             
             
                 
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1000,3 +1010,4 @@
 
   </body>
 </html>
+
