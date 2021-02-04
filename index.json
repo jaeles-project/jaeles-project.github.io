@@ -88,7 +88,7 @@
 	"title": "Dns",
 	"tags": [],
 	"description": "",
-	"content": "Very useful when checking sensitive file but you don\u0026rsquo;t the know exact content to check for.\nCan be enable with --fi option or inside the signature like this filter: true.\nHow it works? First, Jaeles gonna send requests with these paths then calculate the structure of those requests.\nThen in detection part we can use Diff() detection mean the new request checksum is different from base checksum from some requests send from beginning above.\nExamples Signature id: aws-ec2-sto type: dns info: name: AWS EC2 Subdomain Takeover risk: Potential dns: - domain: '{{.Domain}}' record: 'A' detections: - \u0026gt;- DnsRegex('A', '(?m).*ec2.*compute\\\\.amazonaws\\\\.com.*A$') references: - link: https://enfinlay.github.io/ec2/deadend/2019/10/19/ec2-takeover-attempt.html "
+	"content": "Use to grep result from DNS record instead of HTTP response as normal signature.\nExamples Signature id: aws-ec2-sto type: dns info: name: AWS EC2 Subdomain Takeover risk: Potential dns: - domain: '{{.Domain}}' record: 'A' detections: - \u0026gt;- DnsRegex('A', '(?m).*ec2.*compute\\\\.amazonaws\\\\.com.*A$') references: - link: https://enfinlay.github.io/ec2/deadend/2019/10/19/ec2-takeover-attempt.html "
 },
 {
 	"uri": "/faq/",
