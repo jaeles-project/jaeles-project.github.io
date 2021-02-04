@@ -63,12 +63,18 @@
   </url>
   
   <url>
+    <loc>/signatures/dns/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
+  </url>
+  
+  <url>
     <loc>/faq/</loc>
     <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>
-    <loc>/signatures/passive/</loc>
+    <loc>/signatures/checksum/</loc>
+    <lastmod>2019-07-31T14:12:42+07:00</lastmod>
   </url>
   
   <url>
@@ -78,6 +84,10 @@
   
   <url>
     <loc>/signatures/conclusions-and-conditions/</loc>
+  </url>
+  
+  <url>
+    <loc>/signatures/passive/</loc>
   </url>
   
   <url>

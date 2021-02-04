@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/images/favicon.png" type="image/png">
 
-    <title>Variables :: Jaeles Scanner</title>
+    <title>Dns :: Jaeles Scanner</title>
     <base href="/">
     
     <link href="/css/nucleus.css?1612454788" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/signatures/variables/">
+  <body class="" data-url="/signatures/dns/">
     <nav id="sidebar" class="">
 
 
@@ -351,7 +351,7 @@
  
   
     
-      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item active">
+      <li data-nav-id="/signatures/variables/" title="Variables" class="dd-item ">
         <a href="/signatures/variables/">
         Variables
         
@@ -427,7 +427,7 @@
  
   
     
-      <li data-nav-id="/signatures/dns/" title="Dns" class="dd-item ">
+      <li data-nav-id="/signatures/dns/" title="Dns" class="dd-item active">
         <a href="/signatures/dns/">
         Dns
         
@@ -591,7 +591,7 @@
                   <span class="links">
                  
                  
-                   Variables 
+                   Dns 
                  
                   </span>
                 </div>
@@ -600,10 +600,9 @@
     <div class="wrapper">
 <nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#how-it-works">How it works?</a>
       <ul>
-        <li><a href="#default-variables-generated-from-input">Default variables generated from input</a></li>
-        <li><a href="#list-of-avaliable-variables-function">List of avaliable Variables function</a></li>
+        <li><a href="#examples-signature">Examples Signature</a></li>
       </ul>
     </li>
   </ul>
@@ -623,7 +622,7 @@
           
             <h1>
               
-              Variables
+              Dns
             </h1>
           
 
@@ -631,125 +630,28 @@
 
 
 
-<p>This part will be executed first to generate for your signature list of input.</p>
-<h3 id="default-variables-generated-from-input">Default variables generated from input</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Default variable</th>
-<th style="text-align:left">E.g: <code>http://example.com:8080/a/b/c.php?q=123</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>{{.URL}}</code></td>
-<td style="text-align:left"><code>http://example.com:8080/a/b/c?q=123</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.BaseURL}}</code></td>
-<td style="text-align:left"><code>http://example.com:8080</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Host}}</code></td>
-<td style="text-align:left"><code>example.com:8080</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Domain}}</code></td>
-<td style="text-align:left"><code>example.com</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Port}}</code></td>
-<td style="text-align:left"><code>8080</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Path}}</code></td>
-<td style="text-align:left"><code>/a/b/c</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Extension}}</code></td>
-<td style="text-align:left"><code>.php</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Raw}}</code></td>
-<td style="text-align:left"><code>http://example.com/a/b/c.php?q=123</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.bar}}</code></td>
-<td style="text-align:left">take from <code>--params 'bar=111'</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.Resources}}</code></td>
-<td style="text-align:left">Resources path <code>~/.jaeles/resources</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.ThirdParty}}</code></td>
-<td style="text-align:left">Third party path <code>~/.jaeles/thirdparty</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>{{.BaseSign}}</code></td>
-<td style="text-align:left">Third party path <code>~/.jaeles/base-signatures</code></td>
-</tr>
-</tbody>
-</table>
-<hr>
-<h3 id="list-of-avaliable-variables-function">List of avaliable Variables function</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">API Variables</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><strong><em>Base64EncodeByLines</em></strong></td>
-<td style="text-align:left">Like <strong><em>Base64Encode</em></strong> but split input as a new line first</td>
-<td style="text-align:left"><code>Base64EncodeByLines(&quot;samp\ndummy&quot;)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>Base64Encode</em></strong></td>
-<td style="text-align:left">return base64 encoded string</td>
-<td style="text-align:left"><code>Base64Encode(&quot;a&quot;)</code> will return string like this: <code>YQo=</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>File</em></strong></td>
-<td style="text-align:left">return string as content of file and split it by new line</td>
-<td style="text-align:left"><code>File(&quot;/tmp/sensitvie_paths.txt&quot;)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>InputCmd</em></strong></td>
-<td style="text-align:left">return string as output of os command</td>
-<td style="text-align:left"><code>InputCmd(&quot;echo 123&quot;)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>RandomNumber</em></strong></td>
-<td style="text-align:left">return random number with length</td>
-<td style="text-align:left"><code>RandomNumber(4)</code> will return string like this: <code>6523</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>RandomString</em></strong></td>
-<td style="text-align:left">return random string with length</td>
-<td style="text-align:left"><code>RandomString(6)</code> will return string like this: <code>zkdlsa</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>Range</em></strong></td>
-<td style="text-align:left">return random string with length</td>
-<td style="text-align:left"><code>Range(1,6)</code> will return list of strings like this 1 to 5` |</td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>URLEncodeByLines</em></strong></td>
-<td style="text-align:left">Like <strong><em>URLEncode</em></strong> but split input as a new line first</td>
-<td style="text-align:left"><code>URLEncodeByLines(&quot;samp le\ndummy&quot;)</code></td>
-</tr>
-<tr>
-<td style="text-align:left"><strong><em>URLEncode</em></strong></td>
-<td style="text-align:left">return url encoded string</td>
-<td style="text-align:left"><code>URLEncode(&quot;samp le&quot;)</code> will return string like this: <code>sample%20le</code></td>
-</tr>
-</tbody>
-</table>
+<p>Very useful when checking sensitive file but you don&rsquo;t the know exact content to check for.</p>
+<p>Can be enable with <code>--fi</code> option or inside the signature like this <code>filter: true</code>.</p>
+<h2 id="how-it-works">How it works?</h2>
+<p>First, Jaeles gonna send requests with <a href="https://github.com/jaeles-project/jaeles/blob/e47f16be91d34adfc3d73225ccb86f2cf4d60f49/core/filter.go#L11">these paths</a> then calculate the structure of those requests.</p>
+<p>Then in detection part we can use <code>Diff()</code> detection mean the new request checksum is different from base checksum from some requests send from beginning above.</p>
+<h3 id="examples-signature">Examples Signature</h3>
+<pre><code>id: aws-ec2-sto
+type: dns
+info:
+  name: AWS EC2 Subdomain Takeover
+  risk: Potential
 
+dns:
+  - domain: '{{.Domain}}'
+    record: 'A'
+    detections:
+      - &gt;-
+        DnsRegex('A', '(?m).*ec2.*compute\\.amazonaws\\.com.*A$')
+
+references:
+  - link: https://enfinlay.github.io/ec2/deadend/2019/10/19/ec2-takeover-attempt.html
+</code></pre>
 
 <footer class=" footline" >
 	
@@ -983,26 +885,6 @@
             
                 
                     
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
-                        
-            
-            
-                
-                    
-                        
-                        
-                    
                 
                 
 
@@ -1066,6 +948,26 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 

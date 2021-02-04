@@ -59,17 +59,27 @@ Generator    API Generator Description Example     Method Gen request based on m
     </item>
     
     <item>
-      <title>Passive Detection</title>
-      <link>/signatures/passive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Dns</title>
+      <link>/signatures/dns/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
       
-      <guid>/signatures/passive/</guid>
-      <description>Enable passive detection via --passive or -G option.
- This part used to detection common pattern in the request and execute on every request after detection part done.
-Default passive signatures can be found here
-First time you run jaeles, it will installed passive to ~/.jaeles/passives.
-Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
- Syntax Jaeles look for passive signature in file and rules in single signatures.</description>
+      <guid>/signatures/dns/</guid>
+      <description>Very useful when checking sensitive file but you don&amp;rsquo;t the know exact content to check for.
+Can be enable with --fi option or inside the signature like this filter: true.
+How it works? First, Jaeles gonna send requests with these paths then calculate the structure of those requests.
+Then in detection part we can use Diff() detection mean the new request checksum is different from base checksum from some requests send from beginning above.</description>
+    </item>
+    
+    <item>
+      <title>CheckSum</title>
+      <link>/signatures/checksum/</link>
+      <pubDate>Wed, 31 Jul 2019 14:12:42 +0700</pubDate>
+      
+      <guid>/signatures/checksum/</guid>
+      <description>Very useful when checking sensitive file but you don&amp;rsquo;t the know exact content to check for.
+Can be enable with --fi option or inside the signature like this filter: true.
+ How it works? First, Jaeles gonna send requests with these paths then calculate the structure of those requests.
+Then in detection part we can use Diff() detection mean the new request checksum is different from base checksum from some requests send from beginning above.</description>
     </item>
     
     <item>
@@ -90,6 +100,20 @@ id: wordpress-routine type: routine # required info: name: Wordpress Routine ris
       
       <guid>/signatures/conclusions-and-conditions/</guid>
       <description>Sample signature used conclusions and conditions id: fuzz-01-02 single: true info: name: Fuzz Injection variables: - xss: | sam foo requests: - method: GET values: - custom: &amp;quot;z1123zzz&amp;quot; url: &amp;gt;- {{.BaseURL}}/tests/sinks.html?name=[[.custom]]{{.xss}} detections: - StringSearch(&amp;quot;response&amp;quot;, &amp;quot;mysql_fetch_array&amp;quot;) conclusions: - SetValue(&amp;quot;code&amp;quot;, StatusCode()) - SetValue(&amp;quot;rt&amp;quot;, ResponseTime()) - conditions: - ValueOf(&amp;quot;code&amp;quot;) == &amp;quot;200&amp;quot; - parseInt(ValueOf(&amp;quot;code&amp;quot;)) &amp;gt; 200 - parseFloat(ValueOf(&amp;quot;rt&amp;quot;)) &amp;gt; 1 method: GET url: &amp;gt;- {{.BaseURL}}/tests/sinks.html?name=2222222222222 detections: - StringSearch(&amp;quot;response&amp;quot;, &amp;quot;mysql_fetch_array&amp;quot;)  Conditions If present, this part will be run before continue to generate request.</description>
+    </item>
+    
+    <item>
+      <title>Passive Detection</title>
+      <link>/signatures/passive/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/signatures/passive/</guid>
+      <description>Enable passive detection via --passive or -G option.
+ This part used to detection common pattern in the request and execute on every request after detection part done.
+Default passive signatures can be found here
+First time you run jaeles, it will installed passive to ~/.jaeles/passives.
+Add new passive signature as single file in ~/.jaeles/passives folder or just add new rule to exist passive signature in rules section.
+ Syntax Jaeles look for passive signature in file and rules in single signatures.</description>
     </item>
     
     <item>
